@@ -1,21 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Switch, Route } from "react-router-dom";
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from "./pages/Signup";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from ''
 
 
 function App() {
   return (
+    <Router>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        {/* <Route path="/createrequest" component={CreateRequest} /> */}
+        <Route path="/createrequest" component={CreateRequest} />
       </Switch>
+    </Router>
   );
 }
 
