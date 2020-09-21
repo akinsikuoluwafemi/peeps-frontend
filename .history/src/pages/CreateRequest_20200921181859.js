@@ -92,9 +92,17 @@ const CreateRequest = () => {
     })
     console.log(request)
     
-    history.push('/')
+    
+    
+      // history.push('/')
 
+    
+
+    
   };
+
+    
+    
 
     return (
       <div style={{ display: "flex" }}>

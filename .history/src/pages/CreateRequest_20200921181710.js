@@ -72,8 +72,8 @@ const CreateRequest = () => {
         description,
         request_type: requestType,
         // query,
-        lat: queryLat,
-        lng: queryLng,
+        lat:queryLat,
+        lqueryLng,
       };
     
     fetch("http://localhost:3001/requests", {
@@ -92,9 +92,30 @@ const CreateRequest = () => {
     })
     console.log(request)
     
-    history.push('/')
+    // 
 
+    // axios.post("http://localhost:3001/requests/", {
+    //   description,
+    //   requestType,
+    //   queryLat,
+    //   queryLng,
+    // })
+    // .then((response) => {
+    //   console.log(response + ', sent');
+    // }, (error) => {
+    //     console.log(error);
+    // })
+
+    
+      // history.push('/')
+
+    
+
+    
   };
+
+    
+    
 
     return (
       <div style={{ display: "flex" }}>

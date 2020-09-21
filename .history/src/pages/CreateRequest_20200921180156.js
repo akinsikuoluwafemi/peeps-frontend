@@ -36,6 +36,7 @@ const CreateRequest = () => {
     const [queryLat, setQueryLat] = useState(null);
     const [queryLng, setQueryLng] = useState(null);
     const [requestType, setRequestType] = useState('');
+    const [statusType, setStatusType] = useState("unfufilled");
     const [description, setDescription] = useState("");
     
     
@@ -69,12 +70,12 @@ const CreateRequest = () => {
     //  do stuff
       e.preventDefault();
       let request = {
-        description,
-        request_type: requestType,
-        // query,
-        lat: queryLat,
-        lng: queryLng,
-      };
+          description,
+          requestType,
+          // query,
+          queryLat,
+          queryLng,
+      }
     
     fetch("http://localhost:3001/requests", {
       method: 'POST',
@@ -83,18 +84,40 @@ const CreateRequest = () => {
       },
       body: JSON.stringify(request)
     })
-      .then(response => response.json())
-    .then(data => {
-      console.log('Success', data)
-    })
-    .catch((error) => {
-      console.error('Error', error)
-    })
+    
     console.log(request)
     
-    history.push('/')
+    // 
 
+    // axios.post("http://localhost:3001/requests/", {
+    //   description,
+    //   requestType,
+    //   queryLat,
+    //   queryLng,
+    // })
+    // .then((response) => {
+    //   console.log(response + ', sent');
+    // }, (error) => {
+    //     console.log(error);
+    // })
+
+
+    
+
+
+
+
+
+    
+      history.push('/')
+
+    
+
+    
   };
+
+    
+    
 
     return (
       <div style={{ display: "flex" }}>
