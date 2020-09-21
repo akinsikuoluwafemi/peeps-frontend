@@ -96,15 +96,11 @@ export const Map = () => {
             >
               <div>
                 <h6>Description: {selectedRequest.description}</h6>
-                <p>Type: {selectedRequest.request_type}</p>
+                <p>type: {selectedRequest.request_type}</p>
                 <p>
-                  Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
+                  lat: {selectedRequest.lat},
+                  lng: {selectedRequest.lng}
                 </p>
-
-                <p>Fulfilled: {selectedRequest.fulfilled}</p>
-                <button className="btn-sm btn-success">
-                  Volunteer
-                </button>
               </div>
             </InfoWindow>
           )}

@@ -72,12 +72,11 @@ export const Map = () => {
                 lng: request.lng,
               }}
               icon={{
-                url: `http://maps.google.com/mapfiles/ms/icons/${
-                  request.fulfilled === true ? `green-dot` : `pink-dot`
-                }.png`,
-                origin: new window.google.maps.Point(0, 0),
+                url: `http://maps.google.com/mapfiles/ms/icons/${request.fulfilled === true ? `green-dot` : `pink-dot`}.png`,
+                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(15, 15),
               }}
+
               onClick={() => {
                 setSelectedRequest(request);
               }}
@@ -85,29 +84,22 @@ export const Map = () => {
           ))}
 
           {selectedRequest && (
-            <InfoWindow
-              position={{
-                lat: selectedRequest.lat,
-                lng: selectedRequest.lng,
-              }}
-              onCloseClick={() => {
-                setSelectedRequest(null);
-              }}
-            >
-              <div>
-                <h6>Description: {selectedRequest.description}</h6>
-                <p>Type: {selectedRequest.request_type}</p>
-                <p>
-                  Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
-                </p>
+            <InfoWindow>
 
-                <p>Fulfilled: {selectedRequest.fulfilled}</p>
-                <button className="btn-sm btn-success">
-                  Volunteer
-                </button>
-              </div>
+
+
+              
             </InfoWindow>
           )}
+
+
+
+
+
+
+
+
+
         </GoogleMap>
       </div>
     );

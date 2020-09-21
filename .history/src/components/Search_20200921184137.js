@@ -19,9 +19,7 @@ import {
 
 
 export const Map = () => {
-  const { userLat, userLng, allRquest } = useContext(RequestContext);
-  const [selectedRequest, setSelectedRequest] = useState(null);
-  
+    const { userLat, userLng, allRquest } = useContext(RequestContext);
   console.log(allRquest);
      const libraries = ["places"];
      const mapContainerStyle = {
@@ -69,45 +67,16 @@ export const Map = () => {
               key={request.id}
               position={{
                 lat: request.lat,
-                lng: request.lng,
+                lng: request.lng
               }}
               icon={{
-                url: `http://maps.google.com/mapfiles/ms/icons/${
-                  request.fulfilled === true ? `green-dot` : `pink-dot`
-                }.png`,
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(15, 15),
+                url
               }}
-              onClick={() => {
-                setSelectedRequest(request);
-              }}
+            
             />
+
+
           ))}
-
-          {selectedRequest && (
-            <InfoWindow
-              position={{
-                lat: selectedRequest.lat,
-                lng: selectedRequest.lng,
-              }}
-              onCloseClick={() => {
-                setSelectedRequest(null);
-              }}
-            >
-              <div>
-                <h6>Description: {selectedRequest.description}</h6>
-                <p>Type: {selectedRequest.request_type}</p>
-                <p>
-                  Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
-                </p>
-
-                <p>Fulfilled: {selectedRequest.fulfilled}</p>
-                <button className="btn-sm btn-success">
-                  Volunteer
-                </button>
-              </div>
-            </InfoWindow>
-          )}
         </GoogleMap>
       </div>
     );

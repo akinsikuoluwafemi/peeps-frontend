@@ -102,7 +102,7 @@ export const Map = () => {
                 </p>
 
                 <p>Fulfilled: {selectedRequest.fulfilled}</p>
-                <button className="btn-sm btn-success">
+                <button onClick={handleChat} className="btn-sm btn-success">
                   Volunteer
                 </button>
               </div>
