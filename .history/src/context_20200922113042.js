@@ -10,7 +10,7 @@ class RequestProvider extends Component {
     userLng: 0,
     allRquest: [],
     panToLat: 0,
-    panToLng: 0
+    panTLng: 0
 
   };
 

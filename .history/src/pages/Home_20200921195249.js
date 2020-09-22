@@ -5,12 +5,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavigationDrawer from "../components/NavigationDrawer";
 import { RequestContext } from '../context';
 import { Map } from '../components/Search';
+import { QueryLatContext, QueryLngContext } from '../ContextFile'
 
 
 function Home () {
   const value = useContext(RequestContext)
   
+  const { queryLat } = useContext(QueryLatContext);
     // console.log(value);
+    console.log(queryLat)
         return (
           <div style={{ display: "flex" }}>
             <CssBaseline />

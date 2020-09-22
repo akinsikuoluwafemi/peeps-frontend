@@ -11,6 +11,7 @@ function Home () {
   const value = useContext(RequestContext)
   
     // console.log(value);
+    console.log(queryLat)
         return (
           <div style={{ display: "flex" }}>
             <CssBaseline />

@@ -43,7 +43,9 @@ const CreateRequest = () => {
     const [description, setDescription] = useState("");
     
   
-   
+    useEffect(() => {
+      equateLat()
+    }, [])
   
   
 

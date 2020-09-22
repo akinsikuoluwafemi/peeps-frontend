@@ -42,10 +42,10 @@ const CreateRequest = () => {
     const [requestType, setRequestType] = useState('');
     const [description, setDescription] = useState("");
     
-  
-   
-  
-  
+    console.log(panToLat, panToLng)
+    useEffect(() => {
+    
+  }, [])
 
      const {
        ready,

@@ -9,9 +9,9 @@ class RequestProvider extends Component {
     userLat: 0,
     userLng: 0,
     allRquest: [],
-    panToLat: 0,
-    panToLng: 0
-
+    centerLat: 0,
+    
+    
   };
 
   componentDidMount() {

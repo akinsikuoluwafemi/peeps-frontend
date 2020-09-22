@@ -56,9 +56,8 @@ export const Map = () => {
 
 
   const panTo = useCallback(({lat,lng}) => {
-    mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
-  },[])
+    mapRef.current
+  })
 
 
   if (loadError) return "Error loading maps";

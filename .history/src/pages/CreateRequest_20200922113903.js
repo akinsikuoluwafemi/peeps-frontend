@@ -32,7 +32,9 @@ import { QueryLatContext, QueryLngContext } from '../ContextFile';
 const CreateRequest = () => {
   const history = useHistory();
 
-  
+  useEffect(() => {
+    
+  }, [])
 
   const { userLat, userLng, panToLat, panToLng } = useContext(RequestContext)
   
@@ -42,10 +44,8 @@ const CreateRequest = () => {
     const [requestType, setRequestType] = useState('');
     const [description, setDescription] = useState("");
     
-  
-   
-  
-  
+    console.log(panToLat, panToLng)
+    
 
      const {
        ready,

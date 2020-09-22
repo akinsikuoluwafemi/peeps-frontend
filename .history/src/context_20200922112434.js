@@ -8,10 +8,9 @@ class RequestProvider extends Component {
     showChat: null,
     userLat: 0,
     userLng: 0,
-    allRquest: [],
-    panToLat: 0,
-    panToLng: 0
-
+    allRquest: []
+    
+    
   };
 
   componentDidMount() {

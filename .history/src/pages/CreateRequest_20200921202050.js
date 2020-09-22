@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
@@ -32,10 +32,9 @@ import { QueryLatContext, QueryLngContext } from '../ContextFile';
 const CreateRequest = () => {
   const history = useHistory();
 
-  
+  let { centerLat, centerLng } = useContext(RequestContext);
 
-  const { userLat, userLng, panToLat, panToLng } = useContext(RequestContext)
-  
+    const {userLat, userLng} = useContext(RequestContext)
     let [query, setQuery] = useState(null);
     let [queryLat, setQueryLat] = useState(null);
     let [queryLng, setQueryLng] = useState(null);
@@ -43,9 +42,8 @@ const CreateRequest = () => {
     const [description, setDescription] = useState("");
     
   
-   
-  
-  
+    
+  console.log(centerLat, centerLng);
 
      const {
        ready,
@@ -83,6 +81,8 @@ const CreateRequest = () => {
         lng: queryLng,
       };
     
+    queryLat = centerLat;
+    queryLng = centerLng;
     
     fetch("http://localhost:3001/requests", {
       method: 'POST',
@@ -165,7 +165,6 @@ const CreateRequest = () => {
                             const { lat, lng } = await getLatLng(results[0]);
                             setQueryLat(lat);
                             setQueryLng(lng);
-                            console.log(panToLat, panToLng);
 
                             console.log(lat, lng);
                           } catch (error) {

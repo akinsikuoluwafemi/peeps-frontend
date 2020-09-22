@@ -43,9 +43,14 @@ const CreateRequest = () => {
     const [description, setDescription] = useState("");
     
   
+    useEffect(() => {
+      equateLat()
+    }, [])
+  
+  const equateLat = () => {
+  console.log(panToLat, panToLng);
    
-  
-  
+  }
 
      const {
        ready,

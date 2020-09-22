@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
@@ -42,10 +42,8 @@ const CreateRequest = () => {
     const [requestType, setRequestType] = useState('');
     const [description, setDescription] = useState("");
     
-  
-   
-  
-  
+    console.log(panToLat, panToLng)
+    
 
      const {
        ready,

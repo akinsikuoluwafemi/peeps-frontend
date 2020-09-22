@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from 'react-router-dom';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
@@ -25,27 +25,20 @@ import {
 import "@reach/combobox/styles.css";
 import {RequestContext} from '../context'
 import './search.scss';
-import { QueryLatContext, QueryLngContext } from '../ContextFile';
 
 
 
 const CreateRequest = () => {
   const history = useHistory();
 
-  
-
-  const { userLat, userLng, panToLat, panToLng } = useContext(RequestContext)
-  
-    let [query, setQuery] = useState(null);
-    let [queryLat, setQueryLat] = useState(null);
-    let [queryLng, setQueryLng] = useState(null);
+    const {userLat, userLng} = useContext(RequestContext)
+    const [query, setQuery] = useState(null);
+    const [queryLat, setQueryLat] = useState(null);
+    const [queryLng, setQueryLng] = useState(null);
     const [requestType, setRequestType] = useState('');
     const [description, setDescription] = useState("");
     
-  
-   
-  
-  
+    
 
      const {
        ready,
@@ -82,7 +75,6 @@ const CreateRequest = () => {
         lat: queryLat,
         lng: queryLng,
       };
-    
     
     fetch("http://localhost:3001/requests", {
       method: 'POST',
@@ -153,44 +145,43 @@ const CreateRequest = () => {
                   {/* searchcombobox */}
 
                   {/* <Search /> */}
-                    <div className="search">
-                      <Combobox
-                        onSelect={async (address) => {
-                          console.log(address);
-                          setQuery(address);
-                          clearSuggestions();
+                  <div className="search">
+                    <Combobox
+                      onSelect={async (address) => {
+                        console.log(address);
+                        setQuery(address);
+                        clearSuggestions();
 
-                          try {
-                            const results = await getGeocode({ address });
-                            const { lat, lng } = await getLatLng(results[0]);
-                            setQueryLat(lat);
-                            setQueryLng(lng);
-                            console.log(panToLat, panToLng);
+                        try {
+                          const results = await getGeocode({ address });
+                          const { lat, lng } = await getLatLng(results[0]);
+                          setQueryLat(lat);
+                          setQueryLng(lng);
 
-                            console.log(lat, lng);
-                          } catch (error) {
-                            console.log("error");
-                          }
+                          console.log(lat, lng);
+                        } catch (error) {
+                          console.log("error");
+                        }
+                      }}
+                    >
+                      <ComboboxInput
+                        required
+                        disabled={!ready}
+                        placeholder="Enter a location"
+                        value={value}
+                        onChange={(e) => {
+                          setValue(e.target.value);
                         }}
-                      >
-                        <ComboboxInput
-                          required
-                          disabled={!ready}
-                          placeholder="Enter a location"
-                          value={value}
-                          onChange={(e) => {
-                            setValue(e.target.value);
-                          }}
-                        />
+                      />
 
-                        <ComboboxPopover>
-                          {status === "OK" &&
-                            data.map(({ id, description }) => (
-                              <ComboboxOption key={id} value={description} />
-                            ))}
-                        </ComboboxPopover>
-                      </Combobox>
-                    </div>
+                      <ComboboxPopover>
+                        {status === "OK" &&
+                          data.map(({ id, description }) => (
+                            <ComboboxOption key={id} value={description} />
+                          ))}
+                      </ComboboxPopover>
+                    </Combobox>
+                  </div>
 
                   {/* searchcombobox */}
 
