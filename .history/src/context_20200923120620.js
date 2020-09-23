@@ -16,6 +16,7 @@ class RequestProvider extends Component {
   componentDidMount() {
     this.getUserLocation();
     this.getAllRequest()
+    console.log(this.countUnfulfilled(this.state.allRquest));
   }
 
 
@@ -32,7 +33,14 @@ class RequestProvider extends Component {
       });
   }
 
-  
+  countUnfulfilled = (array) => {
+    for (var i = 0; i < array.length; i++){
+      if(array.fulfilled[i] === false){
+        array.splice([i], 1) 
+      }
+    }
+    return array.length
+  }
   
 
   

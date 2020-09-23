@@ -32,8 +32,7 @@ class RequestProvider extends Component {
       });
   }
 
-  
-  
+  getNumber
 
   
   getUserLocation = () => {

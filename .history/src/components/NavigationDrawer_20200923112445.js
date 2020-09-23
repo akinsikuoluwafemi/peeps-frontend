@@ -135,9 +135,11 @@ function ResponsiveDrawer(props) {
 
   const { allRquest } = useContext(RequestContext);
 
+  console.log(allRquest)
 
-
-  console.log([...allRquest].length)
+  allRquest.reduce((total, currentValue) => {
+    console.log(parse total + currentValue.fulfilled)
+  },0)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -242,7 +244,7 @@ function ResponsiveDrawer(props) {
           </div> */}
 
           <Tooltip title="Unfufilled Request" placement="left">
-            <Badge badgeContent={[...allRquest].length} color="secondary">
+            <Badge badgeContent={4} color="secondary">
               <HelpOutlineIcon />
             </Badge>
           </Tooltip>

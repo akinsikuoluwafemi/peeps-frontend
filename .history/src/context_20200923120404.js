@@ -32,7 +32,11 @@ class RequestProvider extends Component {
       });
   }
 
-  
+  countUnfulfilled = (array) => {
+    for (var i = 0; i < array.length; i++){
+      if(array.fulfilled[i])
+    }
+  }
   
 
   

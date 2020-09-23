@@ -135,9 +135,11 @@ function ResponsiveDrawer(props) {
 
   const { allRquest } = useContext(RequestContext);
 
+  const [numUnfulfilled, setNumOfUnFulfilled] = useState([...allRquest].length);
 
 
   console.log([...allRquest].length)
+  console.log(num)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -242,7 +244,7 @@ function ResponsiveDrawer(props) {
           </div> */}
 
           <Tooltip title="Unfufilled Request" placement="left">
-            <Badge badgeContent={[...allRquest].length} color="secondary">
+            <Badge badgeContent={numUnfulfilled} color="secondary">
               <HelpOutlineIcon />
             </Badge>
           </Tooltip>

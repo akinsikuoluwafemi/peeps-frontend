@@ -33,7 +33,6 @@ class RequestProvider extends Component {
   }
 
   
-  
 
   
   getUserLocation = () => {

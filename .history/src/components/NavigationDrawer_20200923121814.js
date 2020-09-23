@@ -242,7 +242,7 @@ function ResponsiveDrawer(props) {
           </div> */}
 
           <Tooltip title="Unfufilled Request" placement="left">
-            <Badge badgeContent={[...allRquest].length} color="secondary">
+            <Badge badgeContent={{numUnfulfilled}} color="secondary">
               <HelpOutlineIcon />
             </Badge>
           </Tooltip>

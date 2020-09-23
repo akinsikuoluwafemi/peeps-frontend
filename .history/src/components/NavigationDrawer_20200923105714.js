@@ -28,9 +28,6 @@ import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import { RequestContext} from '../context';
 import Badge from "@material-ui/core/Badge";
 import MailIcon from "@material-ui/icons/Mail";
-import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
-import Tooltip from "@material-ui/core/Tooltip";
-import Button from "@material-ui/core/Button";
 
 
 
@@ -133,11 +130,8 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [role, setSRole] = useState("");
 
-  const { allRquest } = useContext(RequestContext);
-
-
-
-  console.log([...allRquest].length)
+    const value = useContext(RequestContext)
+    // console.log(value)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -146,6 +140,14 @@ function ResponsiveDrawer(props) {
   const handleRole = () => {
     setSRole("");
   };
+
+
+
+
+  
+
+
+
 
   const drawer = (
     <div>
@@ -202,6 +204,8 @@ function ResponsiveDrawer(props) {
           <ListItemText primary="Sign up" />
         </Link>
       </ListItem>
+
+      
     </div>
   );
 
@@ -241,11 +245,12 @@ function ResponsiveDrawer(props) {
             />
           </div> */}
 
-          <Tooltip title="Unfufilled Request" placement="left">
-            <Badge badgeContent={[...allRquest].length} color="secondary">
-              <HelpOutlineIcon />
-            </Badge>
-          </Tooltip>
+          <Typography>
+            Unfufilled Request
+          </Typography>
+          <Badge badgeContent={4} color="secondary">
+            <MailIcon />
+          </Badge>
           {/* <p>another icon</p> */}
         </Toolbar>
       </AppBar>
