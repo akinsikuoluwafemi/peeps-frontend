@@ -1,0 +1,30 @@
+import React, { Component, useEffect, useState, useContext } from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import NavigationDrawer from "../components/NavigationDrawer";
+import { Map } from '../components/Search';
+import { FormRequestContext } from '../ContextFile'
+
+function Home () {
+  
+
+
+
+        return (
+          <div >
+
+            
+
+
+   
+                <section style={{ textAlign: "center" }}>
+                    <Map />
+                </section>
+          </div>
+        );
+}
+
+  
+
+export default Home;
