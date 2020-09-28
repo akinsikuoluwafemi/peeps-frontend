@@ -121,8 +121,10 @@ const App = () => {
               <Navbar />
 
               <Switch>
+                
                 <Route exact path="/chat" component={Chat} />
-                <Route exact path="/" component={Home} />
+
+
 
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/login" component={Login} />

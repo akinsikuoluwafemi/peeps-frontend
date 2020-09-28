@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import "./App.css";
-import { Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -13,7 +13,6 @@ import {
 } from "./ContextFile";
 import NavigationDrawer from "./components/NavigationDrawer";
 import Navbar from "./components/Navbar";
-import Chat from './pages/Chat';
 
 const App = () => {
   const history = useHistory();
@@ -36,7 +35,7 @@ const App = () => {
   console.log(userData);
 
   const checkedLoggedIn = () => {
-    let token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (token) {
       console.log("there is a token");
       setUserData({
@@ -45,50 +44,21 @@ const App = () => {
       history.push("/");
     } else {
       console.log("there is no token");
-      // history.push("/login");
-
     }
     // console.log(token)
   };
 
-  const getAllRequest =  () => {
-    //  let req = fetch("http://localhost:3001/requests/", {
-    //    headers: {
-    //      Authorization: `Bearer ${localStorage.getItem("token")}`
-    //    }
-    //  })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       // console.table(data, ["lat", "lng"]);
-    //       let filteredReq = data.filter((item) => item.fulfilled === false);
-    //       setAllRequest(filteredReq);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    //     return req
-    //   axios.get('http://localhost:3001/requests/', {
-    //   headers: {
-    //      Authorization: `Bearer ${localStorage.getItem("token")}`
-    //    }
-    // }).then(response => {
-    //   let filteredReq = response.data.filter((item) => item.fulfilled === false);
-    //       setAllRequest(filteredReq);
-    //       console.log(allRequest)
-    // }, (error) => {
-    //   console.log(error)
-    // })
-
-    axios.get('http://localhost:3001/requests/')
-      .then(response =>
-      {
-      let filteredReq = response.data.filter((item) => item.fulfilled === false);
-          setAllRequest(filteredReq);
-          console.log(allRequest)
-    }, (error) => {
-      console.log(error)
+  const getAllRequest = () => {
+    fetch("http://localhost:3001/requests/")
+      .then((response) => response.json())
+      .then((data) => {
+        // console.table(data, ["lat", "lng"]);
+        let filteredReq = data.filter((item) => item.fulfilled === false);
+        setAllRequest(filteredReq);
       })
-    
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const getUserLocation = () => {
@@ -121,7 +91,10 @@ const App = () => {
               <Navbar />
 
               <Switch>
-                <Route exact path="/chat" component={Chat} />
+                <Route 
+                  render={() => userData.isLoggedIn ? <Redirect />  }
+                  exact path="/" component={Home} />
+
                 <Route exact path="/" component={Home} />
 
                 <Route exact path="/signup" component={Signup} />

@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import "./App.css";
-import { Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
+import { Switch, Route, useHistory, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -13,7 +13,6 @@ import {
 } from "./ContextFile";
 import NavigationDrawer from "./components/NavigationDrawer";
 import Navbar from "./components/Navbar";
-import Chat from './pages/Chat';
 
 const App = () => {
   const history = useHistory();
@@ -121,7 +120,14 @@ const App = () => {
               <Navbar />
 
               <Switch>
-                <Route exact path="/chat" component={Chat} />
+                {/* <Route
+                  exact
+                  // path="/"
+                  render={() =>
+                    userData.isLoggedIn ? <Redirect to="/" /> : <Redirect to="/login" />
+                  }
+                /> */}
+
                 <Route exact path="/" component={Home} />
 
                 <Route exact path="/signup" component={Signup} />
