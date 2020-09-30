@@ -19,7 +19,7 @@ const App = () => {
   const [userData, setUserData] = useState({
     token: JSON.parse(localStorage.getItem("token")) || null,
     user: JSON.parse(localStorage.getItem("user")) || null,
-    isLoggedIn: JSON.parse(localStorage.getItem("user")) ? true : false ,
+    isLoggedIn: JSON.parse(localStorage.getItem("user")) ? true : false,
   });
 
   const [userLat, setUserLat] = useState(0);
@@ -121,19 +121,25 @@ const App = () => {
   };
 
   const getCurrentUser = async  ()  => {
-   let res = await axios.get("http://localhost:3001/users/")
+   let res = await  axios.get("http://localhost:3001/users/")
     .then(response => {
       console.log(response.data);
-      if(userData.isLoggedIn){
       const user = JSON.parse(localStorage.getItem("user"));
-        const curUser = response.data.find((item) => item.email === user.email);
-        console.log(curUser);
-        setUserData({
-          user: curUser,
-          isLoggedIn: true
-        });
-      }
+      // console.log(user)
+
       
+      const curUser = response.data.find(item => item.email === user.email)
+      console.log(curUser);
+
+      setUserData({
+        user:  curUser
+      })
+      // const theUser = user.find(item => item.email === mail)
+      // console.log(theUser);
+      // let currentUser = response.data.find(item => item.email === mail)
+      // console.log(currentUser)
+
+
     }, (error) => {
       console.log(error)
     })
@@ -142,7 +148,40 @@ const App = () => {
 
   }
 
-  
+  // const getCurrentUser = (mail) => {
+    
+    // const user = [
+    //   {
+    //     id: 3,
+    //     first_name: "Femi",
+    //     last_name: "Akinsiku",
+    //     email: "akinsiku.o@yahoo.com",
+    //     password_digest:
+    //       "$2a$12$082kvS9PPIVA7J96UsaNje5iL7jXyeAMAbiOHuPQSYi64aqu3tUKG",
+    //     created_at: "2020-09-25T10:39:03.970Z",
+    //     updated_at: "2020-09-25T10:39:03.970Z",
+    //   },
+    //   {
+    //     id: 4,
+    //     first_name: "Steve",
+    //     last_name: "Warner",
+    //     email: "warner@yahoo.com",
+    //     password_digest:
+    //       "$2a$12$Dv.RWMnw9G/fg5PNiFDj4upyTdkkOkVpCNjfj20FdvNmchJzz8.gq",
+    //     created_at: "2020-09-25T13:13:14.795Z",
+    //     updated_at: "2020-09-25T13:13:14.795Z",
+    //   },
+    // ];
+
+    // console.log(user)
+    // const theUser = user.find(item => item.email === mail)
+    // console.log(theUser);
+
+  //   getAllUsers()
+
+  // }
+
+
   
 
   return (

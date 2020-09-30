@@ -121,7 +121,7 @@ const App = () => {
   };
 
   const getCurrentUser = async  ()  => {
-   let res = await axios.get("http://localhost:3001/users/")
+   let res = await  axios.get("http://localhost:3001/users/")
     .then(response => {
       console.log(response.data);
       if(userData.isLoggedIn){
