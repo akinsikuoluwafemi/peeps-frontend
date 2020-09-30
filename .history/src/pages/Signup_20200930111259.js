@@ -226,21 +226,22 @@ const Signup =() =>  {
     console.log(data);
 
     axios
-      .post("http://localhost:3001/auth/signup", {
+      .post("http://localhost:3001/auth/signin", {
         auth: {
-          first_name: firstName,
-          last_name: lastName,
+          
           email: email,
-          password: password
+          password: password,
         },
       })
       .then(
         (response) => {
           console.log(response);
-          console.log(response.data);
+          console.log(response.data.jwt);
           setUserData({
+            token: response.data.jwt,
             isLoggedIn: true,
           });
+          localStorage.setItem("token", JSON.stringify(response.data.jwt));
           console.log(userData);
           history.push("/");
         },
@@ -250,8 +251,12 @@ const Signup =() =>  {
       );
 
   };
+  
+
     return (
       <div >
+        
+
         <main >
           <div style={{ marginTop: "5rem" }}></div>
 

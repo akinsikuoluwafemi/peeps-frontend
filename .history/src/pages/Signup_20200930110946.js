@@ -223,35 +223,15 @@ const Signup =() =>  {
       password: password,
     };
 
-    console.log(data);
-
-    axios
-      .post("http://localhost:3001/auth/signup", {
-        auth: {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password
-        },
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          console.log(response.data);
-          setUserData({
-            isLoggedIn: true,
-          });
-          console.log(userData);
-          history.push("/");
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    console.log(data)
 
   };
+  
+
     return (
       <div >
+        
+
         <main >
           <div style={{ marginTop: "5rem" }}></div>
 

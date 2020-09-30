@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useContext } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 import HelpLogo from "../images/helpp.jpeg";
 import TextField from "@material-ui/core/TextField";
@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import { UserContext, AllRequestContext } from "../ContextFile";
+import {} from '../'
 
 
 // class Signup extends Component {
@@ -178,12 +178,6 @@ const Signup =() =>  {
 
   const history = useHistory();
 
-  const { userData, setUserData } = useContext(UserContext);
-  console.log(userData);
-
-  const { allRequest } = useContext(AllRequestContext);
-  console.log(allRequest);
-
   
 
   const handleFirstName = (e) => {
@@ -215,43 +209,15 @@ const Signup =() =>  {
   const handleSubmit = (e) => {
     //  do stuff
     e.preventDefault();
-    // history.push('/')
-    const data = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      password: password,
-    };
-
-    console.log(data);
-
-    axios
-      .post("http://localhost:3001/auth/signup", {
-        auth: {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password
-        },
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          console.log(response.data);
-          setUserData({
-            isLoggedIn: true,
-          });
-          console.log(userData);
-          history.push("/");
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    history.push('/')
 
   };
+  
+
     return (
       <div >
+        
+
         <main >
           <div style={{ marginTop: "5rem" }}></div>
 

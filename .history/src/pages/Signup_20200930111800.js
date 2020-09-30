@@ -239,8 +239,10 @@ const Signup =() =>  {
           console.log(response);
           console.log(response.data);
           setUserData({
+            // token: response.data.jwt,
             isLoggedIn: true,
           });
+          // localStorage.setItem("token", JSON.stringify(response.data.jwt));
           console.log(userData);
           history.push("/");
         },
@@ -250,8 +252,12 @@ const Signup =() =>  {
       );
 
   };
+  
+
     return (
       <div >
+        
+
         <main >
           <div style={{ marginTop: "5rem" }}></div>
 

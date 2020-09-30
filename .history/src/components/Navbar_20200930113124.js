@@ -58,7 +58,7 @@ export default function ButtonAppBar() {
 
             <Tooltip title="Unfufilled Request" placement="left">
               <Badge badgeContent={unfufilledRequest} color="primary">
-                <HelpOutlineIcon style={{color: 'white'}}  />
+                <HelpOutlineIcon style={{color}} color="light" />
               </Badge>
             </Tooltip>
 

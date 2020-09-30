@@ -184,6 +184,7 @@ const Signup =() =>  {
   const { allRequest } = useContext(AllRequestContext);
   console.log(allRequest);
 
+  console.log()
   
 
   const handleFirstName = (e) => {
@@ -215,43 +216,15 @@ const Signup =() =>  {
   const handleSubmit = (e) => {
     //  do stuff
     e.preventDefault();
-    // history.push('/')
-    const data = {
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      password: password,
-    };
-
-    console.log(data);
-
-    axios
-      .post("http://localhost:3001/auth/signup", {
-        auth: {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password
-        },
-      })
-      .then(
-        (response) => {
-          console.log(response);
-          console.log(response.data);
-          setUserData({
-            isLoggedIn: true,
-          });
-          console.log(userData);
-          history.push("/");
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    history.push('/')
 
   };
+  
+
     return (
       <div >
+        
+
         <main >
           <div style={{ marginTop: "5rem" }}></div>
 

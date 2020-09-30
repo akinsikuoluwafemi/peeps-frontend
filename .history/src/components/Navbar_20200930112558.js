@@ -58,17 +58,12 @@ export default function ButtonAppBar() {
 
             <Tooltip title="Unfufilled Request" placement="left">
               <Badge badgeContent={unfufilledRequest} color="primary">
-                <HelpOutlineIcon style={{color: 'white'}}  />
+                <HelpOutlineIcon  />
               </Badge>
             </Tooltip>
 
             {userData.isLoggedIn ? (
-              <NavLink
-                onClick={Logout}
-                style={{ margin: "0 1rem" }}
-                class="nav-link mx-2"
-                to=""
-              >
+              <NavLink onClick={Logout} style={{ margin: "0 1rem" }} class="nav-link mx-2" to="">
                 LogOut
               </NavLink>
             ) : (
@@ -98,6 +93,8 @@ export default function ButtonAppBar() {
         </div>
       </div>
     </div>
+
+    
   );
 }
 

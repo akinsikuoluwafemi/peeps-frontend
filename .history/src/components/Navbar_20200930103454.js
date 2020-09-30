@@ -15,24 +15,14 @@ export default function ButtonAppBar() {
   const { allRequest } = useContext(AllRequestContext);
 
   console.log(allRequest);
-  console.log(userData)
   const unfufilledRequest = [...allRequest].length;
 
-  const Logout = () => {
-    console.log('i just logged out')
-    setUserData({
-      token: null,
-      isLoggedIn: false
-    })
-    localStorage.removeItem("token");
-
-  }
-
   return (
-    <div className=" ">
+    <div className="container bg-">
       <div class="bg-dark">
-        <div class="container navbar navbar-expand-lg navbar-dark ">
+        <div class="col navbar navbar-expand-lg navbar-dark ">
           <NavLink class="navbar-brand" to="/">
+            {/* <img src="./images/newlog.png" width="50" height="50" alt="Watchit Outside Logo"> */}
             Peeps
           </NavLink>
           <button
@@ -57,18 +47,13 @@ export default function ButtonAppBar() {
             </ul>
 
             <Tooltip title="Unfufilled Request" placement="left">
-              <Badge badgeContent={unfufilledRequest} color="primary">
-                <HelpOutlineIcon style={{color: 'white'}}  />
+              <Badge badgeContent={unfufilledRequest} color="secondary">
+                <HelpOutlineIcon />
               </Badge>
             </Tooltip>
 
             {userData.isLoggedIn ? (
-              <NavLink
-                onClick={Logout}
-                style={{ margin: "0 1rem" }}
-                class="nav-link mx-2"
-                to=""
-              >
+              <NavLink style={{ margin: "0 1rem" }} class="nav-link mx-2" to="">
                 LogOut
               </NavLink>
             ) : (
@@ -98,6 +83,67 @@ export default function ButtonAppBar() {
         </div>
       </div>
     </div>
+
+    // other
+
+    // <div class="col navbar navbar-expand-lg navbar-dark bg-dark">
+    //   <a aria-current="page" class="navbar-brand  active" href="/">
+    //     PEEPS{" "}
+    //   </a>
+    //   <button
+    //     class="navbar-toggler collapsed"
+    //     type="button"
+    //     data-toggle="collapse"
+    //     data-target="#contentOfNavbar"
+    //     aria-controls="navbarSupportedContent"
+    //     aria-expanded="false"
+    //     aria-label="Toggle navigation"
+    //   >
+    //     <span class="navbar-toggler-icon"></span>
+    //   </button>
+    //   <div id="contentOfNavbar" class="navbar-collapse collapse">
+    //     <ul class="navbar-nav mr-auto"></ul>
+    //     <ul class="navbar-nav ">
+    //       <Tooltip
+    //         style={{ margin: "0 1rem" }}
+    //         title="Unfufilled Request"
+    //         placement="left"
+    //       >
+    //         <Badge badgeContent={unfufilledRequest} color="secondary">
+    //           <HelpOutlineIcon />
+    //         </Badge>
+    //       </Tooltip>
+
+    //       {userData.isLoggedIn ? (
+    //         <NavLink style={{ margin: "0 1rem" }} class="nav-link mx-2" to="">
+    //           LogOut
+    //         </NavLink>
+    //       ) : (
+    //         <>
+    //           <NavLink
+    //             style={{ margin: "0 1rem" }}
+    //             class="nav-link mx-2"
+    //             to="/login"
+    //           >
+    //             Log in
+    //           </NavLink>
+    //           <NavLink
+    //             style={{
+    //               padding: "6px 12px",
+    //               background: "green",
+    //               color: "white",
+    //               borderRadius: "3px",
+    //             }}
+    //             class=" btn  text-white border"
+    //             to="/signup"
+    //           >
+    //             Join for free
+    //           </NavLink>
+    //         </>
+    //       )}
+    //     </ul>
+    //   </div>
+    // </div>
   );
 }
 

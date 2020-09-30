@@ -19,12 +19,11 @@ export default function ButtonAppBar() {
   const unfufilledRequest = [...allRequest].length;
 
   const Logout = () => {
-    console.log('i just logged out')
+    console.log('i am logging out')
     setUserData({
       token: null,
       isLoggedIn: false
     })
-    localStorage.removeItem("token");
 
   }
 
@@ -57,18 +56,13 @@ export default function ButtonAppBar() {
             </ul>
 
             <Tooltip title="Unfufilled Request" placement="left">
-              <Badge badgeContent={unfufilledRequest} color="primary">
-                <HelpOutlineIcon style={{color: 'white'}}  />
+              <Badge badgeContent={unfufilledRequest} color="secondary">
+                <HelpOutlineIcon />
               </Badge>
             </Tooltip>
 
             {userData.isLoggedIn ? (
-              <NavLink
-                onClick={Logout}
-                style={{ margin: "0 1rem" }}
-                class="nav-link mx-2"
-                to=""
-              >
+              <NavLink style={{ margin: "0 1rem" }} class="nav-link mx-2" to="">
                 LogOut
               </NavLink>
             ) : (
@@ -98,6 +92,8 @@ export default function ButtonAppBar() {
         </div>
       </div>
     </div>
+
+    
   );
 }
 
