@@ -155,7 +155,7 @@ export const Map = () => {
           >
             <div>
               
-              <p>Description: {selectedRequest.description}</p>
+              <h6>Description: {selectedRequest.description}</h6>
               <p>Name: {selectedRequest.name}</p>
               <p>Type: {selectedRequest.request_type}</p>
               <p>

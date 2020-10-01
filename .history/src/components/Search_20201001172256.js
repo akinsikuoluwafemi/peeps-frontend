@@ -154,16 +154,13 @@ export const Map = () => {
             }}
           >
             <div>
-              
-              <p>Description: {selectedRequest.description}</p>
-              <p>Name: {selectedRequest.name}</p>
+              <h6>Description: {selectedRequest.description}</h6>
               <p>Type: {selectedRequest.request_type}</p>
               <p>
                 Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
               </p>
               <p>Fulfilled: False</p>
               {/* <p>UserId: {selectedRequest.user_id}</p> */}
-              
               <button className="btn-sm btn-success">Volunteer</button>
             </div>
           </InfoWindow>
@@ -228,7 +225,7 @@ function AddRequest ({panTo}) {
       lat: queryLat,
       lng: queryLng,
       user_id: userId,
-      name: firstName
+      name: first
     };
 
   let res = await  fetch("http://localhost:3001/requests", {

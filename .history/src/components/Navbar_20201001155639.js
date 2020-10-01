@@ -47,7 +47,6 @@ export default function ButtonAppBar() {
   const unfufilledRequest = [...allRequest].length;
 
   
-
   const Logout = () => {
     console.log('i just logged out')
     setUserData({

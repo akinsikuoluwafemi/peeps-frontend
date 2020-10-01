@@ -44,9 +44,11 @@ export default function ButtonAppBar() {
   //   getUserRecord(userData.user);
 
 
-  const unfufilledRequest = [...allRequest].length;
+  = [...allRequest].length;
 
-  
+  setTimeout(() => {
+    return [...allRequest].length;
+  },1000)
 
   const Logout = () => {
     console.log('i just logged out')

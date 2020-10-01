@@ -154,9 +154,7 @@ export const Map = () => {
             }}
           >
             <div>
-              
-              <p>Description: {selectedRequest.description}</p>
-              <p>Name: {selectedRequest.name}</p>
+              <h6>Description: {selectedRequest.description}</h6>
               <p>Type: {selectedRequest.request_type}</p>
               <p>
                 Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
