@@ -245,7 +245,7 @@ function AddRequest ({panTo}) {
         setRequestType('')
         queryLat(null)
         queryLng(null)
-        query(null)
+        query()
       })
       .catch((error) => {
         console.error("Error", error);

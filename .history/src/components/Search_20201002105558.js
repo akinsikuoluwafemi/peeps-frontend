@@ -243,9 +243,7 @@ function AddRequest ({panTo}) {
         console.log("Success", data);
         setDescription('')
         setRequestType('')
-        queryLat(null)
-        queryLng(null)
-        query(null)
+        que
       })
       .catch((error) => {
         console.error("Error", error);
