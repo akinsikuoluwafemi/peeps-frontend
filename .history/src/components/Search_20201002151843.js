@@ -53,7 +53,7 @@ export const Map = () => {
   // const [requestOwner, setRequestOwner] = useState([]);
 
   useEffect(() => {
-    
+// getRequestOwner()
   }, []);
 
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -79,21 +79,21 @@ export const Map = () => {
 
   // make a get request for the particular user_id's info
 
-  // const getRequestOwner = async (user_id) => {
-  //   let res = axios.get(`http://localhost:3001/users/`)
-  //     .then(response => {
-  //       // return response.data
+  const getRequestOwner = async (user_id) => {
+    let res = axios.get(`http://localhost:3001/users/`)
+      .then(response => {
+        // return response.data
 
-  //       console.log(response.data.find(user => user.id === user_id))
+        console.log(response.data.find(user => user.id === user_id))
 
-  //       // console.log(response.data);
+        // console.log(response.data);
 
-  //     }, (error) => {
-  //       console.log(error)
-  //     })
+      }, (error) => {
+        console.log(error)
+      })
 
-  //     return res
-  // }
+      return res
+  }
 
 
    

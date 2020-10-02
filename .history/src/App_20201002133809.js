@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useEffect, useState, useContext } from "react";
+import React, { Component, useEffect, useState, useContext } from "react";
 import "./App.css";
 import { Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
@@ -11,8 +11,7 @@ import {
   UserLngContext,
   AllRequestContext,
   FirstNameContext,
-  UserIdContext,
-  RequestOwnerContext,
+  UserIdContext
 } from "./ContextFile";
 // import NavigationDrawer from "./components/NavigationDrawer";
 import Navbar from "./components/Navbar";
@@ -22,44 +21,51 @@ const App = () => {
   const [userData, setUserData] = useState({
     token: JSON.parse(localStorage.getItem("token")) || null,
     user: JSON.parse(localStorage.getItem("user")) || null,
-    isLoggedIn: JSON.parse(localStorage.getItem("user")) ? true : false,
+    isLoggedIn: JSON.parse(localStorage.getItem("user")) ? true : false ,
   });
 
   const [userLat, setUserLat] = useState(0);
   const [userLng, setUserLng] = useState(0);
   const [allRequest, setAllRequest] = useState([]);
-  const [firstName, setFirstName] = useState("");
-  const [requestOwner, setRequestOwner] = useState([]);
+  const [firstName, setFirstName] = useState('')
   const [userId, setUserId] = useState(null);
+  const [requestOwner, setRequestOwner] = useState([]);
+ 
 
-  useEffect(() => {
-    getCurrentUser();
 
+
+   useEffect(() => {
+     getCurrentUser();
+    
     //  getAllUsers(userData.user.email);
     //  getAllUsers();
+     
+     // getUser('akinsiku.o@yahoo.com');
+     checkedLoggedIn();
+     getAllRequest();
+     getUserLocation();
+   }, []);
 
-    // getUser('akinsiku.o@yahoo.com');
-    checkedLoggedIn();
-    getAllRequest();
-    getUserLocation();
-  }, []);
 
   console.log(firstName, userId);
+  
 
   const checkedLoggedIn = () => {
     let token = localStorage.getItem("token");
     if (token) {
       console.log("there is a token");
       setUserData({
-        isLoggedIn: true,
+        isLoggedIn: true
       });
       history.push("/");
+      
     } else {
       console.log("there is no token");
+
     }
   };
 
-  const getAllRequest = () => {
+  const getAllRequest =  () => {
     //  let req = fetch("http://localhost:3001/requests/", {
     //    headers: {
     //      Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -88,39 +94,18 @@ const App = () => {
     //   console.log(error)
     // })
 
-    axios.get("http://localhost:3001/requests/").then(
-      (response) => {
-        let filteredReq = response.data.filter(
-          (item) => item.fulfilled === false
-        );
-        setAllRequest(filteredReq);
-        console.log(allRequest);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    axios.get('http://localhost:3001/requests/')
+      .then(response =>{
+      let filteredReq = response.data.filter((item) => item.fulfilled === false);
+          setAllRequest(filteredReq);
+          console.log(allRequest)
+    }, (error) => {
+      console.log(error)
+      })
+    
+    
   };
 
-  // const getRequestOwner = async () => {
-  //   let res = await axios.get(`http://localhost:3001/users/${userId}`)
-  //     .then(response => {
-  //       console.log(response.data)
-  //       setRequestOwner(response.data)
-  //     //  return response.data.find(item => item.id === user_id)
-  //     }, (error) => {
-  //         console.log(error);
-  //     })
-  //   return res;
-  // }
-  
-  // const getOwner = useCallback(() => {
-  //   getRequestOwner();
-  // },[])
-
-  //   getOwner();
-
-  
 
 
   const getUserLocation = () => {
@@ -144,36 +129,40 @@ const App = () => {
     );
   };
 
-  const getCurrentUser = async () => {
-    let res = await axios.get("http://localhost:3001/users/").then(
-      (response) => {
-        console.log(response.data);
-        if (userData.isLoggedIn) {
-          const user = JSON.parse(localStorage.getItem("user"));
-          const curUser = response.data.find(
-            (item) => item.email === user.email
-          );
-          let userRec = Object.values(curUser);
-          console.log(userRec);
+  const getCurrentUser = async  ()  => {
+   let res = await axios.get("http://localhost:3001/users/")
+    .then(response => {
+      console.log(response.data);
+      if(userData.isLoggedIn){
+      const user = JSON.parse(localStorage.getItem("user"));
+        const curUser = response.data.find((item) => item.email === user.email);
+        let userRec = Object.values(curUser)
+        console.log(userRec);
           setUserId(userRec[0]);
           setFirstName(userRec[1]);
-
-          // console.log(curUser);
-          setUserData({
-            user: curUser,
-            isLoggedIn: true,
-          });
-        }
-      },
-      (error) => {
-        console.log(error);
+        
+        // console.log(curUser);  
+        setUserData({
+          user: curUser,
+          isLoggedIn: true
+        });
       }
-    );
-    console.log("i am getting all users");
+      
+    }, (error) => {
+      console.log(error)
+    })
+    console.log('i am getting all users')
     return res;
-  };
+
+  }
 
   console.log(userData.user);
+
+ 
+    
+  
+  
+  
 
   return (
     <>
@@ -183,19 +172,17 @@ const App = () => {
             <UserContext.Provider value={{ userData, setUserData }}>
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
-                  <RequestOwnerContext.Provider value={{requestOwner, setRequestOwner}}>
-                    <Navbar />
+                  <Navbar />
 
-                    <Switch>
-                      {/* <Route exact path="/" component={Home} /> */}
+                  <Switch>
+                    {/* <Route exact path="/" component={Home} /> */}
 
-                      <Route exact path="/signup" component={Signup} />
-                      <Route exact path="/login" component={Login} />
-                      <PrivateRoute path="/">
-                        <Home />
-                      </PrivateRoute>
-                    </Switch>
-                  </RequestOwnerContext.Provider>
+                    <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/login" component={Login} />
+                    <PrivateRoute path="/">
+                      <Home />
+                    </PrivateRoute>
+                  </Switch>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>
             </UserContext.Provider>

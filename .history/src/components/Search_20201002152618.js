@@ -53,7 +53,7 @@ export const Map = () => {
   // const [requestOwner, setRequestOwner] = useState([]);
 
   useEffect(() => {
-    
+// getRequestOwner(7)
   }, []);
 
   const [selectedRequest, setSelectedRequest] = useState(null);

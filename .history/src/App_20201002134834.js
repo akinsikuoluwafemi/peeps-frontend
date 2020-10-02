@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useEffect, useState, useContext } from "react";
+import React, { Component, useEffect, useState, useContext } from "react";
 import "./App.css";
 import { Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
@@ -107,21 +107,11 @@ const App = () => {
   //     .then(response => {
   //       console.log(response.data)
   //       setRequestOwner(response.data)
-  //     //  return response.data.find(item => item.id === user_id)
   //     }, (error) => {
   //         console.log(error);
   //     })
   //   return res;
   // }
-  
-  // const getOwner = useCallback(() => {
-  //   getRequestOwner();
-  // },[])
-
-  //   getOwner();
-
-  
-
 
   const getUserLocation = () => {
     window.navigator.geolocation.getCurrentPosition(

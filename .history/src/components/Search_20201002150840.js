@@ -53,7 +53,7 @@ export const Map = () => {
   // const [requestOwner, setRequestOwner] = useState([]);
 
   useEffect(() => {
-    
+// getRequestOwner()
   }, []);
 
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -79,24 +79,23 @@ export const Map = () => {
 
   // make a get request for the particular user_id's info
 
-  // const getRequestOwner = async (user_id) => {
-  //   let res = axios.get(`http://localhost:3001/users/`)
-  //     .then(response => {
-  //       // return response.data
+  const getRequestOwner = async (user_id) => {
+    let res = axios.get(`http://localhost:3001/users/${user_id}`)
+      .then(response => {
+        // return response.data
+        returnresponse.data);
 
-  //       console.log(response.data.find(user => user.id === user_id))
+      }, (error) => {
+        console.log(error)
+      })
 
-  //       // console.log(response.data);
+      return res
+  }
 
-  //     }, (error) => {
-  //       console.log(error)
-  //     })
+  let func = getRequestOwner(7);
 
-  //     return res
-  // }
-
-
-   
+   let name =  Object.values(func)[3];
+  console.log(name)
 
   const libraries = ["places"];
   const mapContainerStyle = {

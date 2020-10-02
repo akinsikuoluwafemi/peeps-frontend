@@ -44,17 +44,18 @@ import '../pages/search.scss';
 import axios from 'axios';
 
 export const Map = () => {
-  const { userLat, setUserLat } = useContext(UserLatContext);
+
+  const {userLat, setUserLat} = useContext(UserLatContext)
   const { userLng, setUserLng } = useContext(UserLngContext);
   const { allRequest, setAllRequest } = useContext(AllRequestContext);
   const { userId, setUserId } = useContext(UserIdContext);
   const { firstName, setFirstName } = useContext(FirstNameContext);
 
   // const [requestOwner, setRequestOwner] = useState([]);
-
+  
   useEffect(() => {
-    
-  }, []);
+
+  }, [])
 
   const [selectedRequest, setSelectedRequest] = useState(null);
 
@@ -74,29 +75,12 @@ export const Map = () => {
   // }
 
   // getRequestOwner();
-
+  
   // console.log(requestOwner)
 
-  // make a get request for the particular user_id's info
-
-  // const getRequestOwner = async (user_id) => {
-  //   let res = axios.get(`http://localhost:3001/users/`)
-  //     .then(response => {
-  //       // return response.data
-
-  //       console.log(response.data.find(user => user.id === user_id))
-
-  //       // console.log(response.data);
-
-  //     }, (error) => {
-  //       console.log(error)
-  //     })
-
-  //     return res
-  // }
 
 
-   
+
 
   const libraries = ["places"];
   const mapContainerStyle = {
@@ -110,6 +94,7 @@ export const Map = () => {
     // zoomControl: true
   };
 
+  
   const center = {
     lat: userLat,
     lng: userLng,
@@ -129,10 +114,12 @@ export const Map = () => {
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
-  }, []);
+  },[]);
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
+
+
 
   return (
     <div>
@@ -176,24 +163,16 @@ export const Map = () => {
             }}
           >
             <div>
+              
               <p>Description: {selectedRequest.description}</p>
-              {/* <p>Name: {firstName}</p> */}
+              <p>Name: {firstName}</p>
               <p>Type: {selectedRequest.request_type}</p>
               <p>
                 Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
               </p>
               <p>Fulfilled: False</p>
-              <p>UserId: {selectedRequest.user_id}</p>
-
-
-              {/* <p>Name: {
+              {/* <p>UserId: {selectedRequest.user_id}</p> */}
               
-                
-                Object.values(getRequestOwner(selectedRequest.user_id))[3]
-              
-              }</p> */}
-
-
               <button className="btn-sm btn-success">Volunteer</button>
             </div>
           </InfoWindow>
@@ -248,7 +227,11 @@ function AddRequest ({panTo}) {
     setDescription(e.target.value);
   };
 
-  
+  // make a get request for the particular user_id's info
+
+  const getRequestOwner = () => {
+    let res = axios.get()
+  }
 
   const handleSubmit = async (e) => {
     //  do stuff

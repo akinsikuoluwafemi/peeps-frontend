@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useEffect, useState, useContext } from "react";
+import React, { Component, useEffect, useState, useContext } from "react";
 import "./App.css";
 import { Switch, Route, useHistory, Redirect, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
@@ -113,15 +113,6 @@ const App = () => {
   //     })
   //   return res;
   // }
-  
-  // const getOwner = useCallback(() => {
-  //   getRequestOwner();
-  // },[])
-
-  //   getOwner();
-
-  
-
 
   const getUserLocation = () => {
     window.navigator.geolocation.getCurrentPosition(
@@ -183,19 +174,19 @@ const App = () => {
             <UserContext.Provider value={{ userData, setUserData }}>
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
-                  <RequestOwnerContext.Provider value={{requestOwner, setRequestOwner}}>
-                    <Navbar />
+                  <RequestOwnerContext.Provider>
 
-                    <Switch>
-                      {/* <Route exact path="/" component={Home} /> */}
+                  <Navbar />
 
-                      <Route exact path="/signup" component={Signup} />
-                      <Route exact path="/login" component={Login} />
-                      <PrivateRoute path="/">
-                        <Home />
-                      </PrivateRoute>
-                    </Switch>
-                  </RequestOwnerContext.Provider>
+                  <Switch>
+                    {/* <Route exact path="/" component={Home} /> */}
+
+                    <Route exact path="/signup" component={Signup} />
+                    <Route exact path="/login" component={Login} />
+                    <PrivateRoute path="/">
+                      <Home />
+                    </PrivateRoute>
+                  </Switch>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>
             </UserContext.Provider>
