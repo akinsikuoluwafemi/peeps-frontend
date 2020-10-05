@@ -215,9 +215,7 @@ const App = () => {
                       <PrivateRoute path="/">
                         <Home />
                       </PrivateRoute>
-                      </Switch>
-                    </AllVolunteerContext.Provider>
-                      
+                    </Switch>
                   </RequestOwnerContext.Provider>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>

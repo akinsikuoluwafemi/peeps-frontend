@@ -13,7 +13,6 @@ import {
   FirstNameContext,
   UserIdContext,
   RequestOwnerContext,
-  AllVolunteerContext
 } from "./ContextFile";
 // import NavigationDrawer from "./components/NavigationDrawer";
 import Navbar from "./components/Navbar";
@@ -29,7 +28,7 @@ const App = () => {
   const [userLat, setUserLat] = useState(0);
   const [userLng, setUserLng] = useState(0);
   const [allRequest, setAllRequest] = useState([]);
-  const [allVolunteers, setAllVolunteers] = useState([]);
+  const [allVolunteers, setAllVolunteers] = useState([])
   const [firstName, setFirstName] = useState("");
   const [requestOwner, setRequestOwner] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -44,7 +43,6 @@ const App = () => {
     checkedLoggedIn();
     getAllRequest();
     getUserLocation();
-    getAllVolunteers();
   }, []);
 
   console.log(firstName, userId);
@@ -176,22 +174,6 @@ const App = () => {
     return res;
   };
 
-
-  const getAllVolunteers = async () => {
-    let res = await axios.get("http://localhost:3001/requests_users").then((response) => {
-      console.log(response.data)
-      setAllVolunteers(response.data);
-
-    }, (error) => {
-      console.log(error)
-    })
-    return res;
-    
-  }
-
-
-
-
   console.log(userData.user);
 
   return (
@@ -202,9 +184,7 @@ const App = () => {
             <UserContext.Provider value={{ userData, setUserData }}>
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
-                  <RequestOwnerContext.Provider value={{ requestOwner, setRequestOwner }}>
-                    <AllVolunteerContext.Provider value={{allVolunteers, setAllVolunteers}}>
-
+                  <RequestOwnerContext.Provider value={{requestOwner, setRequestOwner}}>
                     <Navbar />
 
                     <Switch>
@@ -215,9 +195,7 @@ const App = () => {
                       <PrivateRoute path="/">
                         <Home />
                       </PrivateRoute>
-                      </Switch>
-                    </AllVolunteerContext.Provider>
-                      
+                    </Switch>
                   </RequestOwnerContext.Provider>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>

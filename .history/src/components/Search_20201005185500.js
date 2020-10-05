@@ -137,9 +137,7 @@ export const Map = () => {
   if (!isLoaded) return "Loading Maps";
 
 
-  const onVolunteerClick = () => {
-    console.log('I just volunteered for request' + requestId)
-  }
+  
 
   return (
     <div>
@@ -208,7 +206,7 @@ export const Map = () => {
 
               {userId === selectedRequest.user_id
                 ? <p className="badge h3 badge-info">You own this request</p>
-                : (<button onClick={onVolunteerClick} className="btn-sm btn-success">Volunteer</button>)}
+                : (<button className="btn-sm btn-success">Volunteer</button>)}
             </div>
           </InfoWindow>
         )}

@@ -58,7 +58,7 @@ export const Map = () => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
 
-  const [requestId, setRequestId] = useState(null);
+  const [requestId, setRequestId] = useState
 
   console.log(firstName);
   console.log(allRequest);
@@ -136,11 +136,6 @@ export const Map = () => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
-
-  const onVolunteerClick = () => {
-    console.log('I just volunteered for request' + requestId)
-  }
-
   return (
     <div>
       <AddRequest panTo={panTo} />
@@ -170,7 +165,6 @@ export const Map = () => {
             }}
             onClick={() => {
               setSelectedRequest(request);
-              setRequestId(request.id);
               alert(request.id)
             }}
           />
@@ -184,8 +178,6 @@ export const Map = () => {
             }}
             onCloseClick={() => {
               setSelectedRequest(null);
-              setRequestId(null);
-
             }}
           >
             <div>
@@ -208,7 +200,7 @@ export const Map = () => {
 
               {userId === selectedRequest.user_id
                 ? <p className="badge h3 badge-info">You own this request</p>
-                : (<button onClick={onVolunteerClick} className="btn-sm btn-success">Volunteer</button>)}
+                : (<button className="btn-sm btn-success">Volunteer</button>)}
             </div>
           </InfoWindow>
         )}

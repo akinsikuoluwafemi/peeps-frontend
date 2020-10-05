@@ -203,8 +203,9 @@ const App = () => {
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
                   <RequestOwnerContext.Provider value={{ requestOwner, setRequestOwner }}>
-                    <AllVolunteerContext.Provider value={{allVolunteers, setAllVolunteers}}>
+                    <AllVolunteerContext.Provider value={{}}>
 
+                    </AllVolunteerContext.Provider>
                     <Navbar />
 
                     <Switch>
@@ -215,9 +216,7 @@ const App = () => {
                       <PrivateRoute path="/">
                         <Home />
                       </PrivateRoute>
-                      </Switch>
-                    </AllVolunteerContext.Provider>
-                      
+                    </Switch>
                   </RequestOwnerContext.Provider>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>

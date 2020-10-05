@@ -13,7 +13,6 @@ import {
   FirstNameContext,
   UserIdContext,
   RequestOwnerContext,
-  AllVolunteerContext
 } from "./ContextFile";
 // import NavigationDrawer from "./components/NavigationDrawer";
 import Navbar from "./components/Navbar";
@@ -44,7 +43,6 @@ const App = () => {
     checkedLoggedIn();
     getAllRequest();
     getUserLocation();
-    getAllVolunteers();
   }, []);
 
   console.log(firstName, userId);
@@ -179,13 +177,10 @@ const App = () => {
 
   const getAllVolunteers = async () => {
     let res = await axios.get("http://localhost:3001/requests_users").then((response) => {
-      console.log(response.data)
-      setAllVolunteers(response.data);
-
+      console.log(response)
     }, (error) => {
       console.log(error)
     })
-    return res;
     
   }
 
@@ -202,9 +197,7 @@ const App = () => {
             <UserContext.Provider value={{ userData, setUserData }}>
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
-                  <RequestOwnerContext.Provider value={{ requestOwner, setRequestOwner }}>
-                    <AllVolunteerContext.Provider value={{allVolunteers, setAllVolunteers}}>
-
+                  <RequestOwnerContext.Provider value={{requestOwner, setRequestOwner}}>
                     <Navbar />
 
                     <Switch>
@@ -215,9 +208,7 @@ const App = () => {
                       <PrivateRoute path="/">
                         <Home />
                       </PrivateRoute>
-                      </Switch>
-                    </AllVolunteerContext.Provider>
-                      
+                    </Switch>
                   </RequestOwnerContext.Provider>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>

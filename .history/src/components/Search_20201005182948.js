@@ -58,8 +58,6 @@ export const Map = () => {
 
   const [selectedRequest, setSelectedRequest] = useState(null);
 
-  const [requestId, setRequestId] = useState(null);
-
   console.log(firstName);
   console.log(allRequest);
 
@@ -136,11 +134,6 @@ export const Map = () => {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
-
-  const onVolunteerClick = () => {
-    console.log('I just volunteered for request' + requestId)
-  }
-
   return (
     <div>
       <AddRequest panTo={panTo} />
@@ -161,17 +154,13 @@ export const Map = () => {
             }}
             icon={{
               url: `http://maps.google.com/mapfiles/ms/icons/${
-                request.request_type === `material-need`
-                  ? `green-dot`
-                  : `pink-dot`
+                request.request_type === `material-need` ? `green-dot` : `pink-dot`
               }.png`,
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
             }}
             onClick={() => {
               setSelectedRequest(request);
-              setRequestId(request.id);
-              alert(request.id)
             }}
           />
         ))}
@@ -184,8 +173,6 @@ export const Map = () => {
             }}
             onCloseClick={() => {
               setSelectedRequest(null);
-              setRequestId(null);
-
             }}
           >
             <div>
@@ -196,8 +183,9 @@ export const Map = () => {
                 Lat: {selectedRequest.lat}, Lng: {selectedRequest.lng}
               </p>
               <p>Fulfilled: False</p>
+              {}
               <p>UserId: {selectedRequest.user_id}</p>
-              {/* <p>RequestId : {request.id}</p> */}
+
 
               {/* <p>Name: {
               
@@ -206,9 +194,8 @@ export const Map = () => {
               
               }</p> */}
 
-              {userId === selectedRequest.user_id
-                ? <p className="badge h3 badge-info">You own this request</p>
-                : (<button onClick={onVolunteerClick} className="btn-sm btn-success">Volunteer</button>)}
+
+              <button className="btn-sm btn-success">Volunteer</button>
             </div>
           </InfoWindow>
         )}

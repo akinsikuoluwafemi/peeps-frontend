@@ -13,7 +13,6 @@ import {
   FirstNameContext,
   UserIdContext,
   RequestOwnerContext,
-  AllVolunteerContext
 } from "./ContextFile";
 // import NavigationDrawer from "./components/NavigationDrawer";
 import Navbar from "./components/Navbar";
@@ -202,9 +201,7 @@ const App = () => {
             <UserContext.Provider value={{ userData, setUserData }}>
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
-                  <RequestOwnerContext.Provider value={{ requestOwner, setRequestOwner }}>
-                    <AllVolunteerContext.Provider value={{allVolunteers, setAllVolunteers}}>
-
+                  <RequestOwnerContext.Provider value={{requestOwner, setRequestOwner}}>
                     <Navbar />
 
                     <Switch>
@@ -215,9 +212,7 @@ const App = () => {
                       <PrivateRoute path="/">
                         <Home />
                       </PrivateRoute>
-                      </Switch>
-                    </AllVolunteerContext.Provider>
-                      
+                    </Switch>
                   </RequestOwnerContext.Provider>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>

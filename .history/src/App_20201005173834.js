@@ -202,22 +202,24 @@ const App = () => {
             <UserContext.Provider value={{ userData, setUserData }}>
               <FirstNameContext.Provider value={{ firstName, setFirstName }}>
                 <UserIdContext.Provider value={{ userId, setUserId }}>
-                  <RequestOwnerContext.Provider value={{ requestOwner, setRequestOwner }}>
-                    <AllVolunteerContext.Provider value={{allVolunteers, setAllVolunteers}}>
+                  <RequestOwnerContext.Provider
+                    value={{ requestOwner, setRequestOwner }}
+                  >
+                    <AllVolunteerContext.Provider
+                      value={{ allVolunteers, setAllVolunteers }}
+                    >
+                      <Navbar />
 
-                    <Navbar />
+                      <Switch>
+                        {/* <Route exact path="/" component={Home} /> */}
 
-                    <Switch>
-                      {/* <Route exact path="/" component={Home} /> */}
-
-                      <Route exact path="/signup" component={Signup} />
-                      <Route exact path="/login" component={Login} />
-                      <PrivateRoute path="/">
-                        <Home />
-                      </PrivateRoute>
+                        <Route exact path="/signup" component={Signup} />
+                        <Route exact path="/login" component={Login} />
+                        <PrivateRoute path="/">
+                          <Home />
+                        </PrivateRoute>
                       </Switch>
                     </AllVolunteerContext.Provider>
-                      
                   </RequestOwnerContext.Provider>
                 </UserIdContext.Provider>
               </FirstNameContext.Provider>

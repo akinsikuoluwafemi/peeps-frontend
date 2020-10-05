@@ -171,7 +171,7 @@ export const Map = () => {
             onClick={() => {
               setSelectedRequest(request);
               setRequestId(request.id);
-              alert(request.id)
+              alert(request.id);
             }}
           />
         ))}
@@ -185,7 +185,6 @@ export const Map = () => {
             onCloseClick={() => {
               setSelectedRequest(null);
               setRequestId(null);
-
             }}
           >
             <div>
@@ -206,9 +205,16 @@ export const Map = () => {
               
               }</p> */}
 
-              {userId === selectedRequest.user_id
-                ? <p className="badge h3 badge-info">You own this request</p>
-                : (<button onClick={onVolunteerClick} className="btn-sm btn-success">Volunteer</button>)}
+              {userId === selectedRequest.user_id ? (
+                <p className="badge h3 badge-info">You own this request</p>
+              ) : (
+                <button
+                  onClick={onVolunteerClick}
+                  className="btn-sm btn-success"
+                >
+                  Volunteer
+                </button>
+              )}
             </div>
           </InfoWindow>
         )}
