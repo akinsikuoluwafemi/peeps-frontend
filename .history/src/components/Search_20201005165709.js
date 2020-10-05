@@ -154,7 +154,7 @@ export const Map = () => {
             }}
             icon={{
               url: `http://maps.google.com/mapfiles/ms/icons/${
-                request.request_type === `material-need` ? `green-dot` : `pink-dot`
+                request.request_type == 'material-need' ? `green-dot` : `pink-dot`
               }.png`,
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(15, 15),
