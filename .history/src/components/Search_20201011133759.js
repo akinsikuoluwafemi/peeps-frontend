@@ -283,7 +283,27 @@ function AddRequest ({panTo}) {
       lng: queryLng,
       user_id: userId
     };
- 
+
+  // let res = await fetch("http://localhost:3001/requests", {
+  //   method: "POST",
+  //   headers: {
+  //     "Authorization": `Basic ${userData.token}`,
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(request),
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log("Success", data);
+  //     setDescription("");
+  //     setRequestType("");
+  //     queryLat(null);
+  //     queryLng(null);
+  //     setValue("");
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error", error);
+  //   });
     console.log(request);
 
     const token = JSON.parse(localStorage.getItem("token"))
