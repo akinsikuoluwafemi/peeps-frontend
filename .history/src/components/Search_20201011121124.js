@@ -284,50 +284,28 @@ function AddRequest ({panTo}) {
       user_id: userId
     };
 
-  // let res = await fetch("http://localhost:3001/requests", {
-  //   method: "POST",
-  //   headers: {
-  //     "Authorization": `Basic ${userData.token}`,
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(request),
-  // })
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log("Success", data);
-  //     setDescription("");
-  //     setRequestType("");
-  //     queryLat(null);
-  //     queryLng(null);
-  //     setValue("");
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error", error);
-  //   });
-    console.log(request);
-  //   return res
-
-    const token = JSON.parse(localStorage.getItem("token"))
-    console.log(token)
-    
-
-    let res = axios.post("http://localhost:3001/requests", request, {
-      headers: {
-      "Authorization": `Basic ${token}`,
+  let res = await fetch("http://localhost:3001/requests", {
+    method: "POST",
+    headers: {
       "Content-Type": "application/json",
+      Authorization: `Basic ${userData.token}`,
     },
-   }).then((response) => {
-     console.log("Success", response.data);
-         setDescription("");
-         setRequestType("");
-         setQueryLat(null);
-         setQueryLng(null);
-         setValue("");
-   }, (error) => {
-         console.error("Error", error);
-   })
-
-    return res;
+    body: JSON.stringify(request),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success", data);
+      setDescription("");
+      setRequestType("");
+      queryLat(null);
+      queryLng(null);
+      setValue("");
+    })
+    .catch((error) => {
+      console.error("Error", error);
+    });
+    console.log(request);
+    return res
     
   };
   

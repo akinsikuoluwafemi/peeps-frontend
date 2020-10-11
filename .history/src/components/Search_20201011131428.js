@@ -307,13 +307,9 @@ function AddRequest ({panTo}) {
     console.log(request);
   //   return res
 
-    const token = JSON.parse(localStorage.getItem("token"))
-    console.log(token)
-    
-
     let res = axios.post("http://localhost:3001/requests", request, {
       headers: {
-      "Authorization": `Basic ${token}`,
+      "Authorization": `Basic ${userData.token}`,
       "Content-Type": "application/json",
     },
    }).then((response) => {
@@ -321,7 +317,7 @@ function AddRequest ({panTo}) {
          setDescription("");
          setRequestType("");
          setQueryLat(null);
-         setQueryLng(null);
+         queryLng(null);
          setValue("");
    }, (error) => {
          console.error("Error", error);

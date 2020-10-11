@@ -308,26 +308,26 @@ function AddRequest ({panTo}) {
   //   return res
 
     const token = JSON.parse(localStorage.getItem("token"))
-    console.log(token)
+    console.log
     
 
-    let res = axios.post("http://localhost:3001/requests", request, {
-      headers: {
-      "Authorization": `Basic ${token}`,
-      "Content-Type": "application/json",
-    },
-   }).then((response) => {
-     console.log("Success", response.data);
-         setDescription("");
-         setRequestType("");
-         setQueryLat(null);
-         setQueryLng(null);
-         setValue("");
-   }, (error) => {
-         console.error("Error", error);
-   })
+  //   let res = axios.post("http://localhost:3001/requests", request, {
+  //     headers: {
+  //     "Authorization": `Basic ${token}`,
+  //     "Content-Type": "application/json",
+  //   },
+  //  }).then((response) => {
+  //    console.log("Success", response.data);
+  //        setDescription("");
+  //        setRequestType("");
+  //        setQueryLat(null);
+  //        setQueryLng(null);
+  //        setValue("");
+  //  }, (error) => {
+  //        console.error("Error", error);
+  //  })
 
-    return res;
+  //   return res;
     
   };
   
