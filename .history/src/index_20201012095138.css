@@ -15,13 +15,12 @@ code {
 
 .remove-map {
   z-index: -100!important;
-  display: none;
+  diapl
 }
 
-.show-map{
+.show-chat{
   z-index: 100;
-  display: block;
-
+  
 }
 
 

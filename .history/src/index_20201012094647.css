@@ -14,14 +14,12 @@ code {
 }
 
 .remove-map {
-  z-index: -100!important;
-  display: none;
+  z-index: -100;
 }
 
-.show-map{
+.show-chat{
   z-index: 100;
-  display: block;
-
+  
 }
 
 

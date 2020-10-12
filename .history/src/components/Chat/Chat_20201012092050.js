@@ -33,7 +33,6 @@ export default function Chat() {
   console.log(firstName);
   console.log(reqOwnerFirstName);
 
-
   const [body, setBody] = useState('');
 
   // console.log(dayjs(userData.user.created_at).fromNow());
@@ -126,7 +125,7 @@ export default function Chat() {
             <div class="friend-drawer no-gutters friend-drawer--grey d-flex align-items-center ">
               <img class="profile-image" src={chatimg} alt="" />
               <div class="text">
-                <h6 className="text-left">{reqOwnerFirstName}</h6>
+                <h6 className="text-left">Robo Cop</h6>
                 <p class="text-muted">
                   Layin' down the law since like before Christ...
                 </p>

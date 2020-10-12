@@ -20,7 +20,8 @@ code {
 
 .show-map{
   z-index: 100;
-  display: block;
+  visibility: visible;
+  display: none;
 
 }
 

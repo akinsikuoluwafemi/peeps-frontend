@@ -18,10 +18,9 @@ code {
   display: none;
 }
 
-.show-map{
+.show-chat{
   z-index: 100;
-  display: block;
-
+  
 }
 
 

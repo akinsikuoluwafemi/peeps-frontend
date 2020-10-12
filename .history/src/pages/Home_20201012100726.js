@@ -23,7 +23,7 @@ function Home() {
         <Map />
       </div>
       <div className={showChat ? `show-map` : `remove-map`}>
-        <Chat/>
+      <Chat/>
       </div>
     </section>
   );

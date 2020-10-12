@@ -13,15 +13,13 @@ code {
     monospace;
 }
 
-.remove-map {
-  z-index: -100!important;
-  display: none;
+.removemap {
+  z-index: -100;
 }
 
-.show-map{
-  z-index: 100;
-  display: block;
-
+.showmap{
+  z-index: -100;
+  
 }
 
 

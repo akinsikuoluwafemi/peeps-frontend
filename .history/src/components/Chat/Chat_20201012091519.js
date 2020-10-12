@@ -1,13 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Chat.scss";
 import chatimg from "../../images/image4.jpg";
-import {
-  ChatContext,
-  UserContext,
-  UserIdContext,
-  FirstNameContext,
-  ReqOwnerFirstNameContext,
-} from "../../ContextFile";
+import { ChatContext, UserContext, UserIdContext, FirstNameContext } from "../../ContextFile";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Typography } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -26,16 +20,12 @@ export default function Chat() {
 
   let { userId, setUserId } = useContext(UserIdContext);
 
-  let { reqOwnerFirstName } = useContext(ReqOwnerFirstNameContext);
-  let { firstName } = useContext(FirstNameContext)
-  
+  let { reqOwnerFirstName, setReqOwnerFirstName } = useContext(FirstNameContext);
   console.log(userId);
-  console.log(firstName);
-  console.log(reqOwnerFirstName);
-
 
   const [body, setBody] = useState('');
 
+  console.log(userData.user);
   // console.log(dayjs(userData.user.created_at).fromNow());
  
 
@@ -126,7 +116,7 @@ export default function Chat() {
             <div class="friend-drawer no-gutters friend-drawer--grey d-flex align-items-center ">
               <img class="profile-image" src={chatimg} alt="" />
               <div class="text">
-                <h6 className="text-left">{reqOwnerFirstName}</h6>
+                <h6 className="text-left">Robo Cop</h6>
                 <p class="text-muted">
                   Layin' down the law since like before Christ...
                 </p>

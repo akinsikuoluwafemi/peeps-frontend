@@ -22,9 +22,10 @@ function Home() {
       <div className={showChat ? `remove-map` : `show-map`}>
         <Map />
       </div>
-      <div className={showChat ? `show-map` : `remove-map`}>
-        <Chat/>
+      <div>
+
       </div>
+      {/* {showChat ? <Chat/> : <Map/>} */}
     </section>
   );
 }

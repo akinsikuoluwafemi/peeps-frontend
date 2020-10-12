@@ -13,15 +13,13 @@ code {
     monospace;
 }
 
-.remove-map {
-  z-index: -100!important;
-  display: none;
+.removemap {
+  z-index: -100;
 }
 
-.show-map{
+.showChat{
   z-index: 100;
-  display: block;
-
+  
 }
 
 

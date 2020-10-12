@@ -19,13 +19,11 @@ function Home() {
 
   return (
     <section style={{ textAlign: "center" }}>
-      <div className={showChat ? `remove-map` : `show-map`}>
-        <Map />
-      </div>
-      <div className={showChat ? `show-map` : `remove-map`}>
-        <Chat/>
-      </div>
-    </section>
+      <div>
+      <Map />
+      {/* <Chat/> */}
+      {/* {showChat ? <Chat/> : <Map/>} */}
+      </section>
   );
 }
 
