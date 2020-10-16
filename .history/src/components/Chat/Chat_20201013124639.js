@@ -149,6 +149,8 @@ export default function Chat() {
     })
 
     return res;
+
+    
   }
 
   console.log(allMessages);
@@ -197,72 +199,72 @@ export default function Chat() {
                   Hello dude!
                 </div>
               </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3 offset-md-9">
-                <div class="chat-bubble chat-bubble--right text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3 offset-md-9">
-                <div class="chat-bubble chat-bubble--right text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3">
-                <div class="chat-bubble chat-bubble--left text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3 offset-md-9">
-                <div class="chat-bubble chat-bubble--right text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3">
-                <div class="chat-bubble chat-bubble--left text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3 offset-md-9">
-                <div class="chat-bubble chat-bubble--right text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3">
-                <div class="chat-bubble chat-bubble--left text-left">
-                  Hello dude!
-                </div>
-              </div>
-            </div>
-
-            <div class="row no-gutters">
-              <div class="col-md-3 offset-md-9">
-                <div class="chat-bubble chat-bubble--right text-left">
-                  Hello dude!
-                </div>
-              </div>
             </div> */}
-          
+
+            {/* <div class="row no-gutters">
+              <div class="col-md-3 offset-md-9">
+                <div class="chat-bubble chat-bubble--right text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3 offset-md-9">
+                <div class="chat-bubble chat-bubble--right text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <div class="chat-bubble chat-bubble--left text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3 offset-md-9">
+                <div class="chat-bubble chat-bubble--right text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <div class="chat-bubble chat-bubble--left text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3 offset-md-9">
+                <div class="chat-bubble chat-bubble--right text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <div class="chat-bubble chat-bubble--left text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-3 offset-md-9">
+                <div class="chat-bubble chat-bubble--right text-left">
+                  Hello dude!
+                </div>
+              </div>
+            </div>
+           */}
             </div>
 
             <MessageList messages={allMessages} />

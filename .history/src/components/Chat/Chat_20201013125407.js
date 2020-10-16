@@ -149,6 +149,8 @@ export default function Chat() {
     })
 
     return res;
+
+    
   }
 
   console.log(allMessages);
@@ -191,7 +193,7 @@ export default function Chat() {
           <div class="chat-panel">
             <div className="hg">
 
-            {/* <div class="row no-gutters">
+            {/* {/* <div class="row no-gutters">
               <div class="col-md-3">
                 <div class="chat-bubble chat-bubble--left text-left">
                   Hello dude!
@@ -262,7 +264,7 @@ export default function Chat() {
                 </div>
               </div>
             </div> */}
-          
+           */}
             </div>
 
             <MessageList messages={allMessages} />

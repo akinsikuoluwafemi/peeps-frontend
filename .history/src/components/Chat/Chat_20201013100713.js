@@ -149,6 +149,8 @@ export default function Chat() {
     })
 
     return res;
+
+    
   }
 
   console.log(allMessages);
@@ -188,9 +190,7 @@ export default function Chat() {
             </div>
           </div>
 
-          <div class="chat-panel">
-            <div className="hg">
-
+          <div class="chat-panel hg">
             {/* <div class="row no-gutters">
               <div class="col-md-3">
                 <div class="chat-bubble chat-bubble--left text-left">
@@ -198,7 +198,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3 offset-md-9">
                 <div class="chat-bubble chat-bubble--right text-left">
@@ -206,7 +205,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3 offset-md-9">
                 <div class="chat-bubble chat-bubble--right text-left">
@@ -214,7 +212,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3">
                 <div class="chat-bubble chat-bubble--left text-left">
@@ -222,7 +219,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3 offset-md-9">
                 <div class="chat-bubble chat-bubble--right text-left">
@@ -230,7 +226,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3">
                 <div class="chat-bubble chat-bubble--left text-left">
@@ -238,7 +233,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3 offset-md-9">
                 <div class="chat-bubble chat-bubble--right text-left">
@@ -246,7 +240,6 @@ export default function Chat() {
                 </div>
               </div>
             </div>
-
             <div class="row no-gutters">
               <div class="col-md-3">
                 <div class="chat-bubble chat-bubble--left text-left">
@@ -262,8 +255,6 @@ export default function Chat() {
                 </div>
               </div>
             </div> */}
-          
-            </div>
 
             <MessageList messages={allMessages} />
 

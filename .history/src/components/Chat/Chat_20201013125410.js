@@ -149,6 +149,8 @@ export default function Chat() {
     })
 
     return res;
+
+    
   }
 
   console.log(allMessages);

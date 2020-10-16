@@ -41,7 +41,7 @@ const App = () => {
 
   const [reqOwnerFirstName, setReqOwnerFirstName] = useState('');
   // const [showChat, setShowChat] = useState(null);
-  const [showChat, setShowChat] = useState(true);
+  const [showChat, setShowChat] = useState(null);
   const [allMessages, setAllMessages] = useState([]);
 
 
@@ -247,8 +247,7 @@ const App = () => {
    };
 
 
-  getRequestOwner(requestOwner);
-  
+    getRequestOwner(requestOwner);
   return (
     <>
       <AllRequestContext.Provider value={{ allRequest, setAllRequest }}>

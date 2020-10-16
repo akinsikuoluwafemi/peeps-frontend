@@ -3,6 +3,9 @@ import dayjs from "dayjs";
 import './Chat.scss';
 import { UserIdContext } from '../../ContextFile';
 
+
+
+
 import relativeTime from "dayjs/plugin/relativeTime";
 
 
@@ -18,47 +21,48 @@ export default function MessageItem({message}) {
     
     useEffect(() => {
   
-      dayjs.extend(relativeTime);
+        dayjs.extend(relativeTime);
         
     })
-  
-  const setMessage = (message) => {
-    return message.map(message => {
-      if(message.user_id === userId){
-        return (
-          <div class="row no-gutters ">
-            <div class="col-md-3 offset-md-9">
-              <div class={`chat-bubble chat-bubble--right text-left`}>
-                {message.body} <br />
-                <small style={{ color: "#777" }}>
-                  {dayjs(message.created_at).fromNow()}
-                  {message.user_id}
-                </small>
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div class="row no-gutters ">
-            <div class="col-md-3 offset-md-9">
-              <div class={`chat-bubble  chat-bubble--left text-left`}>
-                {message.body} <br />
-                <small style={{ color: "#777" }}>
-                  {dayjs(message.created_at).fromNow()}
-                  {message.user_id}
-                </small>
-              </div>
-            </div>
-          </div>
-        );
-      }
-    })
-  }   
+    
 
   return (
     <div>
-      {setMessage(message)}
+      {message.map((message) => {
+        return (
+          // <>
+          <div class="row no-gutters ">
+            <div class="col-md-3 offset-md-9">
+              <div
+                class={
+                  message.user_id === userId
+                    ? `chat-bubble chat-bubble--right text-left`
+                    : `chat-bubble chat-bubble--left text-left`
+                }
+              >
+                {message.body} <br />
+                <small style={{ color: "#777" }}>
+                  {dayjs(message.created_at).fromNow()}
+                  {message.user_id}
+                </small>
+              </div>
+            </div>
+          </div>
+
+          //  <div class="row no-gutters">
+          //       <div class="col-md-3">
+          //         <div class="chat-bubble chat-bubble--left text-left">
+          //           Hello dude!
+          //         </div>
+          //       </div>
+          //   </div>
+
+          // </>
+        );
+      } 
+      
+      )
+}
     </div>
   );
 }
