@@ -6,7 +6,7 @@ import { AllRoomContext } from '../../ContextFile';
 
 export default function CreateRoomModal() {
     
-    const [roomName, setRoomName] = useState('')
+  const [roomName, setRoomName] = useState('');
 
     // let { allRooms, setAllRooms } = useContext(AllRoomContext);
 
