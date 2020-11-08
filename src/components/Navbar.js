@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { NavLink, useHistory } from "react-router-dom";
-import { AllRequestContext, UserContext , FirstNameContext, ChatContext} from "../ContextFile";
+  
+import { AllRequestContext, UserContext , FirstNameContext, ChatContext, AllRoomContext} from "../ContextFile";
 import Badge from "@material-ui/core/Badge";
 import Tooltip from "@material-ui/core/Tooltip";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
@@ -19,6 +20,7 @@ export default function ButtonAppBar() {
   let { showChat, setShowChat } = useContext(ChatContext);
 
 
+  let {allRooms, setAllRooms} = useContext(AllRoomContext)
 
   console.log(allRequest);
   console.log(userData.user);
@@ -60,16 +62,18 @@ export default function ButtonAppBar() {
       isLoggedIn: false,
       user: null
     })
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    
      setTimeout(() => {
        window.location.reload();
-     }, 1500);
+     },500);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
   }
 
   const showMessages = () => {
     setShowChat(true);
+    console.log(allRooms)
   }
 
 
