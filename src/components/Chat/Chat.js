@@ -334,7 +334,6 @@ export default function Chat() {
   
   
   
-  // let [checked, setChecked] = useState(false);
 
   let { showChat, setShowChat } = useContext(ChatContext);
 
@@ -350,10 +349,6 @@ export default function Chat() {
   const { requestOwner, setRequestOwner } = useContext(RequestOwnerContext);
   let { currentRoom, setCurrentRoom } = useContext(CurrentRoomContext);
 
-  console.log(userId);
-  console.log(firstName);
-  console.log(reqOwnerFirstName);
-  console.log(currentRoom);
 
 
   let { allMessages, setAllMessages } = useContext(AllMessagesContext);
@@ -364,10 +359,6 @@ export default function Chat() {
 
   let { chatRoomId, setChatRoomId } = useContext(ChatRoomIdContext);
 
-
-  console.log(allRooms);
-  console.log(allMessages);
-  console.log(selectedRoom);
 
 
   useEffect(() => {
@@ -400,7 +391,6 @@ export default function Chat() {
 
   const closeChat = () => {
     setShowChat(false);
-    console.log(showChat);
   };
 
   
@@ -430,7 +420,6 @@ export default function Chat() {
   //   return res;
   // };
 
-  console.log(allMessages);
 
 
 //  const onRoomSelect = (room) => {
@@ -453,7 +442,6 @@ export default function Chat() {
   
   
   
-   console.log(selectedChat);
   
 
   return (

@@ -20,7 +20,6 @@ export default function RoomItem({ room, onRoomSelect, SelectedChatContext, allU
 
   let { userId, setUserId } = useContext(UserIdContext);
 
-  console.log(allUserId);
 
   let { allRequest } = useContext(AllRequestContext);
 
@@ -30,15 +29,11 @@ export default function RoomItem({ room, onRoomSelect, SelectedChatContext, allU
     ReqOwnerFirstNameContext
   );
 
-  console.log(reqDescription);
-
-  console.log(room);
 
   useEffect(() => {});
 
   const getRequestOwner = async (id) => {
     if (id) {
-      console.log(userData);
       let res = await axios
         .get(`http://localhost:3001/users/${id}`, {
           headers: {
@@ -47,12 +42,9 @@ export default function RoomItem({ room, onRoomSelect, SelectedChatContext, allU
         })
         .then(
           (response) => {
-            console.log(response.data);
             let ownerRec = Object.values(response.data);
-            console.log(ownerRec);
             setReqOwnerFirstName(ownerRec[1]);
             setChatReceiverId(ownerRec[0]);
-            console.log(reqOwnerFirstName);
           },
           (error) => {
             console.log(error);

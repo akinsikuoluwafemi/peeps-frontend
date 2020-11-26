@@ -193,10 +193,8 @@ const Signup =() =>  {
   const history = useHistory();
 
   const { userData, setUserData } = useContext(UserContext);
-  console.log(userData);
 
   const { allRequest } = useContext(AllRequestContext);
-  console.log(allRequest);
 
   const inputRef = useRef()
   
@@ -219,18 +217,13 @@ const Signup =() =>  {
 
   const handleFile = (event) => {
     setFile(inputRef.current.value);
-    console.log(event.target.files[0])
     setAvatar(event.target.files[0]);
-    console.log(inputRef.current.value);
 
     
   }
 
 
 
-  console.log(avatar.name);
-  console.log(avatar.size);
-  console.log(file)
 
 
 

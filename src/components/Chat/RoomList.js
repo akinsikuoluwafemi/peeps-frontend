@@ -29,10 +29,6 @@ export default function RoomList({ rooms, onRoomSelect }) {
 
   
 
-  console.log(chatReceiverId);
-  // console.log(rooms);
-  // console.log(allVolunteers)
-
 
 
   // const renderRequiredRoom = rooms.map(room => {

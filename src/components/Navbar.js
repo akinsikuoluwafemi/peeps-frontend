@@ -25,12 +25,7 @@ export default function ButtonAppBar() {
 
   let {allRooms, setAllRooms} = useContext(AllRoomContext)
 
-  console.log(allRequest);
-  console.log(userData.user);
-
-  useEffect(() => {
-    
-  },[])
+ 
 
   // const getUserRecord = () => {
   //   if(user){
@@ -59,7 +54,6 @@ export default function ButtonAppBar() {
   
 
   const Logout = () => {
-    console.log('i just logged out')
     setUserData({
       token: null,
       isLoggedIn: false,
@@ -76,7 +70,6 @@ export default function ButtonAppBar() {
 
   const showMessages = () => {
     setShowChat(true);
-    console.log(allRooms)
   }
 
 
@@ -84,7 +77,7 @@ export default function ButtonAppBar() {
   return (
     <div className=" ">
       <div class="bg-dark">
-        <div class="container navbar navbar-expand-lg navbar-dark ">
+        <div class="navbar navbar-expand-lg navbar-dark ">
           <NavLink class="navbar-brand" to="/">
             Peeps
           </NavLink>

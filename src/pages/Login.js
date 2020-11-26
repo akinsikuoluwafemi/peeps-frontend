@@ -20,10 +20,8 @@ const Login = () => {
   const history = useHistory();
 
   const { userData, setUserData } = useContext(UserContext);
-  console.log(userData);
 
   const {allRequest} = useContext(AllRequestContext)
-  console.log(allRequest)
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -47,7 +45,6 @@ const Login = () => {
       password: password
     }
 
-    console.log(data);
 
 
 
@@ -63,8 +60,7 @@ const Login = () => {
   )
       .then(
         (response) => {
-          console.log(response);
-          console.log(response.data.jwt);
+         
          
 
           setUserData({
@@ -72,7 +68,6 @@ const Login = () => {
             isLoggedIn: true,
             user: data
           });
-          console.log(userData)
           localStorage.setItem("token", JSON.stringify(response.data.jwt));
           localStorage.setItem('user', JSON.stringify(data))
           setTimeout(() => {

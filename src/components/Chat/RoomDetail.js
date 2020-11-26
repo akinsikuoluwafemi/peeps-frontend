@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 
 
 export default function RoomDetail({ selectedChat }) {
-    console.log(selectedChat);
 
   let { userId, setUserId } = useContext(UserIdContext);
 
@@ -15,9 +14,6 @@ export default function RoomDetail({ selectedChat }) {
 
   let { reqOwnerFirstName, setReqOwnerFirstName } = useContext(ReqOwnerFirstNameContext);
   
-  console.log(reqOwnerFirstName);
-
-    console.log(userId);
 
     useEffect(() => {
       dayjs.extend(relativeTime);
