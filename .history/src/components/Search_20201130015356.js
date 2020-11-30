@@ -313,8 +313,9 @@ const checkFulfilledRequest = async (id) => {
           (response) => {
             // setUserRequest(response.data);
             let ownerRec = Object.values(response.data);
-            setChatReceiverId(ownerRec[0]);
-            setReqOwnerFirstName(ownerRec[1]);
+            // setChatReceiverId(ownerRec[0]);
+            // setReqOwnerFirstName(ownerRec[1]);
+            
           },
           (error) => {
             console.log(error);

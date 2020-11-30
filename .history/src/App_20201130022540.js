@@ -62,6 +62,7 @@ const App = ({cableApp}) => {
   const [allUserId, setAllUserId] = useState([]);
   const [chatReceiverId, setChatReceiverId] = useState(null);
   const [userRequest, setUserRequest] = useState({});
+  const [ws, setWs] = useState(true)
   const [allRooms, setAllRooms] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentRoom, setCurrentRoom] = useState({
@@ -85,14 +86,15 @@ const App = ({cableApp}) => {
         isLoggedIn: true,
       });
       history.push("/feed");
-
-      // history.push("/rooms/29");
     }else if(!token) {
       setUserData({
         isLoggedIn: false,
       });
       history.push("/login");
 
+    }else if(ws){
+      history.push("/rooms/29");
+      
     }
   };
 

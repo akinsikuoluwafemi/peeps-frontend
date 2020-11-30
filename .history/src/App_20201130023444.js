@@ -53,7 +53,7 @@ const App = ({cableApp}) => {
   const [requestId, setRequestId] = useState(null);
 
   const [reqOwnerFirstName, setReqOwnerFirstName] = useState("");
-  const [showChat, setShowChat] = useState(false);
+  const [showChat, setShowChat] = useState();
   const [allMessages, setAllMessages] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedChat, setSelectedChat] = useState([]);
@@ -84,9 +84,9 @@ const App = ({cableApp}) => {
       setUserData({
         isLoggedIn: true,
       });
-      history.push("/feed");
+      // history.push("/feed");
 
-      // history.push("/rooms/29");
+      history.push("/rooms/29");
     }else if(!token) {
       setUserData({
         isLoggedIn: false,

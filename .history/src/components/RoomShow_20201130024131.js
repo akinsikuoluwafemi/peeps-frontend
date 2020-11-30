@@ -59,7 +59,7 @@ export default function RoomShow({cableApp}) {
    
     return (
         <div>
-            <FormInput/>
+            RoomShow component
         </div>
     )
 }

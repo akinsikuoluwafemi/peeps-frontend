@@ -311,8 +311,8 @@ const checkFulfilledRequest = async (id) => {
         })
         .then(
           (response) => {
-            // setUserRequest(response.data);
-            let ownerRec = Object.values(response.data);
+            setUserRequest(response.data);
+            let ownerRec = Object.values(userRequest);
             setChatReceiverId(ownerRec[0]);
             setReqOwnerFirstName(ownerRec[1]);
           },

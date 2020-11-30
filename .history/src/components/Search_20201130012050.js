@@ -98,7 +98,7 @@ export const Map = () =>{
   let { reqDescription, setReqDescription } = useContext(SelectedReqDescContext);
   let { allRooms, setAllRooms } = useContext(AllRoomContext);
   
-  let { chatReceiverId, setChatReceiverId } = useContext(RequestOwnerIdContext);
+  let {} = useContext(RequestO)
 
 
 
@@ -212,9 +212,9 @@ export const Map = () =>{
 
     onCreateRoom();
 
-      // setCurrentRoom({
-      //   users: [userRequest, ...currentRoom.users],
-      // });
+      setCurrentRoom({
+        users: [userRequest, ...currentRoom.users],
+      });
 
     return res;
   };
@@ -238,8 +238,7 @@ const checkSameUserClick = async (id) => {
          }
     );
     checkFulfilledRequest(requestId);
-     getRequestOwner(requestOwner);
-         
+  
      return res;
 
 }
@@ -311,10 +310,11 @@ const checkFulfilledRequest = async (id) => {
         })
         .then(
           (response) => {
-            // setUserRequest(response.data);
             let ownerRec = Object.values(response.data);
             setChatReceiverId(ownerRec[0]);
             setReqOwnerFirstName(ownerRec[1]);
+            // setUserRequest(response.data);
+            console.log(response.data);
           },
           (error) => {
             console.log(error);
@@ -381,6 +381,7 @@ const renderButton = () => {
               setReqDescription(request.description);
               alert(request.id + "," + request.user_id);
               setRequestId(request.id);
+              getRequestOwner(requestOwner);
 
             }}
           />

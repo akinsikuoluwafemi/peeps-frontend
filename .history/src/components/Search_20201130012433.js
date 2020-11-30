@@ -212,9 +212,9 @@ export const Map = () =>{
 
     onCreateRoom();
 
-      // setCurrentRoom({
-      //   users: [userRequest, ...currentRoom.users],
-      // });
+      setCurrentRoom({
+        users: [userRequest, ...currentRoom.users],
+      });
 
     return res;
   };
@@ -238,7 +238,7 @@ const checkSameUserClick = async (id) => {
          }
     );
     checkFulfilledRequest(requestId);
-     getRequestOwner(requestOwner);
+         getRequestOwner(requestOwner);
          
      return res;
 
@@ -311,10 +311,11 @@ const checkFulfilledRequest = async (id) => {
         })
         .then(
           (response) => {
-            // setUserRequest(response.data);
             let ownerRec = Object.values(response.data);
             setChatReceiverId(ownerRec[0]);
             setReqOwnerFirstName(ownerRec[1]);
+            // setUserRequest(response.data);
+            console.log(response.data);
           },
           (error) => {
             console.log(error);

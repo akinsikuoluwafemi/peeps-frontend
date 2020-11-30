@@ -24,7 +24,6 @@ import {
   CurrentRoomContext,
   UserClickedRequest,
   SameUserClickCount,
-  RequestOwnerIdContext
 } from "../ContextFile";
 
 import {
@@ -98,7 +97,7 @@ export const Map = () =>{
   let { reqDescription, setReqDescription } = useContext(SelectedReqDescContext);
   let { allRooms, setAllRooms } = useContext(AllRoomContext);
   
-  let { chatReceiverId, setChatReceiverId } = useContext(RequestOwnerIdContext);
+
 
 
 
@@ -151,6 +150,7 @@ export const Map = () =>{
 
 
     const token = JSON.parse(localStorage.getItem("token"));
+    console.log(token);
 
     let res = axios
       .post("http://localhost:3001/rooms", roomObj, {
@@ -164,7 +164,9 @@ export const Map = () =>{
               history.push(`rooms/${response.data.id}`)
 
           setAllRooms(tempArray);
-         
+           setCurrentRoom({
+             users: [userRequest, ...currentRoom.users],
+           });
         },
         (error) => {
           console.log("Error", error);
@@ -194,29 +196,25 @@ export const Map = () =>{
     const token = JSON.parse(localStorage.getItem("token"));
     // // setShowChat(true);
 
-    const res = await axios
-      .post("http://localhost:3001/requests_users", data, {
-        headers: {
-         Authorization: `Basic ${token}`,
+    // const res = await axios
+    //   .post("http://localhost:3001/requests_users", data, {
+    //     headers: {
+    //      Authorization: `Basic ${token}`,
 
-        },
-      })
-      .then((response) => {
-          console.log(response.data);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    alert(`create a room for you and ${reqOwnerFirstName}`);
+    //     },
+    //   })
+    //   .then((response) => {
+    //       console.log(response.data);
+    //     },
+    //     (error) => {
+    //       console.log(error);
+    //     }
+    //   );
+    // alert(`create a room for you and ${reqOwnerFirstName}`);
 
-    onCreateRoom();
+    // onCreateRoom();
 
-      // setCurrentRoom({
-      //   users: [userRequest, ...currentRoom.users],
-      // });
-
-    return res;
+    // return res;
   };
 
 
@@ -238,8 +236,7 @@ const checkSameUserClick = async (id) => {
          }
     );
     checkFulfilledRequest(requestId);
-     getRequestOwner(requestOwner);
-         
+  
      return res;
 
 }
@@ -298,34 +295,6 @@ const checkFulfilledRequest = async (id) => {
 
   }
 
-
-  const getRequestOwner = async (id) => {
-    if (id) {
-      const token = JSON.parse(localStorage.getItem("token"));
-
-      let res = await axios
-        .get(`http://localhost:3001/users/${id}`, {
-          headers: {
-            Authorization: `Basic ${token}`,
-          },
-        })
-        .then(
-          (response) => {
-            // setUserRequest(response.data);
-            let ownerRec = Object.values(response.data);
-            setChatReceiverId(ownerRec[0]);
-            setReqOwnerFirstName(ownerRec[1]);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-      return res;
-    }
-  };
-
-
-
   
   
 
@@ -381,7 +350,6 @@ const renderButton = () => {
               setReqDescription(request.description);
               alert(request.id + "," + request.user_id);
               setRequestId(request.id);
-
             }}
           />
         ))}

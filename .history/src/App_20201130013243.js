@@ -61,7 +61,8 @@ const App = ({cableApp}) => {
   const [chatRoomId, setChatRoomId] = useState(null);
   const [allUserId, setAllUserId] = useState([]);
   const [chatReceiverId, setChatReceiverId] = useState(null);
-  const [userRequest, setUserRequest] = useState({});
+  const [userRequest, setUserRequest] = useState([]);
+
   const [allRooms, setAllRooms] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentRoom, setCurrentRoom] = useState({
@@ -85,8 +86,6 @@ const App = ({cableApp}) => {
         isLoggedIn: true,
       });
       history.push("/feed");
-
-      // history.push("/rooms/29");
     }else if(!token) {
       setUserData({
         isLoggedIn: false,
@@ -162,9 +161,9 @@ const App = ({cableApp}) => {
             setFirstName(userRec[1]);
 
 
-            // setCurrentRoom({
-            //   users: [curUser, ...currentRoom.users]
-            // })
+            setCurrentRoom({
+              users: [curUser, ...currentRoom.users]
+            })
 
 
 
@@ -295,8 +294,6 @@ const App = ({cableApp}) => {
                                                         path="/login"
                                                         component={Login}
                                                       />
-
-                                                      
 
                                                       <PrivateRoute
                                                         exact

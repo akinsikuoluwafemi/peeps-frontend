@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import { RoomDataContext } from '../ContextFile';
 import axios from 'axios';
-import FormInput from './Chat/FormInput';
+import FormInput from './FormInput';
 import './Chat/Chat.scss';
 
 
@@ -59,7 +59,7 @@ export default function RoomShow({cableApp}) {
    
     return (
         <div>
-            <FormInput/>
+            RoomShow component
         </div>
     )
 }

@@ -85,8 +85,6 @@ const App = ({cableApp}) => {
         isLoggedIn: true,
       });
       history.push("/feed");
-
-      // history.push("/rooms/29");
     }else if(!token) {
       setUserData({
         isLoggedIn: false,

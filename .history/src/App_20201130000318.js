@@ -61,7 +61,8 @@ const App = ({cableApp}) => {
   const [chatRoomId, setChatRoomId] = useState(null);
   const [allUserId, setAllUserId] = useState([]);
   const [chatReceiverId, setChatReceiverId] = useState(null);
-  const [userRequest, setUserRequest] = useState({});
+  const [userRequest, setUserRequest] = useState([]);
+
   const [allRooms, setAllRooms] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [currentRoom, setCurrentRoom] = useState({
@@ -85,8 +86,6 @@ const App = ({cableApp}) => {
         isLoggedIn: true,
       });
       history.push("/feed");
-
-      // history.push("/rooms/29");
     }else if(!token) {
       setUserData({
         isLoggedIn: false,
@@ -161,10 +160,11 @@ const App = ({cableApp}) => {
             setUserId(userRec[0]);
             setFirstName(userRec[1]);
 
+            console.log(curUser);
 
-            // setCurrentRoom({
-            //   users: [curUser, ...currentRoom.users]
-            // })
+            setCurrentUser({
+              users: curr
+            })
 
 
 
@@ -201,6 +201,35 @@ const App = ({cableApp}) => {
 
     return res;
   };
+
+  const getRequestOwner = async (id) => {
+    if (id) {
+      const token = JSON.parse(localStorage.getItem("token"));
+
+      let res = await axios
+        .get(`http://localhost:3001/users/${id}`, {
+          headers: {
+            Authorization: `Basic ${token}`,
+          },
+        })
+        .then(
+          (response) => {
+            let ownerRec = Object.values(response.data);
+            setChatReceiverId(ownerRec[0]);
+            setReqOwnerFirstName(ownerRec[1]);
+            // console.log(response.data)
+
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      return res;
+    }
+  };
+
+  getRequestOwner(requestOwner);
+
 
 
   return (
@@ -295,8 +324,6 @@ const App = ({cableApp}) => {
                                                         path="/login"
                                                         component={Login}
                                                       />
-
-                                                      
 
                                                       <PrivateRoute
                                                         exact

@@ -53,7 +53,7 @@ const App = ({cableApp}) => {
   const [requestId, setRequestId] = useState(null);
 
   const [reqOwnerFirstName, setReqOwnerFirstName] = useState("");
-  const [showChat, setShowChat] = useState(false);
+  const [showChat, setShowChat] = useState(t);
   const [allMessages, setAllMessages] = useState([]);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedChat, setSelectedChat] = useState([]);
