@@ -24,7 +24,8 @@ import {
   CurrentRoomContext,
   UserClickedRequest,
   SameUserClickCount,
-  RequestOwnerIdContext
+  RequestOwnerIdContext,
+  ChatRoomIdContext
 } from "../ContextFile";
 
 import {
@@ -58,6 +59,12 @@ import {useHistory} from 'react-router-dom';
 
 
 export const Map = () =>{
+  
+
+  useEffect(() => {
+
+  }, []);
+  
   const { userLat, setUserLat } = useContext(UserLatContext);
   const { userLng, setUserLng } = useContext(UserLngContext);
   const { allRequest, setAllRequest } = useContext(AllRequestContext);
@@ -71,8 +78,6 @@ export const Map = () =>{
   const { userRequest, setUserRequest } = useContext(UserClickedRequest);
 
 
-  useEffect(() => {
-  }, []);
 
   let history = useHistory();
 
@@ -99,6 +104,8 @@ export const Map = () =>{
   let { allRooms, setAllRooms } = useContext(AllRoomContext);
   
   let { chatReceiverId, setChatReceiverId } = useContext(RequestOwnerIdContext);
+
+  let { chatRoomId, setChatRoomId } = useContext(ChatRoomIdContext);
 
 
 
@@ -161,6 +168,8 @@ export const Map = () =>{
       .then(
         (response) => {
           console.log("success", response.data);
+            setChatRoomId(response.data.id)
+            alert(typeof response.data.id)
               history.push(`rooms/${response.data.id}`)
 
           setAllRooms(tempArray);
@@ -176,6 +185,7 @@ export const Map = () =>{
   };
 
 
+
   const onVolunteerClick = async () => {
     alert(
       "I just volunteered for request" +
@@ -183,6 +193,7 @@ export const Map = () =>{
         "the owner is " +
         requestOwner
     );
+    setChatReceiverId(requestOwner);
 
     const data = {
       request_id: requestId,

@@ -133,25 +133,25 @@
 //   }
 
 
-//   const getAllMessages = async () => {
-//      const token = JSON.parse(localStorage.getItem("token"));
-//      console.log(token);
+  // const getAllMessages = async () => {
+  //    const token = JSON.parse(localStorage.getItem("token"));
+  //    console.log(token);
 
-//     let res = await axios.get("http://localhost:3001/messages", {
-//       headers: {
-//         'Authorization': `Basic ${userData.token}`,
-//       },
-//     }).then(response => {
-//       setAllMessages(response.data);
-//       console.log(response.data);
-//     }, (error) => {
-//         console.log(error);
-//     })
+  //   let res = await axios.get("http://localhost:3001/messages", {
+  //     headers: {
+  //       'Authorization': `Basic ${userData.token}`,
+  //     },
+  //   }).then(response => {
+  //     setAllMessages(response.data);
+  //     console.log(response.data);
+  //   }, (error) => {
+  //       console.log(error);
+  //   })
 
-//     return res;
-//   }
+  //   return res;
+  // }
 
-//   console.log(allMessages);
+  // console.log(allMessages);
 
 
 

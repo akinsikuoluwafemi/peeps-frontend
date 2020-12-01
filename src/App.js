@@ -84,9 +84,9 @@ const App = ({cableApp}) => {
       setUserData({
         isLoggedIn: true,
       });
-      history.push("/feed");
+      // history.push("/feed");
 
-      // history.push("/rooms/29");
+      history.push("/rooms/29");
     }else if(!token) {
       setUserData({
         isLoggedIn: false,
@@ -162,9 +162,11 @@ const App = ({cableApp}) => {
             setFirstName(userRec[1]);
 
 
-            // setCurrentRoom({
-            //   users: [curUser, ...currentRoom.users]
-            // })
+            setCurrentRoom({
+              room: {},
+              messages: [],
+              users: [curUser, ...currentRoom.users]
+            })
 
 
 
@@ -201,6 +203,9 @@ const App = ({cableApp}) => {
 
     return res;
   };
+
+
+
 
 
   return (
