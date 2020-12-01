@@ -200,7 +200,6 @@ export default function RoomShow({cableApp}) {
            {displayMessages(currentRoom.messages)}
 
             {/* roomDetail end */}
-          </div>
           
 
               {/* form start */}
