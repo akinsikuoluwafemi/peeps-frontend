@@ -318,10 +318,11 @@ hr {
     .footer, .messages-wrapper  {
         padding: 0;
     }
-     .chat-box-tray i {
+}
+
+@media(max-width: 320px){
+    .chat-box-tray i {
     display: none;
     
     }
 }
-
-   
