@@ -12,6 +12,165 @@ import './search.scss';
 import { DirectUpload } from "activestorage";
 
 
+// class Signup extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       email: "",
+//       firstName: "",
+//       lastName: "",
+//       password: "",
+//       avatar: null,
+//     };
+//   }
+
+//   handleChange = (event) => {
+//     const { name, value } = event.target;
+//     this.setState({
+//       [name]: value,
+//     });
+//   };
+
+ 
+
+//   handleFile = (e) => {
+//     this.setState({
+//       avatar: e.target.files[0],
+//     });
+//   };
+
+//   // fileUploadHandler = () => {
+//   //   console.log("uploaded");
+//   // };
+
+
+//   handleSubmit = (e) => {
+//     //  do stuff
+//     e.preventDefault();
+//     const { email, password, firstName, lastName, avatar } = this.state;
+    
+
+//   }
+
+
+//   redirect = () => {
+//     this.props.history.push('/feed')
+//   }
+
+
+//   render() {
+//     const {  email, password, firstName, lastName, avatar } = this.state;
+//     return (
+//       <div >
+       
+
+//         <main>
+//           <div style={{ marginTop: "5rem" }}></div>
+
+//           <section style={{ textAlign: "center" }}>
+//             <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
+
+//             <p className="h1 py-2">Sign Up</p>
+
+           
+
+//             <div class="row">
+//               <div class="col-lg-4  col-10"></div>
+//               <div class="col-lg-4 col-10    m-auto">
+//                 <form onSubmit={this.handleSubmit}>
+//                   <TextField
+//                     id="firstName"
+//                     name="firstName"
+//                     type="firstName"
+//                     label="Firstname"
+//                     value={firstName}
+//                     onChange={this.handleChange}
+//                     fullWidth
+//                   />
+
+//                   <TextField
+//                     id="lastName"
+//                     name="lastName"
+//                     type="lastName"
+//                     label="Lastname"
+//                     value={lastName}
+//                     onChange={this.handleChange}
+//                     fullWidth
+//                   />
+
+
+//                   <TextField
+//                     id="email"
+//                     name="email"
+//                     type="email"
+//                     label="Email"
+//                     value={email}
+//                     onChange={this.handleChange}
+//                     fullWidth
+//                   />
+
+//                   <TextField
+//                     id="password"
+//                     name="password"
+//                     type="password"
+//                     label="Password"
+//                     value={password}
+//                     onChange={this.handleChange}
+//                     fullWidth
+//                   />
+
+                
+
+//                   <br />
+
+//                   <TextField
+//                     // style={{ display: "none" }}
+//                     id="file"
+//                     name="file"
+//                     type="file"
+//                     label="file"
+//                     value={avatar}
+//                     onChange={this.handleChange}
+//                     fullWidth
+//                   />
+
+//                   {/* <Button
+//                     style={{ marginTop: "10px" }}
+//                     variant="contained"
+//                     component="label"
+//                     value={file}
+//                     onChange={handleFile}
+//                     onClick={this.fileUploadHandler}
+//                   >
+//                     Upload File
+//                   </Button> */}
+
+
+//                   <p className="py-2">
+//                     already have an account? <Link to="/login">Login</Link>
+//                   </p>
+//                   {/* <br /> */}
+
+//                   <Button
+//                     variant="contained"
+//                     color="primary"
+//                     // className={classes.button}
+//                     type="submit"
+//                   >
+//                     Submit
+//                   </Button>
+//                 </form>
+//               </div>
+//               <div class="col-lg-4  col-10"></div>
+//             </div>
+//           </section>
+//         </main>
+//       </div>
+//     );
+//   }
+// }
+
+// export default Signup;
 
 
 const Signup =() =>  {
@@ -61,6 +220,7 @@ const Signup =() =>  {
 
   const handleAvatar = (event) => {
     setAvatar(event.target.files[0]);
+    // setAvatar(inputRef.current.value);
 
     console.log(event.target.files[0]);
   }
@@ -77,14 +237,13 @@ const Signup =() =>  {
 
 
         let res = axios
-          .patch(`http://localhost:3001/users/${user.user.id}`, {
-            auth: {
-              avatar: blob.signed_id,
-            },
+          .patch(`http://localhost:3001/users/${id}`, {
+            avatar: blob.signed_id
+          }
           })
           .then(
             (response) => {
-              console.log(response.data);
+              console.log( response.data);
             },
             (error) => {
               console.log("Error", error);
@@ -100,9 +259,23 @@ const Signup =() =>  {
     
 
 
+    // fetch('http://localhost:3001/rails/active_storage/direct_uploads', {
+    
+
+
   }
 
- 
+  // const uploadPhoto = (file) => {
+  //   const upload = new DirectUpload(file, 'http://localhost:3001/rails/active_storage/direct_uploads')
+  //   upload.create((error, blob) => {
+  //     if(error) {
+  //       console.log(error)
+  //     }else {
+  //       console.log('there is no error')
+  //     }
+  //   })
+
+  // }
 
 
 
@@ -119,7 +292,8 @@ const Signup =() =>  {
       last_name: lastName,
       email: email,
       password: password,
-      
+      // avatar: inputRef.current.value
+      // avatar: avatar
       
     };
 
@@ -139,7 +313,7 @@ const Signup =() =>  {
         (response) => {
           console.log(response.data);
           
-          uploadFile(avatar, response.data);
+          // uploadPhoto(avatar)
 
           setUserData({
             token: response.data.token.token,
@@ -148,6 +322,7 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
+          uploadFile(avatar, response.data);
 
           setTimeout(() => {
             window.location.reload();
@@ -163,6 +338,30 @@ const Signup =() =>  {
     
   };
 
+  const getLastUser = async () => {
+    
+  let res = await axios
+    .get(`http://localhost:3001/getlast`)
+    .then(
+      (response) => {
+        setLastUserId(response.data.id)
+      },
+      (error) => {
+        
+        console.log(error);
+
+
+      }
+    );
+
+  return res;
+
+
+
+  }
+
+
+   getLastUser()
 
 
     return (
@@ -236,6 +435,8 @@ const Signup =() =>  {
                       name="avatar"
                       onChange={handleAvatar}
                       type="file"
+                      // value={avatar}
+                      // ref={inputRef}
                       accept=".pdf, .png, .jpg"
                       required
 
@@ -262,7 +463,10 @@ const Signup =() =>  {
                     Submit
                   </Button>
                 </form>
-
+{/* 
+                <button onClick={() => uploadPhoto(avatar)}>
+                  upload
+                </button> */}
 
              
                 

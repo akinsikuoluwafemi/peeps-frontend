@@ -61,6 +61,7 @@ const Signup =() =>  {
 
   const handleAvatar = (event) => {
     setAvatar(event.target.files[0]);
+    // setAvatar(inputRef.current.value);
 
     console.log(event.target.files[0]);
   }
@@ -102,7 +103,17 @@ const Signup =() =>  {
 
   }
 
- 
+  // const uploadPhoto = (file) => {
+  //   const upload = new DirectUpload(file, 'http://localhost:3001/rails/active_storage/direct_uploads')
+  //   upload.create((error, blob) => {
+  //     if(error) {
+  //       console.log(error)
+  //     }else {
+  //       console.log('there is no error')
+  //     }
+  //   })
+
+  // }
 
 
 
@@ -119,7 +130,8 @@ const Signup =() =>  {
       last_name: lastName,
       email: email,
       password: password,
-      
+      // avatar: inputRef.current.value
+      // avatar: avatar
       
     };
 
@@ -139,6 +151,7 @@ const Signup =() =>  {
         (response) => {
           console.log(response.data);
           
+          // uploadPhoto(avatar)
           uploadFile(avatar, response.data);
 
           setUserData({
@@ -149,10 +162,10 @@ const Signup =() =>  {
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
 
-          setTimeout(() => {
-            window.location.reload();
-          }, 3500);
-          history.push("/feed");
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 3500);
+          // history.push("/feed");
         },
         (error) => {
           console.log(error);
@@ -163,6 +176,30 @@ const Signup =() =>  {
     
   };
 
+  const getLastUser = async () => {
+    
+  let res = await axios
+    .get(`http://localhost:3001/getlast`)
+    .then(
+      (response) => {
+        setLastUserId(response.data.id)
+      },
+      (error) => {
+        
+        console.log(error);
+
+
+      }
+    );
+
+  return res;
+
+
+
+  }
+
+
+  //  getLastUser()
 
 
     return (
@@ -236,6 +273,8 @@ const Signup =() =>  {
                       name="avatar"
                       onChange={handleAvatar}
                       type="file"
+                      // value={avatar}
+                      // ref={inputRef}
                       accept=".pdf, .png, .jpg"
                       required
 
@@ -262,7 +301,10 @@ const Signup =() =>  {
                     Submit
                   </Button>
                 </form>
-
+{/* 
+                <button onClick={() => uploadPhoto(avatar)}>
+                  upload
+                </button> */}
 
              
                 

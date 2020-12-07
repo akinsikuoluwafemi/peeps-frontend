@@ -61,6 +61,7 @@ const Signup =() =>  {
 
   const handleAvatar = (event) => {
     setAvatar(event.target.files[0]);
+    // setAvatar(inputRef.current.value);
 
     console.log(event.target.files[0]);
   }
@@ -262,7 +263,10 @@ const Signup =() =>  {
                     Submit
                   </Button>
                 </form>
-
+{/* 
+                <button onClick={() => uploadPhoto(avatar)}>
+                  upload
+                </button> */}
 
              
                 
