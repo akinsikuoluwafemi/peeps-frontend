@@ -15,24 +15,25 @@ export default function RoomShow({cableApp}) {
   let { chatRoomId, setChatRoomId } = useContext(ChatRoomIdContext);
   
   let loctaion = useLocation()
+      let roomParam = parseInt(loctaion.pathname.match(/\d+$/)[0]);
 
-
+  if(roomParam === undefined) {
+    return
+  }else {
+      let roomParam = parseInt(loctaion.pathname.match(/\d+$/)[0]);
+    
+  }
+  
   let { reqOwnerFirstName, setReqOwnerFirstName } = useContext(ReqOwnerFirstNameContext);
   let { allRequest, setAllRequest } = useContext(AllRequestContext);
 
-
-let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[0]);
- console.log(roomParam)
+  
 
     
     useEffect(() => {
-       
-      getRoomData(chatRoomId || roomParam);
-        
+        getRoomData(chatRoomId || roomParam);
       createWebSocket()
     },[])
-
-  
   const inputRef = useRef();
 
 
@@ -65,7 +66,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
         return res;
       };
 
-  console.log(currentRoom.room.id)
+  
       const createWebSocket = () => {
         cableApp.room = cableApp.cable.subscriptions.create({
           channel: 'RoomsChannel',
@@ -75,9 +76,6 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
             updateAppStateRoom(updatedRoom)
           }
         })
-
-      getRoomData(chatRoomId || roomParam);
-
 
       }
     

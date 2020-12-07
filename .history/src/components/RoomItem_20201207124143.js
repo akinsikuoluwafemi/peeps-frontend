@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 export default function RoomItem({ room }) {
   useEffect(() => {
   },[])
-  let location = useHistory();
+  let locaT
     let { currentRoom, setCurrentRoom } = useContext(RoomDataContext);
     let { reqOwnerFirstName, setReqOwnerFirstName } = useContext(ReqOwnerFirstNameContext);
   let { userId, setUserId } = useContext(UserIdContext);
@@ -17,6 +17,7 @@ export default function RoomItem({ room }) {
 
   const getRoomData = async (id) => {
     const token = JSON.parse(localStorage.getItem("token"));
+  let roomParam = null || parseInt(loctaion.pathname.match(/\d+$/)[0]);
 
     let res = await axios
       .get(`http://localhost:3001/rooms/${id}`, {
@@ -43,8 +44,7 @@ export default function RoomItem({ room }) {
   };
 
     const handleClick=() => {
-     
-      getRoomData(room.id || currentRoom.room.id);
+      getRoomData(room.id)
       console.log(currentRoom.room)
     }
       console.log(currentRoom.room);
@@ -58,7 +58,7 @@ export default function RoomItem({ room }) {
   return (
     
     <p onClick={handleClick}>
-     <Link to={`/rooms/${room.id || currentRoom.room.id}`}>{room.name}</Link>
+     <Link to={`/rooms/${room.id}`}>{room.name}</Link>
     </p>
   );
 }

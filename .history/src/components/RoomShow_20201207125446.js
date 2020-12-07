@@ -21,7 +21,7 @@ export default function RoomShow({cableApp}) {
   let { allRequest, setAllRequest } = useContext(AllRequestContext);
 
 
-let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[0]);
+  let roomParam = null || parseInt(loctaion.pathname.match(/\d+$/)[0]);
  console.log(roomParam)
 
     
@@ -75,9 +75,6 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
             updateAppStateRoom(updatedRoom)
           }
         })
-
-      getRoomData(chatRoomId || roomParam);
-
 
       }
     

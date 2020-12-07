@@ -76,9 +76,6 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
           }
         })
 
-      getRoomData(chatRoomId || roomParam);
-
-
       }
     
       const updateAppStateRoom = (newRoom) => {

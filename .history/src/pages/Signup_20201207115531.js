@@ -103,6 +103,8 @@ const Signup =() =>  {
 
   }
 
+ 
+
 
   const handleSubmit = async (e) => {
     //  do stuff
@@ -143,6 +145,11 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
+
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 3500);
+          // history.push("/feed");
         },
         (error) => {
           console.log(error);

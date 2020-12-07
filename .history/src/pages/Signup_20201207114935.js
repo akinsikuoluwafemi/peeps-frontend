@@ -83,11 +83,7 @@ const Signup =() =>  {
           .then(
             (response) => {
               console.log(response.data);
-
-              setTimeout(() => {
-                window.location.reload();
-              }, 3500);
-              history.push("/feed");
+              
             },
             (error) => {
               console.log("Error", error);
@@ -96,12 +92,20 @@ const Signup =() =>  {
 
         return res;
 
+
+
       }
     })
     
 
 
   }
+
+ 
+
+
+
+
 
 
   const handleSubmit = async (e) => {
@@ -143,6 +147,11 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
+
+          // setTimeout(() => {
+          //   window.location.reload();
+          // }, 3500);
+          // history.push("/feed");
         },
         (error) => {
           console.log(error);
