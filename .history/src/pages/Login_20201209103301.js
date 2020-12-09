@@ -5,9 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Button from "@material-ui/core/Button";
-import { UserContext, AllRequestContext, ErrorContext } from '../ContextFile';
-import Snackbar from "@material-ui/core/Snackbar";
-import {Alert} from "@material-ui/lab";
+import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from '../ContextFile';
 
 
 
@@ -15,20 +13,6 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-    const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
 
 
   useEffect(() => {
@@ -44,10 +28,41 @@ const Login = (props) => {
 
   const {allRequest} = useContext(AllRequestContext)
 
+  let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
   let { error, setError } = useContext(ErrorContext);
 
+
+  const [emailErr, setEmailErr] = useState([]);
+  const [passwordErr, setPasswordErr] = useState([]);
+
+
+    const showAllErrors = (arr) => {
+      let emailErr = arr.filter((item) => item.includes("Email"));
+      setEmailErr(emailErr);
+
+      let passwordErr = arr.filter((item) => item.includes("Password"));
+      setPasswordErr(passwordErr);
+    };
+
+    const displayEmailErr = (arr) => {
+      if (email.length === 0) {
+        return arr[0];
+      } else if (email.length > 255) {
+        return arr[0];
+      } else {
+        return arr[1];
+      }
+    };
+
+    const displayPasswordErr = (arr) => {
+      if (password.length === 0) {
+        return arr[0];
+      }
+    };
   
   
+  
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -100,8 +115,11 @@ const Login = (props) => {
 
         },
         (error) => {
+          // showAllErrors(error.response.data);
+          // console.log(error.response.data);
           console.log(error.message);
-          handleClick();
+
+          setError(true);
         }
     );
 
@@ -120,12 +138,6 @@ const Login = (props) => {
           <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
 
           <p className="h1 py-2">Login</p>
-
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error">
-              email or password is incorrect
-            </Alert>
-          </Snackbar>
 
           <div class="row">
             <div class="col-lg-4 col-md-7 col-10"></div>
@@ -167,9 +179,6 @@ const Login = (props) => {
                   Submit
                 </Button>
               </form>
-              {/*  */}
-
-              {/*  */}
             </div>
             <div class="col-lg-4 col-md-7  col-10"></div>
           </div>

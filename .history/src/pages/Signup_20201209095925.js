@@ -202,6 +202,7 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
+          setHelperMessage('')
           setError(false);
 
 

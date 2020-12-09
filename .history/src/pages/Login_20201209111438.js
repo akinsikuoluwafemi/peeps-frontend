@@ -24,6 +24,8 @@ const Login = (props) => {
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
+          setError(true);
+      
       return;
     }
 
@@ -101,7 +103,8 @@ const Login = (props) => {
         },
         (error) => {
           console.log(error.message);
-          handleClick();
+          handleClick({ vertical: "top", horizontal: "center" });
+          setError(true);
         }
     );
 
@@ -139,6 +142,7 @@ const Login = (props) => {
                   value={email}
                   onChange={handleEmail}
                   fullWidth
+                  error={error}
                 />
 
                 <TextField
@@ -149,6 +153,7 @@ const Login = (props) => {
                   value={password}
                   onChange={handlePassword}
                   fullWidth
+                  error={error}
                 />
 
                 <br />

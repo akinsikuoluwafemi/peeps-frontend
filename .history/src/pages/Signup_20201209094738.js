@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from "../ContextFile";
+import { useForm } from 'react-hook-form';
 import './search.scss';
 import { DirectUpload } from "activestorage";
 
@@ -202,8 +203,7 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
-          setError(false);
-
+          setHelperMessage('')
 
         },
         (error) => {
@@ -211,6 +211,7 @@ const Signup =() =>  {
           console.log(error.response.data);
           setError(true);
 
+          setHelperMessage('incorrect entry')
 
 
 

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from "../ContextFile";
+import { useForm } from 'react-hook-form';
 import './search.scss';
 import { DirectUpload } from "activestorage";
 
@@ -55,12 +56,10 @@ const Signup =() =>  {
     const displayFirstNameErr = (arr) => {
       if (firstName.length === 0) {
         return arr[0];
-      }
-      else if(firstName.length > 0 && firstName.length < 4){
+      }else if(firstName.length < 4 && firstName.length > 0){
         return arr[0];
         
-      }
-      else if(firstName.length > 24){
+      }else if(firstName.length > 24){
         return arr[0];
         
       }
@@ -79,19 +78,11 @@ const Signup =() =>  {
    const displayEmailErr = (arr) => {
      if (email.length === 0) {
        return arr[0];
-     }else if(email.length > 255){
-       return arr[0];
      }
       else {
        return arr[1];
      }
    };
-
-  const displayPasswordErr = (arr) => {
-     if (password.length === 0) {
-       return arr[0];
-     }
-  }
   
 
   const history = useHistory();
@@ -202,15 +193,13 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
-          setError(false);
-
+          setHelperMessage('')
 
         },
         (error) => {
-         showAllErrors(error.response.data)
           console.log(error.response.data);
           setError(true);
-
+          setHelperMessage("incorrect entry");
 
 
 
@@ -245,9 +234,7 @@ const Signup =() =>  {
                     value={firstName}
                     onChange={handleFirstName}
                     fullWidth
-                    helperText={
-                      error ? displayFirstNameErr(firstNameErr) : null
-                    }
+                    helperText={helperMessage}
                     error={error}
 
                     // required
@@ -261,7 +248,7 @@ const Signup =() =>  {
                     value={lastName}
                     onChange={handleLastName}
                     fullWidth
-                    helperText={error ? displayLastNameErr(lastNameErr) : null}
+                    helperText={helperMessage}
                     error={error}
                     // required
                   />
@@ -274,7 +261,7 @@ const Signup =() =>  {
                     value={email}
                     onChange={handleEmail}
                     fullWidth
-                    helperText={error ? displayEmailErr(emailErr) : null}
+                    helperText={helperMessage}
                     error={error}
                     // required
                   />
@@ -287,11 +274,12 @@ const Signup =() =>  {
                     value={password}
                     onChange={handlePassword}
                     fullWidth
-                    helperText={error ? displayPasswordErr(passwordErr) : null}
+                    helperText={helperMessage}
                     error={error}
                     // required
                   />
 
+                  {/* <br /> */}
 
                   <small style={{ color: "#2196F3" }}>
                     Accepts only (PDF, JPG and PNG FILES)

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from "../ContextFile";
+import { useForm } from 'react-hook-form';
 import './search.scss';
 import { DirectUpload } from "activestorage";
 
@@ -202,8 +203,7 @@ const Signup =() =>  {
           });
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
-          setError(false);
-
+          setHelperMessage('')
 
         },
         (error) => {
@@ -211,6 +211,7 @@ const Signup =() =>  {
           console.log(error.response.data);
           setError(true);
 
+          setHelperMessage('incorrect entry')
 
 
 
@@ -245,9 +246,7 @@ const Signup =() =>  {
                     value={firstName}
                     onChange={handleFirstName}
                     fullWidth
-                    helperText={
-                      error ? displayFirstNameErr(firstNameErr) : null
-                    }
+                    helperText={error ? display}
                     error={error}
 
                     // required
@@ -261,7 +260,7 @@ const Signup =() =>  {
                     value={lastName}
                     onChange={handleLastName}
                     fullWidth
-                    helperText={error ? displayLastNameErr(lastNameErr) : null}
+                    helperText={helperMessage}
                     error={error}
                     // required
                   />
@@ -274,7 +273,7 @@ const Signup =() =>  {
                     value={email}
                     onChange={handleEmail}
                     fullWidth
-                    helperText={error ? displayEmailErr(emailErr) : null}
+                    helperText={helperMessage}
                     error={error}
                     // required
                   />
@@ -287,11 +286,12 @@ const Signup =() =>  {
                     value={password}
                     onChange={handlePassword}
                     fullWidth
-                    helperText={error ? displayPasswordErr(passwordErr) : null}
+                    helperText={helperMessage}
                     error={error}
                     // required
                   />
 
+                  {/* <br /> */}
 
                   <small style={{ color: "#2196F3" }}>
                     Accepts only (PDF, JPG and PNG FILES)

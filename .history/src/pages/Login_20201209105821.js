@@ -5,9 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Button from "@material-ui/core/Button";
-import { UserContext, AllRequestContext, ErrorContext } from '../ContextFile';
+import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from '../ContextFile';
 import Snackbar from "@material-ui/core/Snackbar";
-import {Alert} from "@material-ui/lab";
+import Alert from "@material-ui/lab/Alert";
 
 
 
@@ -101,7 +101,8 @@ const Login = (props) => {
         },
         (error) => {
           console.log(error.message);
-          handleClick();
+
+          setError(true);
         }
     );
 
@@ -120,12 +121,6 @@ const Login = (props) => {
           <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
 
           <p className="h1 py-2">Login</p>
-
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error">
-              email or password is incorrect
-            </Alert>
-          </Snackbar>
 
           <div class="row">
             <div class="col-lg-4 col-md-7 col-10"></div>
@@ -168,7 +163,18 @@ const Login = (props) => {
                 </Button>
               </form>
               {/*  */}
-
+              <Button variant="outlined" onClick={handleClick}>
+                Open success snackbar
+              </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+              >
+                <Alert onClose={handleClose} severity="success">
+                  This is a success message!
+                </Alert>
+              </Snackbar>
               {/*  */}
             </div>
             <div class="col-lg-4 col-md-7  col-10"></div>

@@ -101,7 +101,8 @@ const Login = (props) => {
         },
         (error) => {
           console.log(error.message);
-          handleClick();
+          handleClick({ vertical: "top", horizontal: "center" });
+          setError(true);
         }
     );
 

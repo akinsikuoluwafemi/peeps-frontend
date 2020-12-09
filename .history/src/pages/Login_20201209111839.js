@@ -24,6 +24,7 @@ const Login = (props) => {
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
+      
       return;
     }
 
@@ -101,7 +102,8 @@ const Login = (props) => {
         },
         (error) => {
           console.log(error.message);
-          handleClick();
+          handleClick({ vertical: "top", horizontal: "center" });
+          setError(true);
         }
     );
 

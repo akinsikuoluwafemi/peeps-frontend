@@ -101,7 +101,8 @@ const Login = (props) => {
         },
         (error) => {
           console.log(error.message);
-          handleClick();
+          handleClick({ vertical: "top", horizontal: "center" });
+          setError(true);
         }
     );
 
@@ -139,6 +140,7 @@ const Login = (props) => {
                   value={email}
                   onChange={handleEmail}
                   fullWidth
+                  error
                 />
 
                 <TextField

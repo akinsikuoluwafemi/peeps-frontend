@@ -5,11 +5,14 @@ import TextField from "@material-ui/core/TextField";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
 import Button from "@material-ui/core/Button";
-import { UserContext, AllRequestContext, ErrorContext } from '../ContextFile';
+import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from '../ContextFile';
 import Snackbar from "@material-ui/core/Snackbar";
-import {Alert} from "@material-ui/lab";
+// import MuiAlert from "@material-ui/lab/Alert";
 
 
+function Alert(props) {
+  // return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -101,7 +104,8 @@ const Login = (props) => {
         },
         (error) => {
           console.log(error.message);
-          handleClick();
+
+          setError(true);
         }
     );
 
@@ -120,12 +124,6 @@ const Login = (props) => {
           <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
 
           <p className="h1 py-2">Login</p>
-
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error">
-              email or password is incorrect
-            </Alert>
-          </Snackbar>
 
           <div class="row">
             <div class="col-lg-4 col-md-7 col-10"></div>
@@ -167,9 +165,6 @@ const Login = (props) => {
                   Submit
                 </Button>
               </form>
-              {/*  */}
-
-              {/*  */}
             </div>
             <div class="col-lg-4 col-md-7  col-10"></div>
           </div>

@@ -72,8 +72,4 @@ border-radius: 0;
   vertical-align: middle;
 }
 
-@media(max-width: 375px){
-  .custom {
-        width: -webkit-fill-available!important;
-  }
-}
+@media(max)
