@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import { UserContext, AllRequestContext, ErrorContext } from '../ContextFile';
 import Snackbar from "@material-ui/core/Snackbar";
 import {Alert} from "@material-ui/lab";
-import Footer from '../components/Footer';
+import Footer from '../components/'
 
 
 const Login = (props) => {
@@ -111,7 +111,6 @@ const Login = (props) => {
   
 
   return (
-    <>
     <div>
       <main>
         <div style={{ marginTop: "5rem" }}></div>
@@ -176,8 +175,6 @@ const Login = (props) => {
         </section>
       </main>
     </div>
-    <Footer/>
-    </>
   );
 };
 

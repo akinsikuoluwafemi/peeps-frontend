@@ -34,7 +34,7 @@ import {
 } from "./ContextFile";
 import Navbar from "./components/Navbar";
 import RoomShow from './components/RoomShow';
-import Footer from './components/Footer'
+import Footer from './components/'
 
 
 const App = ({cableApp}) => {

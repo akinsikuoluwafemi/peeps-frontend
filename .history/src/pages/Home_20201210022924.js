@@ -13,7 +13,7 @@ function Home(props) {
 
 
   return (
-    <section style={{ textAlign: "center", height: '100vh' }}>
+    <section style={{ textAlign: "center", height: 100vh' }}>
       <div>
         <Map />
       </div>

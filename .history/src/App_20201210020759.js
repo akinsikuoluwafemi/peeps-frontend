@@ -336,6 +336,7 @@ const App = ({cableApp}) => {
                                                             <Home />
                                                           </PrivateRoute>
                                                         </Switch>
+                                                        <Footer
                                                       </HelperTextContext.Provider>
                                                     </ErrorContext.Provider>
                                                   </CurrentUserContext.Provider>

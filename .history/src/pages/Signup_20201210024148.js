@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from "../ContextFile";
 import './search.scss';
-import Footer from '../components/Footer';
+import Footer from '../components/Footer'
 import { DirectUpload } from "activestorage";
 
 
@@ -225,7 +225,6 @@ const Signup =() =>  {
 
 
     return (
-      <>
       <div>
         <main>
           <div style={{ marginTop: "5rem" }}></div>
@@ -333,8 +332,6 @@ const Signup =() =>  {
           </section>
         </main>
       </div>
-      <Footer/>
-      </>
     );
   
 }

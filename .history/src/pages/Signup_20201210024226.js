@@ -225,7 +225,6 @@ const Signup =() =>  {
 
 
     return (
-      <>
       <div>
         <main>
           <div style={{ marginTop: "5rem" }}></div>
@@ -334,7 +333,6 @@ const Signup =() =>  {
         </main>
       </div>
       <Footer/>
-      </>
     );
   
 }
