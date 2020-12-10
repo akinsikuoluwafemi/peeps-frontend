@@ -46,7 +46,6 @@ const Login = (props) => {
   const {allRequest} = useContext(AllRequestContext)
 
   let { error, setError } = useContext(ErrorContext);
-  const [loading, setLoading] = useState(false);
 
   
   
@@ -66,8 +65,6 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     //  do stuff
     e.preventDefault();
-    setLoading(true);
-
 
     const data = {
       email: email,
@@ -100,15 +97,11 @@ const Login = (props) => {
           }, 3500);
           history.push("/feed");
           setError(false);
-          setLoading(false);
-
 
         },
         (error) => {
           console.log(error.message);
           handleClick();
-          setLoading(false);
-
         }
     );
 
@@ -120,74 +113,71 @@ const Login = (props) => {
 
   return (
     <>
-      <div>
-        <main>
-          <div style={{ marginTop: "5rem" }}></div>
+    <div>
+      <main>
+        <div style={{ marginTop: "5rem" }}></div>
 
-          <section style={{ textAlign: "center" }}>
-            <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
+        <section style={{ textAlign: "center" }}>
+          <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
 
-            <p className="h1 py-2">Login</p>
+          <p className="h1 py-2">Login</p>
 
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-              <Alert onClose={handleClose} severity="error">
-                email or password is incorrect
-              </Alert>
-            </Snackbar>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error">
+              email or password is incorrect
+            </Alert>
+          </Snackbar>
 
-            <div class="row">
-              <div class="col-lg-4 col-md-7 col-10"></div>
-              <div class="col-lg-4 col-md-7 col-10    m-auto">
-                <form onSubmit={handleSubmit}>
-                  <TextField
-                    id="email"
-                    name="email"
-                    type="email"
-                    label="Email"
-                    value={email}
-                    onChange={handleEmail}
-                    fullWidth
-                  />
+          <div class="row">
+            <div class="col-lg-4 col-md-7 col-10"></div>
+            <div class="col-lg-4 col-md-7 col-10    m-auto">
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  id="email"
+                  name="email"
+                  type="email"
+                  label="Email"
+                  value={email}
+                  onChange={handleEmail}
+                  fullWidth
+                />
 
-                  <TextField
-                    id="password"
-                    name="password"
-                    type="password"
-                    label="Password"
-                    value={password}
-                    onChange={handlePassword}
-                    fullWidth
-                  />
+                <TextField
+                  id="password"
+                  name="password"
+                  type="password"
+                  label="Password"
+                  value={password}
+                  onChange={handlePassword}
+                  fullWidth
+                />
 
-                  <br />
+                <br />
 
-                  <p className="py-2">
-                    don't have an account? <Link to="/signup">Signup</Link>
-                  </p>
-                  {/* <br /> */}
+                <p className="py-2">
+                  don't have an account? <Link to="/signup">Signup</Link>
+                </p>
+                {/* <br /> */}
 
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ background: "#4CAF4F" }}
-                    type="submit"
-                  >
-                    Submit
-                    {loading && (
-                      <CircularProgress color="inherit" size="1rem" />
-                    )}
-                  </Button>
-                </form>
-                {/*  */}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  style={{ background: "#4CAF4F" }}
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </form>
+              {/*  */}
 
-                {/*  */}
-              </div>
-              <div class="col-lg-4 col-md-7  col-10"></div>
+              {/*  */}
             </div>
-          </section>
-        </main>
-      </div>
-      <Footer />
+            <div class="col-lg-4 col-md-7  col-10"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <Footer/>
     </>
   );
 };

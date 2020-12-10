@@ -31,6 +31,7 @@ const Signup =() =>  {
   const [avatar, setAvatar] = useState({});
   const [lastUserId, setLastUserId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
   let { error, setError } = useContext(ErrorContext);
@@ -330,13 +331,13 @@ const Signup =() =>  {
                     variant="contained"
                     color="secondary"
                       type="submit"
-                      // disabled={loading}
+                      // disabled
                   >
                       Submit
                       {loading && (
-                       <CircularProgress color="inherit" size="1rem" />
-
+                        
                       )}
+                       {/* <CircularProgress color="white" size="1rem" /> */}
                   </Button>
                 </form>
               </div>

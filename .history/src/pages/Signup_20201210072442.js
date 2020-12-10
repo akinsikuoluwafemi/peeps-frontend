@@ -30,7 +30,6 @@ const Signup =() =>  {
 
   const [avatar, setAvatar] = useState({});
   const [lastUserId, setLastUserId] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
   let { error, setError } = useContext(ErrorContext);
@@ -170,7 +169,6 @@ const Signup =() =>  {
   const handleSubmit = async (e) => {
     //  do stuff
     e.preventDefault();
-    setLoading(true)
    
 
     const data = {
@@ -207,8 +205,6 @@ const Signup =() =>  {
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
           setError(false);
-          setLoading(false);
-
 
 
         },
@@ -216,8 +212,6 @@ const Signup =() =>  {
          showAllErrors(error.response.data)
           console.log(error.response.data);
           setError(true);
-          setLoading(false);
-
 
 
 
@@ -233,119 +227,118 @@ const Signup =() =>  {
 
     return (
       <>
-      <div>
-        <main>
-          <div style={{ marginTop: "5rem" }}></div>
+        <div>
+          <main>
+            <div style={{ marginTop: "5rem" }}></div>
 
-          <section style={{ textAlign: "center" }}>
-            <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
+            <section style={{ textAlign: "center" }}>
+              <img src={HelpLogo} alt="" style={{ height: "5rem" }} />
 
-            <p className="h1 py-2">Sign Up</p>
+              <p className="h1 py-2">Sign Up</p>
 
-            <div class="row">
-              <div class="col-lg-4  col-10"></div>
-              <div class="col-lg-4 col-10    m-auto">
-                <form onSubmit={handleSubmit}>
-                  <TextField
-                    id="firstName"
-                    name="firstName"
-                    type="firstName"
-                    label="Firstname"
-                    value={firstName}
-                    onChange={handleFirstName}
-                    fullWidth
-                    helperText={
-                      error ? displayFirstNameErr(firstNameErr) : null
-                    }
-                    error={error}
+              <div class="row">
+                <div class="col-lg-4  col-10"></div>
+                <div class="col-lg-4 col-10    m-auto">
+                  <form onSubmit={handleSubmit}>
+                    <TextField
+                      id="firstName"
+                      name="firstName"
+                      type="firstName"
+                      label="Firstname"
+                      value={firstName}
+                      onChange={handleFirstName}
+                      fullWidth
+                      helperText={
+                        error ? displayFirstNameErr(firstNameErr) : null
+                      }
+                      error={error}
 
-                    // required
-                  />
-
-                  <TextField
-                    id="lastName"
-                    name="lastName"
-                    type="lastName"
-                    label="Lastname"
-                    value={lastName}
-                    onChange={handleLastName}
-                    fullWidth
-                    helperText={error ? displayLastNameErr(lastNameErr) : null}
-                    error={error}
-                    // required
-                  />
-
-                  <TextField
-                    id="email"
-                    name="email"
-                    type="email"
-                    label="Email"
-                    value={email}
-                    onChange={handleEmail}
-                    fullWidth
-                    helperText={error ? displayEmailErr(emailErr) : null}
-                    error={error}
-                    // required
-                  />
-
-                  <TextField
-                    id="password"
-                    name="password"
-                    type="password"
-                    label="Password"
-                    value={password}
-                    onChange={handlePassword}
-                    fullWidth
-                    helperText={error ? displayPasswordErr(passwordErr) : null}
-                    error={error}
-                    // required
-                  />
-
-
-                  <small style={{ color: "#2196F3" }}>
-                    Accepts only (PDF, JPG and PNG FILES)
-                  </small>
-
-                  <div className=" m-auto">
-                    <input
-                      placeholder="Upload File"
-                      className="custom"
-                      style={{ marginTop: "10px" }}
-                      name="avatar"
-                      onChange={handleAvatar}
-                      type="file"
-                      accept=".pdf, .png, .jpg"
                       // required
-                      multiple={false}
                     />
-                  </div>
 
-                  <p className="py-2">
-                    already have an account? <Link to="/login">Login</Link>
-                  </p>
-                  {/* <br /> */}
+                    <TextField
+                      id="lastName"
+                      name="lastName"
+                      type="lastName"
+                      label="Lastname"
+                      value={lastName}
+                      onChange={handleLastName}
+                      fullWidth
+                      helperText={
+                        error ? displayLastNameErr(lastNameErr) : null
+                      }
+                      error={error}
+                      // required
+                    />
 
-                  <Button
-                    style={{ background: "#4CAF4F" }}
-                    variant="contained"
-                    color="secondary"
+                    <TextField
+                      id="email"
+                      name="email"
+                      type="email"
+                      label="Email"
+                      value={email}
+                      onChange={handleEmail}
+                      fullWidth
+                      helperText={error ? displayEmailErr(emailErr) : null}
+                      error={error}
+                      // required
+                    />
+
+                    <TextField
+                      id="password"
+                      name="password"
+                      type="password"
+                      label="Password"
+                      value={password}
+                      onChange={handlePassword}
+                      fullWidth
+                      helperText={
+                        error ? displayPasswordErr(passwordErr) : null
+                      }
+                      error={error}
+                      // required
+                    />
+
+                    <small style={{ color: "#2196F3" }}>
+                      Accepts only (PDF, JPG and PNG FILES)
+                    </small>
+
+                    <div className=" m-auto">
+                      <input
+                        placeholder="Upload File"
+                        className="custom"
+                        style={{ marginTop: "10px" }}
+                        name="avatar"
+                        onChange={handleAvatar}
+                        type="file"
+                        accept=".pdf, .png, .jpg"
+                        // required
+                        multiple={false}
+                      />
+                    </div>
+
+                    <p className="py-2">
+                      already have an account? <Link to="/login">Login</Link>
+                    </p>
+                    {/* <br /> */}
+
+                    <Button
+                      style={{ background: "#4CAF4F" }}
+                      variant="contained"
+                      color="secondary"
                       type="submit"
-                      // disabled={loading}
-                  >
+                    >
                       Submit
-                      {loading && (
-                       <CircularProgress color="inherit" size="1rem" />
-
-                      )}
-                  </Button>
-                </form>
+                      <CircularProgress color="secondary" />
+                    </Button>
+                  </form>
+                </div>
+                <div class="col-lg-4  col-10"></div>
               </div>
-              <div class="col-lg-4  col-10"></div>
-            </div>
-          </section>
-        </main>
-      </div>
-      <Footer/>
+            </section>
+          </main>
+        </div>
+        <Footer />
       </>
     );
   

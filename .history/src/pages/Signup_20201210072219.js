@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import { UserContext, AllRequestContext, HelperTextContext, ErrorContext } from "../ContextFile";
 import './search.scss';
 import Footer from '../components/Footer';
-import CircularProgress from "@material-ui/core/CircularProgress";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { DirectUpload } from "activestorage";
 
 
@@ -30,7 +30,6 @@ const Signup =() =>  {
 
   const [avatar, setAvatar] = useState({});
   const [lastUserId, setLastUserId] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
   let { error, setError } = useContext(ErrorContext);
@@ -170,7 +169,6 @@ const Signup =() =>  {
   const handleSubmit = async (e) => {
     //  do stuff
     e.preventDefault();
-    setLoading(true)
    
 
     const data = {
@@ -207,8 +205,6 @@ const Signup =() =>  {
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
           setError(false);
-          setLoading(false);
-
 
 
         },
@@ -216,8 +212,6 @@ const Signup =() =>  {
          showAllErrors(error.response.data)
           console.log(error.response.data);
           setError(true);
-          setLoading(false);
-
 
 
 
@@ -329,14 +323,9 @@ const Signup =() =>  {
                     style={{ background: "#4CAF4F" }}
                     variant="contained"
                     color="secondary"
-                      type="submit"
-                      // disabled={loading}
+                    type="submit"
                   >
-                      Submit
-                      {loading && (
-                       <CircularProgress color="inherit" size="1rem" />
-
-                      )}
+                    Submit
                   </Button>
                 </form>
               </div>

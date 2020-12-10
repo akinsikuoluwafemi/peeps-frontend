@@ -30,7 +30,6 @@ const Signup =() =>  {
 
   const [avatar, setAvatar] = useState({});
   const [lastUserId, setLastUserId] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
   let { error, setError } = useContext(ErrorContext);
@@ -170,7 +169,6 @@ const Signup =() =>  {
   const handleSubmit = async (e) => {
     //  do stuff
     e.preventDefault();
-    setLoading(true)
    
 
     const data = {
@@ -207,8 +205,6 @@ const Signup =() =>  {
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
           setError(false);
-          setLoading(false);
-
 
 
         },
@@ -216,8 +212,6 @@ const Signup =() =>  {
          showAllErrors(error.response.data)
           console.log(error.response.data);
           setError(true);
-          setLoading(false);
-
 
 
 
@@ -330,13 +324,10 @@ const Signup =() =>  {
                     variant="contained"
                     color="secondary"
                       type="submit"
-                      // disabled={loading}
+                      // disabled
                   >
                       Submit
-                      {loading && (
-                       <CircularProgress color="inherit" size="1rem" />
-
-                      )}
+                       <CircularProgress color="white" />
                   </Button>
                 </form>
               </div>

@@ -207,7 +207,7 @@ const Signup =() =>  {
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
           setError(false);
-          setLoading(false);
+          // setLoading(false);
 
 
 
@@ -216,7 +216,7 @@ const Signup =() =>  {
          showAllErrors(error.response.data)
           console.log(error.response.data);
           setError(true);
-          setLoading(false);
+          // setLoading(false);
 
 
 

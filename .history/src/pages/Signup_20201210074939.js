@@ -330,7 +330,7 @@ const Signup =() =>  {
                     variant="contained"
                     color="secondary"
                       type="submit"
-                      // disabled={loading}
+                      disabled={loading}
                   >
                       Submit
                       {loading && (

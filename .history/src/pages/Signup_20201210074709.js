@@ -330,11 +330,13 @@ const Signup =() =>  {
                     variant="contained"
                     color="secondary"
                       type="submit"
-                      // disabled={loading}
+                      disabled={loading}
                   >
-                      Submit
                       {loading && (
-                       <CircularProgress color="inherit" size="1rem" />
+                        
+                        Submit
+
+                       <CircularProgress color="white" size="1rem" />
 
                       )}
                   </Button>

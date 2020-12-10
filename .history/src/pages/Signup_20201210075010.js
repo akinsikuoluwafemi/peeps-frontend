@@ -207,7 +207,7 @@ const Signup =() =>  {
           localStorage.setItem("token", JSON.stringify(response.data.token.token));
           localStorage.setItem("user", JSON.stringify(data));
           setError(false);
-          setLoading(false);
+          // setLoading(false);
 
 
 
@@ -330,7 +330,7 @@ const Signup =() =>  {
                     variant="contained"
                     color="secondary"
                       type="submit"
-                      // disabled={loading}
+                      disabled={loading}
                   >
                       Submit
                       {loading && (
