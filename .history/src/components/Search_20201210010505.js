@@ -149,6 +149,8 @@ export const Map = () =>{
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  // console.log(allRooms)
+  // console.log(currentRoom)
   
   const onCreateRoom = async () => {
     let roomObj = {

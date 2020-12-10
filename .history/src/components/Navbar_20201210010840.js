@@ -56,11 +56,11 @@ export default function ButtonAppBar() {
     <div className=" ">
       <div class="bg-dark">
         <div class="navbar navbar-expand-lg navbar-dark ">
-          <NavLink className="navbar-brand" to="/feed">
+          <NavLink class="navbar-brand" to="/feed">
             Peeps
           </NavLink>
           <button
-            className="border navbar-toggler collapsed"
+            class="border navbar-toggler collapsed"
             type="button"
             data-toggle="collapse"
             data-target="#contentOfNavbar"

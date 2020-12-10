@@ -16,7 +16,7 @@ export default function RoomList({ allRooms }) {
         return (
           <span key={room.id} style={{display: 'flex'}}> 
             {/* Room {roomCount}:  &nbsp; &nbsp; */}
-            <RoomItem  room={room} />
+            <RoomItem  key={room.id} room={room} />
         </span>
         );
         } 

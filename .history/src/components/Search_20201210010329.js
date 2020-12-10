@@ -149,6 +149,8 @@ export const Map = () =>{
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  // console.log(allRooms)
+  console.log(currentRoom)
   
   const onCreateRoom = async () => {
     let roomObj = {
@@ -191,12 +193,12 @@ export const Map = () =>{
 
 
   const onVolunteerClick = async () => {
-    // alert(
-    //   "I just volunteered for request" +
-    //     requestId +
-    //     "the owner is " +
-    //     requestOwner
-    // );
+    alert(
+      "I just volunteered for request" +
+        requestId +
+        "the owner is " +
+        requestOwner
+    );
     setChatReceiverId(requestOwner);
 
     const data = {
@@ -251,6 +253,7 @@ const checkSameUserClick = async (id) => {
     )
        .then(
          (response) => {
+          console.log(response.data)
            setSameUserClick(response.data);
          },
          (error) => {
@@ -306,8 +309,7 @@ const checkFulfilledRequest = async (id) => {
       })
       .then(
         (response) => {
-          // console.log("success", response.data);
-          // alert('changed request of id:' + requestId + `to fulfilled`)
+          alert('changed request of id:' + requestId + `to fulfilled`)
         },
         (error) => {
           console.log("Error", error);

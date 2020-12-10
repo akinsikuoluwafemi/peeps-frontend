@@ -25,9 +25,7 @@ import {
   UserClickedRequest,
   SameUserClickCount,
   RequestOwnerIdContext,
-  ChatRoomIdContext,
-  HelperTextContext,
-  ErrorContext
+  ChatRoomIdContext
 } from "../ContextFile";
 
 import {
@@ -149,6 +147,8 @@ export const Map = () =>{
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  // console.log(allRooms)
+  console.log(currentRoom)
   
   const onCreateRoom = async () => {
     let roomObj = {
@@ -191,12 +191,12 @@ export const Map = () =>{
 
 
   const onVolunteerClick = async () => {
-    // alert(
-    //   "I just volunteered for request" +
-    //     requestId +
-    //     "the owner is " +
-    //     requestOwner
-    // );
+    alert(
+      "I just volunteered for request" +
+        requestId +
+        "the owner is " +
+        requestOwner
+    );
     setChatReceiverId(requestOwner);
 
     const data = {
@@ -251,6 +251,7 @@ const checkSameUserClick = async (id) => {
     )
        .then(
          (response) => {
+          console.log(response.data)
            setSameUserClick(response.data);
          },
          (error) => {
@@ -306,8 +307,8 @@ const checkFulfilledRequest = async (id) => {
       })
       .then(
         (response) => {
-          // console.log("success", response.data);
-          // alert('changed request of id:' + requestId + `to fulfilled`)
+          console.log("success", response.data);
+          alert('changed request of id:' + requestId + `to fulfilled`)
         },
         (error) => {
           console.log("Error", error);
@@ -443,12 +444,11 @@ const renderButton = () => {
 
 function AddRequest ({panTo}) {
   
-  let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
-  let { error, setError } = useContext(ErrorContext);
-
+  // const { userLat, userLng } = useContext(RequestContext);
   const { userLat, setUserLat } = useContext(UserLatContext);
   const { userLng, setUserLng } = useContext(UserLngContext);
   const { allRequest, setAllRequest } = useContext(AllRequestContext);
+  console.log(allRequest)
   const { userData, setUserData } = useContext(UserContext);
 
   const { userId, setUserId } = useContext(UserIdContext);
@@ -461,19 +461,6 @@ function AddRequest ({panTo}) {
   const [requestType, setRequestType] = useState("");
   const [description, setDescription] = useState("");
 
-  const [descriptionErr, setDescriptionErr] = useState([]);
-
-  const showAllErrors = (arr) => {
-    let descriptionErr = arr.filter((item) => item.includes("Description"));
-    setDescriptionErr(descriptionErr);
-  }
-
-  const displayDescriptionError = (arr) => {
-    if(description.length > 300) {
-        return arr[0];
-      
-    }
-  }
 
    const [open, setOpen] = React.useState(false);
 
@@ -544,15 +531,10 @@ function AddRequest ({panTo}) {
          setQueryLat(null);
          setQueryLng(null);
         setValue("");
-     handleClick();
-     setTimeout(() => {
-      window.location.reload();
-     }, 1500)
+          handleClick();
      
    }, (error) => {
-          setError(true);
-         showAllErrors(error.response.data);
-       
+         console.error("Error", error.message);
    })
 
     return res;
@@ -584,8 +566,6 @@ function AddRequest ({panTo}) {
           fullWidth
           onChange={handleDescription}
           value={description}
-          helperText={error ? displayDescriptionError(descriptionErr) : null}
-          error={error}
         />
 
         <Combobox

@@ -60,7 +60,7 @@ export default function ButtonAppBar() {
             Peeps
           </NavLink>
           <button
-            className="border navbar-toggler collapsed"
+            class="border navbar-toggler collapsed"
             type="button"
             data-toggle="collapse"
             data-target="#contentOfNavbar"

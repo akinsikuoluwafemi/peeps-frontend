@@ -149,6 +149,8 @@ export const Map = () =>{
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  // console.log(allRooms)
+  console.log(currentRoom)
   
   const onCreateRoom = async () => {
     let roomObj = {
@@ -191,12 +193,12 @@ export const Map = () =>{
 
 
   const onVolunteerClick = async () => {
-    // alert(
-    //   "I just volunteered for request" +
-    //     requestId +
-    //     "the owner is " +
-    //     requestOwner
-    // );
+    alert(
+      "I just volunteered for request" +
+        requestId +
+        "the owner is " +
+        requestOwner
+    );
     setChatReceiverId(requestOwner);
 
     const data = {
@@ -251,6 +253,7 @@ const checkSameUserClick = async (id) => {
     )
        .then(
          (response) => {
+          console.log(response.data)
            setSameUserClick(response.data);
          },
          (error) => {
@@ -306,8 +309,8 @@ const checkFulfilledRequest = async (id) => {
       })
       .then(
         (response) => {
-          // console.log("success", response.data);
-          // alert('changed request of id:' + requestId + `to fulfilled`)
+          console.log("success", response.data);
+          alert('changed request of id:' + requestId + `to fulfilled`)
         },
         (error) => {
           console.log("Error", error);
@@ -446,9 +449,11 @@ function AddRequest ({panTo}) {
   let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
   let { error, setError } = useContext(ErrorContext);
 
+  // const { userLat, userLng } = useContext(RequestContext);
   const { userLat, setUserLat } = useContext(UserLatContext);
   const { userLng, setUserLng } = useContext(UserLngContext);
   const { allRequest, setAllRequest } = useContext(AllRequestContext);
+  console.log(allRequest)
   const { userData, setUserData } = useContext(UserContext);
 
   const { userId, setUserId } = useContext(UserIdContext);
@@ -547,9 +552,11 @@ function AddRequest ({panTo}) {
      handleClick();
      setTimeout(() => {
       window.location.reload();
+
      }, 1500)
      
    }, (error) => {
+       console.log("Error", error.response.data);
           setError(true);
          showAllErrors(error.response.data);
        
@@ -584,7 +591,7 @@ function AddRequest ({panTo}) {
           fullWidth
           onChange={handleDescription}
           value={description}
-          helperText={error ? displayDescriptionError(descriptionErr) : null}
+          helperText={error ? displayDescriptionErr(dErr) : null}
           error={error}
         />
 

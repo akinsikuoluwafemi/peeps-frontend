@@ -25,9 +25,7 @@ import {
   UserClickedRequest,
   SameUserClickCount,
   RequestOwnerIdContext,
-  ChatRoomIdContext,
-  HelperTextContext,
-  ErrorContext
+  ChatRoomIdContext
 } from "../ContextFile";
 
 import {
@@ -149,6 +147,8 @@ export const Map = () =>{
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  // console.log(allRooms)
+  console.log(currentRoom)
   
   const onCreateRoom = async () => {
     let roomObj = {
@@ -191,12 +191,12 @@ export const Map = () =>{
 
 
   const onVolunteerClick = async () => {
-    // alert(
-    //   "I just volunteered for request" +
-    //     requestId +
-    //     "the owner is " +
-    //     requestOwner
-    // );
+    alert(
+      "I just volunteered for request" +
+        requestId +
+        "the owner is " +
+        requestOwner
+    );
     setChatReceiverId(requestOwner);
 
     const data = {
@@ -207,6 +207,7 @@ export const Map = () =>{
     
 
     const token = JSON.parse(localStorage.getItem("token"));
+    // // setShowChat(true);
 
     const res = await axios
       .post("http://localhost:3001/requests_users", data, {
@@ -251,6 +252,7 @@ const checkSameUserClick = async (id) => {
     )
        .then(
          (response) => {
+          console.log(response.data)
            setSameUserClick(response.data);
          },
          (error) => {
@@ -306,8 +308,8 @@ const checkFulfilledRequest = async (id) => {
       })
       .then(
         (response) => {
-          // console.log("success", response.data);
-          // alert('changed request of id:' + requestId + `to fulfilled`)
+          console.log("success", response.data);
+          alert('changed request of id:' + requestId + `to fulfilled`)
         },
         (error) => {
           console.log("Error", error);
@@ -443,9 +445,7 @@ const renderButton = () => {
 
 function AddRequest ({panTo}) {
   
-  let { helperMessage, setHelperMessage } = useContext(HelperTextContext);
-  let { error, setError } = useContext(ErrorContext);
-
+  // const { userLat, userLng } = useContext(RequestContext);
   const { userLat, setUserLat } = useContext(UserLatContext);
   const { userLng, setUserLng } = useContext(UserLngContext);
   const { allRequest, setAllRequest } = useContext(AllRequestContext);
@@ -461,19 +461,6 @@ function AddRequest ({panTo}) {
   const [requestType, setRequestType] = useState("");
   const [description, setDescription] = useState("");
 
-  const [descriptionErr, setDescriptionErr] = useState([]);
-
-  const showAllErrors = (arr) => {
-    let descriptionErr = arr.filter((item) => item.includes("Description"));
-    setDescriptionErr(descriptionErr);
-  }
-
-  const displayDescriptionError = (arr) => {
-    if(description.length > 300) {
-        return arr[0];
-      
-    }
-  }
 
    const [open, setOpen] = React.useState(false);
 
@@ -537,22 +524,19 @@ function AddRequest ({panTo}) {
       "Content-Type": "application/json",
     },
    }).then((response) => {
-     let tempRequest = [response, ...allRequest]
-        setAllRequest(tempRequest)
-        setDescription("");
+         console.log(response)
+     setDescription("");
          setRequestType("");
          setQueryLat(null);
          setQueryLng(null);
-        setValue("");
-     handleClick();
-     setTimeout(() => {
-      window.location.reload();
-     }, 1500)
+     setValue("");
+          handleClick();
      
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
    }, (error) => {
-          setError(true);
-         showAllErrors(error.response.data);
-       
+         console.error("Error", error.message);
    })
 
     return res;
@@ -584,8 +568,6 @@ function AddRequest ({panTo}) {
           fullWidth
           onChange={handleDescription}
           value={description}
-          helperText={error ? displayDescriptionError(descriptionErr) : null}
-          error={error}
         />
 
         <Combobox
@@ -636,11 +618,11 @@ function AddRequest ({panTo}) {
           Submit
         </Button>
 
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-            Created Successfully
+        {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}> */}
+          <Alert onClose={handleClose} severity="error">
+            Request successfully created
           </Alert>
-        </Snackbar>
+        {/* </Snackbar> */}
       </form>
     </div>
   );

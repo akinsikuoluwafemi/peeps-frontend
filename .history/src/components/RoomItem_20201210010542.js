@@ -45,7 +45,7 @@ export default function RoomItem({ room }) {
     const handleClick=() => {
      
       getRoomData(room.id || currentRoom.room.id);
-      // console.log(currentRoom.room)
+      console.log(currentRoom.room)
     }
 
   

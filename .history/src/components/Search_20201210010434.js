@@ -149,6 +149,8 @@ export const Map = () =>{
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
+  // console.log(allRooms)
+  console.log(currentRoom)
   
   const onCreateRoom = async () => {
     let roomObj = {
@@ -191,12 +193,12 @@ export const Map = () =>{
 
 
   const onVolunteerClick = async () => {
-    // alert(
-    //   "I just volunteered for request" +
-    //     requestId +
-    //     "the owner is " +
-    //     requestOwner
-    // );
+    alert(
+      "I just volunteered for request" +
+        requestId +
+        "the owner is " +
+        requestOwner
+    );
     setChatReceiverId(requestOwner);
 
     const data = {

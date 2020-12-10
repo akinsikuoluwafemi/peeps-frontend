@@ -79,16 +79,16 @@ border-radius: 0;
 }
 
 @media(max-width: 425px){
-    .search {
-      margin: 0;
-      position: absolute;
-      top: 72%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      max-width: 300px;
-      width: 100%;
-      z-index: 300;
-      background: #eee;
-      padding: .5rem 1rem;
-  }
+  .search {
+    margin: 0;
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+    width: 100%;
+    z-index: 300;
+    background: #eee;
+    padding: .5rem 1rem;
+}
 }

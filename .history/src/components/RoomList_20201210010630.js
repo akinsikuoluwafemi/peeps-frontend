@@ -10,13 +10,13 @@ export default function RoomList({ allRooms }) {
   const renderRooms = () => {
     let allRoom = allRooms.map((room, i,a) => {
       let roomCount = i + 1
-      // console.log(a)
+      console.log(a)
       if (room.receiver_id === userId || room.sender_id === userId) {
       //  console.log(room)
         return (
-          <span key={room.id} style={{display: 'flex'}}> 
+          <span style={{display: 'flex'}}> 
             {/* Room {roomCount}:  &nbsp; &nbsp; */}
-            <RoomItem  room={room} />
+            <RoomItem  key={room.id} room={room} />
         </span>
         );
         } 

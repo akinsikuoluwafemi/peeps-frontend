@@ -14,9 +14,9 @@ export default function RoomList({ allRooms }) {
       if (room.receiver_id === userId || room.sender_id === userId) {
       //  console.log(room)
         return (
-          <span key={room.id} style={{display: 'flex'}}> 
+          <span key={room} style={{display: 'flex'}}> 
             {/* Room {roomCount}:  &nbsp; &nbsp; */}
-            <RoomItem  room={room} />
+            <RoomItem  key={room.id} room={room} />
         </span>
         );
         } 
