@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import actionCable from 'actioncable';
 
 const CableApp = {}
-CableApp.cable = actionCable.createConsumer("wss://peeps-frontend.vercel.app/cable");
+CableApp.cable = actionCable.createConsumer("wss:peeps-platform.herokuapp.com/cable");
 
 ReactDOM.render(
   <React.StrictMode>
