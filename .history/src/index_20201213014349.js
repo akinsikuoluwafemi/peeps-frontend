@@ -7,8 +7,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import actionCable from 'actioncable';
 
 const CableApp = {}
-// CableApp.cable = actionCable.createConsumer("ws://localhost:3000/cable");
-CableApp.cable = actionCable.createConsumer("wss://peeps-frontend.vercel.app/cable");
+CableApp.cable = actionCable.createConsumer("ws://localhost:3000/cable");
+CableApp.cable = actionCable.createConsumer("ws://localhost:3000/cable");
+
 
 ReactDOM.render(
   <React.StrictMode>
