@@ -19,7 +19,7 @@ export default function Footer() {
             <li><a href="."><i className="fa fa-youtube"></i></a></li>
           </ul>
           <div className="footer-copyright">
-            <p>Copyright © 2020. All Rights Reserved. <a href="." target="_blank">Peeps</a> Made by <a href="https://femiakin.com">Femi</a></p>
+            <p>Copyright © 2020. All Rights Reserved. <a href="." target="_blank">Peeps</a> Made by <a href="https://femiakin.com/">Femi</a></p>
           </div>
         </div>
       </div>
