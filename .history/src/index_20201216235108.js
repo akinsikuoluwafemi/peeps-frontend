@@ -8,7 +8,7 @@ import actionCable from 'actioncable';
 
 const CableApp = {}
 // CableApp.cable = actionCable.createConsumer("ws://localhost:3001/cable");
-CableApp.cable = actionCable.createConsumer("wss://redistogo-deep-60008.herokuapp.com/cable");
+CableApp.cable = actionCable.createConsumer("wss://wssredistogo-deep-60008.herokuapp.com/cable");
 
 
 ReactDOM.render(
