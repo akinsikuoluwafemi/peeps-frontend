@@ -113,8 +113,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
       .post("https://peeps-platform.herokuapp.com/messages", message, {
         headers: {
           Authorization: `Basic ${token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Content-Type': 'application/json'
         },
       })
       .then(

@@ -114,7 +114,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
         headers: {
           Authorization: `Basic ${token}`,
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept: 'application/json'
         },
       })
       .then(
