@@ -9,7 +9,7 @@ import actionCable from 'actioncable';
 const CableApp = {}
 // CableApp.cable = actionCable.createConsumer("ws://localhost:3001/cable");
 CableApp.cable = actionCable.createConsumer(
-  "wss://peeps-frontend.vercel.app/cable"
+  "wss://peeps-frontend.vercel.app/rooms/cable"
 );
 
 
