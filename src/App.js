@@ -136,9 +136,11 @@ const App = ({cableApp}) => {
       },
       (error) => {
         if (error.code === 1) {
-          alert(
-            "Kindly allow location, for a more immersive experience with the app."
-          );
+          setInterval(() => {
+            alert("Kindly allow location, for a more immersive experience with the app.");
+          }, 10000);
+          
+          
           console.log(error);
         }
       }
