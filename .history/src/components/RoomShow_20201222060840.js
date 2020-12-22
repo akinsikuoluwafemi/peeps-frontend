@@ -6,7 +6,7 @@ import './Chat.scss';
 
 import {useLocation} from 'react-router-dom';
 import ChatMessage from './ChatMessage'
-import Faker from 'faker';
+
 
 
 export default function RoomShow({cableApp}) {
@@ -21,6 +21,7 @@ export default function RoomShow({cableApp}) {
 
 
 let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[0]);
+ console.log(roomParam)
 
     
     useEffect(() => {
@@ -64,7 +65,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
         return res;
       };
 
-  // console.log(currentRoom.messages.length);
+  console.log(currentRoom.messages.length);
 
       const createWebSocket = () => {
         cableApp.room = cableApp.cable.subscriptions.create({
@@ -89,7 +90,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
           })
       }
 
-  // console.log(inputRef.current)
+  console.log(inputRef.current)
 
     const handleSubmit = (e) => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -106,9 +107,8 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
 
     e.preventDefault();
 
-      if(inputRef.current.value.length === 0){
-        alert('message can not be empty')
-      }
+      alert(inputRef.current.value.length)
+      if(inputRef.current.value.length )
 
     inputRef.current.value = "";
 
@@ -123,8 +123,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
       })
       .then(
         (response) => {
-          // console.log("Success", response.data);
-          
+          console.log("Success", response.data);
         },
         (error) => {
           console.error("Error", error);
@@ -145,19 +144,16 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
 
    
     return (
-      <div class="messages-wrapper">
+          <div class="messages-wrapper">
+        
         <div className="item item--2">
           <div className="item--2 inner-one">
             <div class="">
               <div class="friend-drawer no-gutters friend-drawer--grey d-flex align-items-center ">
-                <img
-                  class="profile-image mr-3"
-                  src={Faker.image.people()}
-                  alt="faker-pic"
-                />
+                <img class="profile-image mr-3" src="https://images.daznservices.com/di/library/GOAL/6f/10/1920x1080-cristiano-ronaldo-juventus-2020_1we5st5c3uanu1lp1ijx780p1j.jpg?t=-398174363&quality=60&w=1200&h=800" alt="" />
                 <div class="text mr-3">
                   <h6 className="text-left">{reqOwnerFirstName}</h6>
-                  <p>{currentRoom.room.name}</p>
+                  <p>{ currentRoom.room.name}</p>
                 </div>
                 <span class="settings-tray--right">
                   {/* <i class="material-icons">cached</i> */}
@@ -172,46 +168,47 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
                     /> */}
 
                     {/* <CancelIcon onClick={closeChat} /> */}
-                    {currentRoom.messages.length < 0 ? (
-                      <h3 className="text-center m-auto">
-                        Type your first message
-                      </h3>
-                    ) : null}
+                      {currentRoom.messages.length < 0 ? <h3 className="text-center m-auto">Type your first message</h3> : null}
                   </div>
                 </span>
               </div>
             </div>
           </div>
-
+            
           <div className="messages-container">
+
             {/* roomDetail start */}
             {currentRoom.messages ? (
-              displayMessages(currentRoom.messages)
-            ) : (
-              <h3 className="text-center">
-                This room has no messages yet - be the first to post!
-              </h3>
+
+            displayMessages(currentRoom.messages)
+              
+
+            ): (
+            <h3 className="text-center">This room has no messages yet - be the first to post!</h3>
+
             )}
 
             {/* roomDetail end */}
           </div>
+          
 
-          {/* form start */}
-          <form className=" footer " onSubmit={handleSubmit}>
-            {/* // <form className="item--2 inner-three " > */}
-            <div class="chat-box-tray">
-              <i class="material-icons">sentiment_very_satisfied</i>
-              <input
-                className="chatbody"
-                ref={inputRef}
-                type="text"
-                placeholder="Type your message here..."
-              />
-              <i class="material-icons">mic</i>
-            </div>
-          </form>
-          {/* form end  */}
+              {/* form start */}
+                    <form className=" footer " onSubmit={handleSubmit}>
+                      {/* // <form className="item--2 inner-three " > */}
+                        <div class="chat-box-tray">
+                          <i class="material-icons">sentiment_very_satisfied</i>
+                          <input
+                            className="chatbody"
+                            ref={inputRef}
+                            type="text"
+                            placeholder="Type your message here..."
+                          />
+                          <i class="material-icons">mic</i>
+
+                        </div>
+                    </form>
+              {/* form end  */}
         </div>
       </div>
-    );
+    )
 }

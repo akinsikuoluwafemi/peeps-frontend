@@ -324,7 +324,7 @@ const Signup =() =>  {
                       error={error}
                       // required
                     />
-                    <p className="mt-2">Kindly attach a government verification ID Card</p>
+                    <p>
                     <small style={{ color: "#2196F3" }}>
                       Accepts only (PDF, JPG and PNG FILES)
                     </small>

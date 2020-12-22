@@ -145,19 +145,16 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
 
    
     return (
-      <div class="messages-wrapper">
+          <div class="messages-wrapper">
+        
         <div className="item item--2">
           <div className="item--2 inner-one">
             <div class="">
               <div class="friend-drawer no-gutters friend-drawer--grey d-flex align-items-center ">
-                <img
-                  class="profile-image mr-3"
-                  src={Faker.image.people()}
-                  alt="faker-pic"
-                />
+                <img class="profile-image mr-3" src={Faker.image.avatar()} alt="faker-pic" />
                 <div class="text mr-3">
                   <h6 className="text-left">{reqOwnerFirstName}</h6>
-                  <p>{currentRoom.room.name}</p>
+                  <p>{ currentRoom.room.name}</p>
                 </div>
                 <span class="settings-tray--right">
                   {/* <i class="material-icons">cached</i> */}
@@ -172,46 +169,47 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
                     /> */}
 
                     {/* <CancelIcon onClick={closeChat} /> */}
-                    {currentRoom.messages.length < 0 ? (
-                      <h3 className="text-center m-auto">
-                        Type your first message
-                      </h3>
-                    ) : null}
+                      {currentRoom.messages.length < 0 ? <h3 className="text-center m-auto">Type your first message</h3> : null}
                   </div>
                 </span>
               </div>
             </div>
           </div>
-
+            
           <div className="messages-container">
+
             {/* roomDetail start */}
             {currentRoom.messages ? (
-              displayMessages(currentRoom.messages)
-            ) : (
-              <h3 className="text-center">
-                This room has no messages yet - be the first to post!
-              </h3>
+
+            displayMessages(currentRoom.messages)
+              
+
+            ): (
+            <h3 className="text-center">This room has no messages yet - be the first to post!</h3>
+
             )}
 
             {/* roomDetail end */}
           </div>
+          
 
-          {/* form start */}
-          <form className=" footer " onSubmit={handleSubmit}>
-            {/* // <form className="item--2 inner-three " > */}
-            <div class="chat-box-tray">
-              <i class="material-icons">sentiment_very_satisfied</i>
-              <input
-                className="chatbody"
-                ref={inputRef}
-                type="text"
-                placeholder="Type your message here..."
-              />
-              <i class="material-icons">mic</i>
-            </div>
-          </form>
-          {/* form end  */}
+              {/* form start */}
+                    <form className=" footer " onSubmit={handleSubmit}>
+                      {/* // <form className="item--2 inner-three " > */}
+                        <div class="chat-box-tray">
+                          <i class="material-icons">sentiment_very_satisfied</i>
+                          <input
+                            className="chatbody"
+                            ref={inputRef}
+                            type="text"
+                            placeholder="Type your message here..."
+                          />
+                          <i class="material-icons">mic</i>
+
+                        </div>
+                    </form>
+              {/* form end  */}
         </div>
       </div>
-    );
+    )
 }
