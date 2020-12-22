@@ -196,10 +196,11 @@ const Signup =() =>  {
       last_name: lastName,
       email: email,
       password: password,
+      
     };
 
 
-    // console.log(data);
+    console.log(data);
 
     let res = await axios
       .post("https://peeps-platform.herokuapp.com/auth/signup", {

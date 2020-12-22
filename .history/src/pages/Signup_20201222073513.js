@@ -196,6 +196,7 @@ const Signup =() =>  {
       last_name: lastName,
       email: email,
       password: password,
+      
     };
 
 
