@@ -35,7 +35,6 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
   const inputRef = useRef();
 
 
-
       const getRoomData = async (id) => {
         
 

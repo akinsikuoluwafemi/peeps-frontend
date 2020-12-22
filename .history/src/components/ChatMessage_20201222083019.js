@@ -28,6 +28,7 @@ export default function ChatMessage({message}) {
     }
     
   }
+  console.log([message)
   
     return (
             <div  class={message.user_id === userId ? `col-md-3 offset-md-9` : `col-md-3`}>

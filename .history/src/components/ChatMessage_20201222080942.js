@@ -11,6 +11,7 @@ export default function ChatMessage({message}) {
       document.title = `${reqOwnerFirstName ? reqOwnerFirstName : ``} | Chat | Peeps`;
       
 
+
     });
   dayjs.extend(relativeTime);
 
@@ -30,7 +31,7 @@ export default function ChatMessage({message}) {
   }
   
     return (
-            <div  class={message.user_id === userId ? `col-md-3 offset-md-9` : `col-md-3`}>
+            <div id="messages" class={message.user_id === userId ? `col-md-3 offset-md-9` : `col-md-3`}>
                 <div class={message.user_id === userId ? `chat-bubble chat-bubble--right text-left` : `chat-bubble chat-bubble--left`}>
                 <small style={{ color: "#777" }}>{message.user_id === userId ? `You`: reqOwnerFirstName }</small> <br/>
                 {message.body} <br />

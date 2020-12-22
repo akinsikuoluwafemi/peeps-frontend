@@ -26,6 +26,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
     useEffect(() => {
        
       getRoomData(chatRoomId || roomParam);
+      
         
       createWebSocket()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,6 +35,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
   
   const inputRef = useRef();
 
+  const chatRef = useRef();
 
 
       const getRoomData = async (id) => {
@@ -138,7 +140,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
 
   const displayMessages = (messages) => {
     return messages.map(message => {
-      return <ChatMessage  key={message.id} message={message} />
+      return <ChatMessage ref={chatRef} key={message.id} message={message} />
     })
   }
 

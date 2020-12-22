@@ -26,6 +26,7 @@ let roomParam = currentRoom.room.id || parseInt(loctaion.pathname.match(/\d+$/)[
     useEffect(() => {
        
       getRoomData(chatRoomId || roomParam);
+      console.log(chatRef.current);
         
       createWebSocket()
     // eslint-disable-next-line react-hooks/exhaustive-deps
