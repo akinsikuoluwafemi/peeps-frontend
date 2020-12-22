@@ -104,6 +104,9 @@ export default function ButtonAppBar() {
                 </NavLink>
 
                 <ChatDialogue />
+
+                
+
               </>
             ) : (
               <>

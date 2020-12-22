@@ -15,6 +15,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
+import Tour from '../components/Tour';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -252,7 +254,10 @@ const Signup =() =>  {
 
     return (
       <>
+        <TransitionAlerts/>
+
         <div>
+
           <main>
             <div style={{ marginTop: "5rem" }}></div>
 
@@ -414,3 +419,19 @@ const Signup =() =>  {
 }
 
 export default Signup;
+
+
+
+
+ function TransitionAlerts() {
+  
+  return (
+    <div  class="alert  alert-dismissible fade show" role="alert">
+    <p className="text-center">Welcome to the quick tour</p>
+    <Tour/>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  );
+}
