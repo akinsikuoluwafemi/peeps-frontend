@@ -3,7 +3,7 @@ import './Footer.css';
 
 export default function Footer() {
     return (
-      <footer id="footer">
+      <footer id="footer fixed-bottom">
         <div className="container">
           <div className="row">
             <div className="col-md-12 m-auto">
