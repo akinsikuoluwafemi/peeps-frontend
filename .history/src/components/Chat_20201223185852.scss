@@ -152,7 +152,6 @@ hr {
     border-radius: 9px;
     position: relative;
     animation: fadeIn 1s ease-in;
-    max-width: 20rem;
 
     &:after {
         content: '';
@@ -197,9 +196,8 @@ hr {
 
 .offset-md-9 {
     .chat-bubble {
-        background: $blue;
+        // background: $blue;
         color: #fff;
-        // max-width: 15rem;
     }
 }
 
