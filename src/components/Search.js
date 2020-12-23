@@ -202,7 +202,7 @@ export const Map = () =>{
           console.log(error);
         }
       );
-    alert(`create a room for you and ${reqOwnerFirstName}`);
+    // alert(`create a room for you and ${reqOwnerFirstName}`);
 
     onCreateRoom();
 

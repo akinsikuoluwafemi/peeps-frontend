@@ -178,9 +178,9 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return 'You need help? be our guest...';
+      return 'You have a need(material need, one time task)? be our guest...';
     case 1:
-      return 'Volunteer to meet the need of other peepsons';
+      return 'Volunteer to meet the needs of other peepsons';
     case 2:
       return 'Yes, you can send a Direct Message to a peepson';
     default:
