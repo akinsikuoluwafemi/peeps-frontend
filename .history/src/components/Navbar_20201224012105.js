@@ -89,7 +89,7 @@ export default function ButtonAppBar() {
 
             <li class="nav-item active">
               <a href="*" class="nav-link badge badge-success">
-                {userData.isLoggedIn ? `Hi ${firstName}` : ``}
+                {userData.isLoggedIn ? `Hi ${firstName}` : null}
                 {/* Home */}
               </a>
             </li>

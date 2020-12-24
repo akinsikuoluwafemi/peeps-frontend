@@ -57,8 +57,7 @@ export default function ButtonAppBar() {
             Peeps
           </NavLink>
           <button
-            style={{border: 'none'}}
-            className=" navbar-toggler collapsed"
+            className="border navbar-toggler collapsed"
             type="button"
             data-toggle="collapse"
             data-target="#contentOfNavbar"
@@ -66,7 +65,9 @@ export default function ButtonAppBar() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
+            style={{ border: "none" }}
             <span 
+            style={{border: 'none'}}
             
             className="navbar-toggler-icon"></span>
           </button>
@@ -89,7 +90,7 @@ export default function ButtonAppBar() {
 
             <li class="nav-item active">
               <a href="*" class="nav-link badge badge-success">
-                {userData.isLoggedIn ? `Hi ${firstName}` : ``}
+                {userData.isLoggedIn ? `Hi ${firstName}` : null}
                 {/* Home */}
               </a>
             </li>

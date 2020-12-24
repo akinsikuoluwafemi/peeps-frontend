@@ -25,7 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 
-export const Signup =() =>  {
+const Signup =() =>  {
  
   useEffect(() => {
     document.title = "Sign up for | Peeps";
@@ -418,12 +418,12 @@ export const Signup =() =>  {
   
 }
 
+export default Signup;
 
 
 
 
-export const TransitionAlerts = ({children}) => {
-  
+ function TransitionAlerts({children}) {
   
   return (
     <div  class="alert  alert-dismissible fade show" role="alert">

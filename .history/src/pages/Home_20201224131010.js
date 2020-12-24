@@ -9,11 +9,7 @@ function Home(props) {
 
   return (
     <section>
-      <TransitionAlerts>
-        <p class="text-center text-info">
-          Kindly zoom in and out on the map to see other peepsons request
-        </p>
-      </TransitionAlerts>
+      <TransitionAlerts><Kindly zoom in and out on the map to see other peepsons request</TransitionAlerts>
       <div style={{ textAlign: "center", height: "100vh" }}>
         <Map />
       </div>

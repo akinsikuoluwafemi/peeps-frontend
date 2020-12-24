@@ -10,7 +10,7 @@ function Home(props) {
   return (
     <section>
       <TransitionAlerts>
-        <p class="text-center text-info">
+        <p class="text-center bg-info">
           Kindly zoom in and out on the map to see other peepsons request
         </p>
       </TransitionAlerts>

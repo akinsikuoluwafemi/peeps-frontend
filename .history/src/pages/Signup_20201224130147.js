@@ -25,7 +25,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 
 
-export const Signup =() =>  {
+const Signup =() =>  {
  
   useEffect(() => {
     document.title = "Sign up for | Peeps";
@@ -255,10 +255,11 @@ export const Signup =() =>  {
     return (
       <>
         <TransitionAlerts>
-          <Tour />
+
         </TransitionAlerts>
 
         <div>
+
           <main>
             <div style={{ marginTop: "5rem" }}></div>
 
@@ -329,9 +330,7 @@ export const Signup =() =>  {
                       error={error}
                       // required
                     />
-                    <p className="mt-2">
-                      Kindly attach a government verification ID Card
-                    </p>
+                    <p className="mt-2">Kindly attach a government verification ID Card</p>
                     <small style={{ color: "#2196F3" }}>
                       Accepts only (PDF, JPG and PNG FILES)
                     </small>
@@ -370,7 +369,9 @@ export const Signup =() =>  {
                   </form>
 
                   {/*  */}
-                  <div>
+                  <div
+                  
+                  >
                     <Dialog
                       open={open}
                       TransitionComponent={Transition}
@@ -381,17 +382,18 @@ export const Signup =() =>  {
                     >
                       <DialogTitle id="alert-dialog-slide-title">
                         {"Signin You in"}
+                     
+
                       </DialogTitle>
                       <DialogContent>
                         <DialogContentText
-                          alignItems="center"
-                          justify="center"
-                          id="alert-dialog-slide-description"
-                        >
+                        alignItems="center"
+                        justify="center"
+                        id="alert-dialog-slide-description">
                           <CircularProgress
-                            style={{ color: "#4CAF4F" }}
-                            size="6rem"
-                          />
+                            style={{color: '#4CAF4F'}}
+                             size="6rem" />
+                           
                         </DialogContentText>
                       </DialogContent>
                       {/* <DialogActions>
@@ -418,17 +420,17 @@ export const Signup =() =>  {
   
 }
 
+export default Signup;
 
 
 
 
-export const TransitionAlerts = ({children}) => {
-  
+ function TransitionAlerts({children}) {
   
   return (
     <div  class="alert  alert-dismissible fade show" role="alert">
     <p className="text-center">Welcome to the quick tour</p>
-      {children}
+
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

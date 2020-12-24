@@ -422,8 +422,7 @@ export const Signup =() =>  {
 
 
 
-export const TransitionAlerts = ({children}) => {
-  
+ex[function TransitionAlerts({children}) {
   
   return (
     <div  class="alert  alert-dismissible fade show" role="alert">
