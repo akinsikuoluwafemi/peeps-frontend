@@ -93,6 +93,7 @@ export const Map = () =>{
   let {  setChatRoomId } = useContext(ChatRoomIdContext);
   let [panned, setPanned] = useState(true)
 
+
   const libraries = ["places"];
   const mapContainerStyle = {
     width: "90vw",
@@ -138,6 +139,7 @@ export const Map = () =>{
       sender_id: userId,
       receiver_id: requestOwner
     };
+
 
 
     let tempArray = [roomObj, ...allRooms];
@@ -232,13 +234,12 @@ const checkSameUserClick = async (id) => {
        .then(
          (response) => {
            setSameUserClick(response.data);
-
          },
          (error) => {
            console.log(error);
          }
     );
-   getRequestOwner(requestOwner);
+  //  getRequestOwner(requestOwner);
   
   checkFulfilledRequest(requestId);
      return res;

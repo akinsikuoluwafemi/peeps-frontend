@@ -92,6 +92,7 @@ export const Map = () =>{
 
   let {  setChatRoomId } = useContext(ChatRoomIdContext);
   let [panned, setPanned] = useState(true)
+    let [loadingReqUser, setLoadingReqUser] = useState()
 
   const libraries = ["places"];
   const mapContainerStyle = {
@@ -138,6 +139,7 @@ export const Map = () =>{
       sender_id: userId,
       receiver_id: requestOwner
     };
+
 
 
     let tempArray = [roomObj, ...allRooms];

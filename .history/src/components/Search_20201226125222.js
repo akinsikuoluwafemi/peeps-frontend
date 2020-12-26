@@ -140,6 +140,7 @@ export const Map = () =>{
     };
 
 
+
     let tempArray = [roomObj, ...allRooms];
 
 
@@ -302,6 +303,7 @@ const checkFulfilledRequest = async (id) => {
 
   const getRequestOwner = async (id) => {
     if (id) {
+      setLoadingReqUser(true);
       const token = JSON.parse(localStorage.getItem("token"));
 
       let res = await axios

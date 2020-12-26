@@ -92,6 +92,7 @@ export const Map = () =>{
 
   let {  setChatRoomId } = useContext(ChatRoomIdContext);
   let [panned, setPanned] = useState(true)
+  let [loadingReqUser, setLoadingReqUser] = useState(false);
 
   const libraries = ["places"];
   const mapContainerStyle = {
@@ -138,6 +139,7 @@ export const Map = () =>{
       sender_id: userId,
       receiver_id: requestOwner
     };
+
 
 
     let tempArray = [roomObj, ...allRooms];
@@ -302,6 +304,7 @@ const checkFulfilledRequest = async (id) => {
 
   const getRequestOwner = async (id) => {
     if (id) {
+      setLoadingReqUser(true);
       const token = JSON.parse(localStorage.getItem("token"));
 
       let res = await axios
@@ -312,6 +315,7 @@ const checkFulfilledRequest = async (id) => {
         })
         .then(
           (response) => {
+            setLoadingReqUser(false)
             let ownerRec = Object.values(response.data);
             setChatReceiverId(ownerRec[0]);
             setReqOwnerFirstName(ownerRec[1]);
@@ -386,7 +390,8 @@ const renderButton = () => {
 
           {selectedRequest && (
             <InfoWindow
-              onDomReady={checkSameUserClick(selectedRequest.id)}
+              // loadingReqUser, setLoadingReqUser
+              onDomReady={loadingReqUser ?  checkSameUserClick(selectedRequest.id) : }
               position={{
                 lat: selectedRequest.lat,
                 lng: selectedRequest.lng,

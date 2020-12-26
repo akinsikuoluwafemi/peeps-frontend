@@ -426,7 +426,7 @@ export const TransitionAlerts = ({children}) => {
   
   
   return (
-    <div style={{paddingRight: '0'} }  class="alert  alert-dismissible fade show" role="alert">
+    <div  class="alert  alert-dismissible fade show" role="alert">
     <p className="text-center">Welcome to the quick tour</p>
       {children}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -113,7 +113,7 @@ const Login = (props) => {
 
   return (
     <>
-      <div >
+      <div style={{height: '100vh'}}>
         <main>
           <div style={{ marginTop: "5rem" }}></div>
 

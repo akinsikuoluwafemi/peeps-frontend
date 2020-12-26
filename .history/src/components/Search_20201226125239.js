@@ -140,6 +140,7 @@ export const Map = () =>{
     };
 
 
+
     let tempArray = [roomObj, ...allRooms];
 
 
