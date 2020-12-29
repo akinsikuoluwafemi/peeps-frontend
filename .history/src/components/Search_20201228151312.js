@@ -120,7 +120,7 @@ export const Map = () =>{
 
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
-
+    
   }, []);
 
   const panTo = useCallback(({ lat, lng }) => {
@@ -377,8 +377,7 @@ const renderButton = () => {
               onClick={() => {
                 setSelectedRequest(request);
                 setRequestId(request.id);
-                mapRef.current.panTo({ lat: request.lat, lng: request.lng });
-                
+
                 setRequestOwner(request.user_id);
                 setReqDescription(request.description);
                 // alert(request.id + "," + request.user_id);

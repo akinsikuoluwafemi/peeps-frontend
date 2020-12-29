@@ -377,7 +377,7 @@ const renderButton = () => {
               onClick={() => {
                 setSelectedRequest(request);
                 setRequestId(request.id);
-                mapRef.current.panTo({ lat: request.lat, lng: request.lng });
+    mapRef.current.panTo({ lat: request.lat, lng: request.lng });
                 
                 setRequestOwner(request.user_id);
                 setReqDescription(request.description);
