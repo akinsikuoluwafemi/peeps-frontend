@@ -10,7 +10,7 @@ export default function MenuRoomItem({room}) {
    
     let {allRooms, setAllRooms } = useContext(AllRoomContext)
         //  console.log(room)
-        //  console.log(allRooms)
+         console.log(allRooms)
 
         const handleRoomDetails = () => {
           let pathchedValue = room.patched === false ? true : false;
@@ -39,7 +39,7 @@ export default function MenuRoomItem({room}) {
 
            },
            (error) => {
-            //  console.log("Error", error);
+             console.log("Error", error);
            }
          );
 

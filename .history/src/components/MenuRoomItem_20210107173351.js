@@ -39,7 +39,7 @@ export default function MenuRoomItem({room}) {
 
            },
            (error) => {
-            //  console.log("Error", error);
+             console.log("Error", error);
            }
          );
 

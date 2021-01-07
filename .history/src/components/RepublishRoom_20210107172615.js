@@ -30,7 +30,7 @@ export default function LongMenu() {
       })
       .then(
         (response) => {
-          // console.log(response.data.length);
+          console.log(result.data.length);
           setRoomToRepublish(response.data);
 
         },

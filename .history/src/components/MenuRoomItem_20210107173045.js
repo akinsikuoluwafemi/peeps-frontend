@@ -9,8 +9,8 @@ import axios from 'axios';
 export default function MenuRoomItem({room}) {
    
     let {allRooms, setAllRooms } = useContext(AllRoomContext)
-        //  console.log(room)
-        //  console.log(allRooms)
+         console.log(room)
+         console.log(allRooms)
 
         const handleRoomDetails = () => {
           let pathchedValue = room.patched === false ? true : false;
@@ -23,27 +23,27 @@ export default function MenuRoomItem({room}) {
           const token = JSON.parse(localStorage.getItem("token"));
           
 
-       let res = axios
-         .patch(`http://localhost:3001/rooms/${room.id}`, obj, {
-           headers: {
-             Authorization: `Basic ${token}`,
-           },
-         })
-         .then(
-           (response) => {
+      //  let res = axios
+      //    .patch(`http://localhost:3001/rooms/${room.id}`, obj, {
+      //      headers: {
+      //        Authorization: `Basic ${token}`,
+      //      },
+      //    })
+      //    .then(
+      //      (response) => {
             
-            //  console.log("success", response.data);
-            let tempRoom = [response.data, ...allRooms]
-             setAllRooms(tempRoom)
-             alert('Room Republished')
+      //        console.log("success", response.data);
+      //       let tempRoom = [response.data, ...allRooms]
+      //        setAllRooms(tempRoom)
+      //        alert('Room Republished')
 
-           },
-           (error) => {
-            //  console.log("Error", error);
-           }
-         );
+      //      },
+      //      (error) => {
+      //        console.log("Error", error);
+      //      }
+      //    );
 
-       return res;
+      //  return res;
      };
 
 

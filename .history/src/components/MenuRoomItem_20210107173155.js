@@ -9,8 +9,8 @@ import axios from 'axios';
 export default function MenuRoomItem({room}) {
    
     let {allRooms, setAllRooms } = useContext(AllRoomContext)
-        //  console.log(room)
-        //  console.log(allRooms)
+         console.log(room)
+         console.log(allRooms)
 
         const handleRoomDetails = () => {
           let pathchedValue = room.patched === false ? true : false;
@@ -32,14 +32,14 @@ export default function MenuRoomItem({room}) {
          .then(
            (response) => {
             
-            //  console.log("success", response.data);
+             console.log("success", response.data);
             let tempRoom = [response.data, ...allRooms]
              setAllRooms(tempRoom)
              alert('Room Republished')
 
            },
            (error) => {
-            //  console.log("Error", error);
+             console.log("Error", error);
            }
          );
 

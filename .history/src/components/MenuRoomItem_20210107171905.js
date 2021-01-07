@@ -9,22 +9,20 @@ import axios from 'axios';
 export default function MenuRoomItem({room}) {
    
     let {allRooms, setAllRooms } = useContext(AllRoomContext)
-        //  console.log(room)
-        //  console.log(allRooms)
+         console.log(room)
+         console.log(allRooms)
 
         const handleRoomDetails = () => {
-          let pathchedValue = room.patched === false ? true : false;
-          
+        let pathchedValue = room.patched === false ? true : false;
           let obj = {
          patched: pathchedValue,
        };
 
 
-          const token = JSON.parse(localStorage.getItem("token"));
-          
+       const token = JSON.parse(localStorage.getItem("token"));
 
        let res = axios
-         .patch(`http://localhost:3001/rooms/${room.id}`, obj, {
+         .patch(`http://localhost:3001/republishroom/${room.id}`, obj, {
            headers: {
              Authorization: `Basic ${token}`,
            },
@@ -32,14 +30,14 @@ export default function MenuRoomItem({room}) {
          .then(
            (response) => {
             
-            //  console.log("success", response.data);
-            let tempRoom = [response.data, ...allRooms]
-             setAllRooms(tempRoom)
+             console.log("success", response.data);
+            let tempReque = [response.data, ...allRooms]
+             setAllRooms(tempRequest)
              alert('Room Republished')
 
            },
            (error) => {
-            //  console.log("Error", error);
+             console.log("Error", error);
            }
          );
 
