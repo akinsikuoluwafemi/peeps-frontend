@@ -7,7 +7,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import RoomList from './RoomList';
 import RepublishRoom from './RepublishRoom'
-import { AllRoomContext } from "../ContextFile";
+import { AllRoomContext, RepublishingContext } from "../ContextFile";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -22,6 +22,7 @@ export default function ChatDialogue() {
 
 let {allRooms} = useContext(AllRoomContext)    
   
+  let { requiresRepublishing, setRequiresRepublishing } = useContext(RepublishingContext)
 
 
   const [open, setOpen] = React.useState(false);

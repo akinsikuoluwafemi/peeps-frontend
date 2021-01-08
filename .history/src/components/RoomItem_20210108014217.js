@@ -16,7 +16,7 @@ export default function RoomItem({ room, allVolunteers }) {
   // console.log(room)
   // console.log(allVolunteers);
 
-  let { setRequiresRepublishing } = useContext(RepublishingContext)
+  let { requiresRepublishing, setRequiresRepublishing } = useContext(RepublishingContext)
 
   let { currentRoom, setCurrentRoom } = useContext(RoomDataContext);
   let { allRequest } = useContext(AllRequestContext);
