@@ -23,7 +23,7 @@ export default function LongMenu() {
     const token = JSON.parse(localStorage.getItem("token"));
 
     let res = await axios
-      .get(`https://peeps-platform.herokuapp.com/republishroom`, {
+      .get(`/republishroom`, {
         headers: {
           Authorization: `Basic ${token}`,
         },
@@ -32,6 +32,7 @@ export default function LongMenu() {
         (response) => {
           // console.log(response.data.length);
           setRoomToRepublish(response.data);
+
         },
         (error) => {
           // console.log(error);

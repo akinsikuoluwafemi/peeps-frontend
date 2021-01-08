@@ -31,13 +31,15 @@ export default function MenuRoomItem({room}) {
          })
          .then(
            (response) => {
-             //  console.log("success", response.data);
-             let tempRoom = [response.data, ...allRooms];
-             setAllRooms(tempRoom);
-             alert("Room Republished");
+            
+            //  console.log("success", response.data);
+            let tempRoom = [response.data, ...allRooms]
+             setAllRooms(tempRoom)
+             alert('Room Republished')
+
            },
            (error) => {
-             //  console.log("Error", error);
+            //  console.log("Error", error);
            }
          );
 

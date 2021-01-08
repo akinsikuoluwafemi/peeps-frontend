@@ -23,26 +23,26 @@ export default function LongMenu() {
    
    
       let res = await axios
-        .get("https://peeps-platform.herokuapp.com/republish/", {
-          headers: {
-            Authorization: `Basic ${token}`,
-          },
-        })
-        .then(
-          (response) => {
-            //   console.log(response.data);
-            let uniqueReq = response.data.filter(
-              (item) => item.user_id === userId
-            );
-            // console.log(uniqueReq);
+      .get("/republish/", {
+        headers: {
+          Authorization: `Basic ${token}`,
+        },
+      })
+      .then(
+        (response) => {
+        //   console.log(response.data);
+          let uniqueReq = response.data.filter(
+            (item) => item.user_id === userId
+          );
+          // console.log(uniqueReq);
 
             setRequestToRepublish(uniqueReq);
-            return uniqueReq;
-          },
-          (error) => {
-            // console.log(error);
-          }
-        );
+            return uniqueReq
+        },
+        (error) => {
+          // console.log(error);
+        }
+      );
 
     return res;
   };
